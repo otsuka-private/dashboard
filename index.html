@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>My dashboard</title>
+  <!-- destyle -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@2.0.2/destyle.css">
+  <!-- materialize icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <!-- materializecss -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- animatecss -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <!-- chartjs css -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.css">
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+  <!-- my original stylesheet -->
+  <link rel="stylesheet" href="assets/styles/stylesheet.css">
+
+  <!-- ↓↓↓↓↓javascript↓↓↓↓↓  -->
+
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- chartjs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+  <!-- materializejs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
+  <!-- easypiechart js vanilla version -->
+  <script src="./assets/scripts/Libraries/vanilla_easypiechart.js"></script>
+  <!-- my original materialize jquery js -->
+  <script src="./assets/scripts/Libraries/materialize_jquery.js" defer></script>
+  <!-- my original js -->
+  <script src="./dist/main.js" defer type="module"></script>
+  <!-- my original chart js -->
+  <script src="./assets/scripts/Charts/chart.js" defer></script>
+  <!-- my original easy-pie-chart js -->
+  <script src="./assets/scripts/Charts/easypiechart.js" defer></script>
+</head>
+
+<body>
+  <div id="top" class="hw100 overflowHidden">
+    <h1 class="center-align animate__animated animate__zoomIn ">My Dashboard</h1>
+    <div class="center-align flow-text">
+      <p class="col animate__animated animate__fadeInUp animate__delay-1s">記録</p>
+      <p class="col animate__animated animate__fadeInUp animate__delay-2s">分析</p>
+      <p class="col animate__animated animate__fadeInUp animate__delay-3s">成長</p>
+    </div>
+  </div>
+  <div id="analytics" class="grey lighten-1 overflowHidden">
+    <h2 class="center-align">統計と分析</h2>
+    <div class="row">
+      <a class="waves-effect waves-light btn-large modal-trigger col s6 offset-s3" href="#modal-set-new-week" id="modal-set-new-week-btn">新しい週に更新</a>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">時間</span>
+            <div class="center-align row flow-text">
+              <p class="col s3">起床</p>
+              <p class="col s3" id="wake-time">--</p>
+              <p class="col s3">終了</p>
+              <p class="col s3" id="end-time">--</p>
+            </div>
+            <div class="center-align row flow-text">
+              <p class="col s6">活動時間</p>
+              <p class="col s6" id="waking-time">--</p>
+            </div>
+            <div class="center-align row flow-text">
+              <p class="col s6">働いた時間</p>
+              <p class="col s6" id="working-time">--</p>
+            </div>
+            <a class="waves-effect waves-light btn-large modal-trigger" href="#modal-day-start-end">記録</a>
+            <a class="waves-effect waves-light btn-large modal-trigger red" href="#modal-day-start-end-delete">データを消去</a>
+            <div id="modal-day-start-end" class="modal">
+              <div class="modal-content">
+                <h4>内容</h4>
+                <p>
+                  <label>
+                    <input name="day-record-thing" type="radio" value="起床" id="radio-start" />
+                    <span>起床</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input name="day-record-thing" type="radio" value="終了" id="radio-end" />
+                    <span>終了</span>
+                  </label>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">取り消し</a>
+                <a href="#!" class="modal-close waves-effect waves-green btn" id="decide-day-start-end-button">入力を完了</a>
+              </div>
+            </div>
+            <div id="modal-day-start-end-delete" class="modal">
+              <div class="modal-content">
+                <p>消去されるものは</p>
+                <br>
+                <p>・このカードの時間の表記</p>
+                <p>・このカードに関するローカルストレージのデータ</p>
+                <br>
+                <p>です。本当に消去しますか？</p>
+              </div>
+              <div class="modal-footer">
+                <a class="modal-close waves-effect waves-light btn">消去しない</a>
+                <a class="modal-close waves-effect waves-light btn red" id="delete-day-start-end-button">消去</a>
+              </div>
+            </div>
+            <div id="modal-set-new-week" class="modal">
+              <div class="modal-content">
+                <p>新しい週に更新しますか？</p>
+              </div>
+              <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">取り消し</a>
+                <a href="#!" class="modal-close waves-effect waves-green btn" id="decide-set-new-week-button">新しい週に更新する</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">今日の過ごし方</span>
+            <div class="row">
+              <div class="col s12">
+                <div class="card">
+                  <div class="card-content" id="card-content-day-record">
+                    <span class="card-title">Day Record</span>
+                    <template id="template-record-p">
+                      <div class="row">
+                        <p class="col s12"></p>
+                      </div>
+                    </template>
+                  </div>
+                </div>
+                <!-- Modal -->
+                <a class="waves-effect waves-light btn-large modal-trigger" href="#modal-day-record">記録</a>
+                <div id="modal-day-record" class="modal">
+                  <div class="modal-content">
+                    <h4>内容</h4>
+                    <p>
+                      <label>
+                        <input name="day-record-thing" type="radio" value="東大" />
+                        <span>東大</span>
+                      </label>
+                    </p>
+                    <p>
+                      <label>
+                        <input name="day-record-thing" type="radio" value="JavaScript" />
+                        <span>JavaScript</span>
+                      </label>
+                    </p>
+                    <p>
+                      <label>
+                        <input name="day-record-thing" type="radio" value="ポケヨビ" />
+                        <span>ポケヨビ</span>
+                      </label>
+                    </p>
+                    <p>
+                      <label>
+                        <input name="day-record-thing" type="radio" value="読書" />
+                        <span>読書</span>
+                      </label>
+                    </p>
+                    <p>
+                      <label>
+                        <input name="day-record-thing" type="radio" value="休憩" />
+                        <span>休憩</span>
+                      </label>
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">取り消し</a>
+                    <a href="#!" class="modal-close waves-effect waves-green btn" id="decide-day-record">入力を完了</a>
+                  </div>
+                </div>
+                <a class="waves-effect waves-light btn-large modal-trigger red" href="#modal-day-record-delete">データを消去</a>
+                <div id="modal-day-record-delete" class="modal">
+                  <div class="modal-content">
+                    <p>消去されるものは</p>
+                    <br>
+                    <p>・このカードの時間の表記</p>
+                    <p>・このカードに関するローカルストレージのデータ</p>
+                    <br>
+                    <p>です。本当に消去しますか？</p>
+                  </div>
+                  <div class="modal-footer">
+                    <a class="modal-close waves-effect waves-light btn">消去しない</a>
+                    <a class="modal-close waves-effect waves-light btn red" id="delete-day-record-button">消去</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">起きていた時間</span>
+            <canvas id="waking-time-bar" width="90%" height="90%"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">働いた時間</span>
+            <canvas id="working-time-bar" width="90%" height="90%"></canvas>
+            <p>働いた時間の割合</p>
+            <div class="chart center-align relative" data-percent="73" id="chart-working-percentage">
+              <p>73%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">働いた時間の割合</span>
+            <canvas id="working-time-percentage-bar" width="90%" height="90%"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content" id="card-content-category-time">
+            <span class="card-title">各カテゴリーの時間</span>
+            <div class="row">
+              <p class="col s6">東大</p>
+              <p class="col s6" id="category-p-todai"></p>
+            </div>
+            <div class="row">
+              <p class="col s6">JavaScript</p>
+              <p class="col s6" id="category-p-js"></p>
+            </div>
+            <div class="row">
+              <p class="col s6">ポケヨビ</p>
+              <p class="col s6" id="category-p-website"></p>
+            </div>
+            <div class="row">
+              <p class="col s6">読書</p>
+              <p class="col s6" id="category-p-reading"></p>
+            </div>
+            <div class="row">
+              <p class="col s6">休憩</p>
+              <p class="col s6" id="category-p-rest"></p>
+            </div>
+            <canvas id="category-time-doughnut" width="90%" height="90%"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row">
+      <div class="col s2 offset-s9">
+        <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+      </div>
+    </div> -->
+  </div>
+
+  <div id="todai" class="red lighten-2 overflowXHidden">
+    <h2 class="center-align">東大</h2>
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">目標</span>
+            <a class="black-text modal-trigger category-goal" href="#modal-category-goal-set-new" id="category-goal-1">進級に必要な単位をしっかりと取って3年生に無事上がろう。</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="card white">
+          <div class="card-content">
+            <span class="card-title">月曜日</span>
+            <div class="row">
+              <div class="col s12">
+                <div class="card teal">
+                  <div class="card-content">
+                    <span class="card-title">哲学概論</span>
+                    <a class="modal-trigger white-text" href="#modal-todai-set-card-content" id="todai-mon-card1-content">１つめのレポートは提出したので、最終レポートを提出すれば完了だ。</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <div class="card teal">
+                  <div class="card-content">
+                    <span class="card-title">経済思想史</span>
+                    <a class="modal-trigger white-text" href="#modal-todai-set-card-content" id="todai-mon-card2-content">11月中にメールでどの本を取り上げるか報告。どういうことかわからないのでメールで確認するなりする。</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card white">
+          <div class="card-content">
+            <span class="card-title">火曜日</span>
+            <div class="row">
+              <div class="col s12">
+                <div class="card teal">
+                  <div class="card-content">
+                    <span class="card-title">国際関係論</span>
+                    <a class="modal-trigger white-text" href="#modal-todai-set-card-content" id="todai-tue-card1-content">授業に出席してレポートの情報を得る。</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <div class="card teal">
+                  <div class="card-content">
+                    <span class="card-title">美学概論</span>
+                    <a class="modal-trigger white-text" href="#modal-todai-set-card-content" id="todai-tue-card2-content">試験前にシケタイと陽太で勉強会をする。</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <div class="card teal">
+                  <div class="card-content">
+                    <span class="card-title">美術史学特殊講義</span>
+                    <a class="modal-trigger white-text" href="#modal-todai-set-card-content" id="todai-tue-card3-content">３週間ごとに交代で授業に出席し、毎週の課題を提出する。</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card white">
+          <div class="card-content">
+            <span class="card-title">水曜日</span>
+            <div class="row">
+              <div class="col s12">
+                <div class="card teal">
+                  <div class="card-content">
+                    <span class="card-title">東洋史特殊講義</span>
+                    <a class="modal-trigger white-text" href="#modal-todai-set-card-content" id="todai-wed-card1-content">最終レポートへの準備をしよう。</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <div class="card teal">
+                  <div class="card-content">
+                    <span class="card-title">比較思想</span>
+                    <a class="modal-trigger white-text" href="#modal-todai-set-card-content" id="todai-wed-card2-content">授業に出席してリアぺを書こう。</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card white">
+          <div class="card-content">
+            <span class="card-title">木曜日</span>
+            <div class="row">
+              <div class="col s12">
+                <div class="card teal">
+                  <div class="card-content">
+                    <span class="card-title">世界史論</span>
+                    <a class="modal-trigger white-text" href="#modal-todai-set-card-content" id="todai-thu-card1-content">授業に出席して映画の課題を提出する。</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card white">
+          <div class="card-content">
+            <span class="card-title">金曜日</span>
+            <div class="row">
+              <div class="col s12">
+                <div class="card teal">
+                  <div class="card-content">
+                    <span class="card-title">史学概論</span>
+                    <a class="modal-trigger white-text" href="#modal-todai-set-card-content" id="todai-fri-card1-content">録画された授業を確認しよう。</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <div class="card teal">
+                  <div class="card-content">
+                    <span class="card-title">中国語演習</span>
+                    <a class="modal-trigger white-text" href="#modal-todai-set-card-content" id="todai-fri-card2-content">１３時に忘れず出席送信をしよう。課題も間違わないように出そう。</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <div class="card teal">
+                  <div class="card-content">
+                    <span class="card-title">美術史学特殊講義</span>
+                    <a class="modal-trigger white-text" href="#modal-todai-set-card-content" id="todai-fri-card3-content">毎週課題をこなして授業に出席しよう。</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="modal-todai-set-card-content" class="modal">
+      <div class="modal-content">
+        <p>この授業の新しい課題を入力してください。</p>
+        <input>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close waves-effect waves-green btn-flat">取り消し</a>
+        <a class="modal-close waves-effect waves-light btn" id="set-todai-card-content-btn">決定</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="javascript" class="blue-grey overflowHidden lighten-2">
+    <h2 class="center-align">プログラミング</h2>
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">目標</span>
+            <a class="black-text modal-trigger category-goal" href="#modal-category-goal-set-new" id="category-goal-2">12月15日までに英語講座を修了する。</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">進み具合</span>
+            <div class="chart center-align relative" data-percent="73" id="chart-programming-percentage">
+              <p>73%</p>
+            </div>
+            <p class="center-align"><a class="waves-effect waves-light modal-trigger black-text" href="#modal-programming-progress-now" id="programming-progress-now">今どのあたり</a> / <a class="waves-effect waves-light modal-trigger black-text" href="#modal-programming-all" id="programming-all">全部でどのくらい</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="modal-programming-progress-now" class="modal">
+      <div class="modal-content">
+        <p>どのくらい進みましたか</p>
+        <input>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
+        <a class="modal-close waves-effect waves-light btn" id="decide-programming-progress-btn">決定</a>
+      </div>
+    </div>
+    <div id="modal-programming-all" class="modal">
+      <div class="modal-content">
+        <p>全部でどれくらいありますか？</p>
+        <input>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
+        <a class="modal-close waves-effect waves-light btn" id="decide-programming-all-btn">決定</a>
+      </div>
+    </div>
+  </div>
+  <div id="reading" class="brown lighten-3 overflowXHidden">
+    <h2 class="center-align">読書</h2>
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">目標</span>
+            <a class="black-text modal-trigger category-goal" href="#modal-category-goal-set-new" id="category-goal-3">12/10までにハンニバルの本を読み切る。</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">今読んでいる本</span>
+            <a class="waves-effect waves-light modal-trigger black-text" href="#modal-book-now-reading" id="book-now-reading">今読んでいる本のタイトルを入力</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">進み具合</span>
+            <div class="chart center-align relative" data-percent="35" id="chart-reading">
+              <p>0%</p>
+            </div>
+            <p class="center-align">p.<a class="waves-effect waves-light modal-trigger black-text" href="#modal-reading-page-read" id="page-read">今のページ</a> / p.<a class="waves-effect waves-light modal-trigger black-text" href="#modal-reading-page-all" id="page-all">本のページ数</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="modal-book-now-reading" class="modal">
+      <div class="modal-content">
+        <p>今読んでる本のタイトル</p>
+        <input>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
+        <a class="modal-close waves-effect waves-light btn" id="modal-book-now-reading-btn">決定</a>
+      </div>
+    </div>
+    <div id="modal-reading-page-read" class="modal">
+      <div class="modal-content">
+        <p>何ページまで読みましたか？</p>
+        <input>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
+        <a class="modal-close waves-effect waves-light btn" id="modal-reading-page-btn">決定</a>
+      </div>
+    </div>
+    <div id="modal-reading-page-all" class="modal">
+      <div class="modal-content">
+        <p>全部で何ページありますか？</p>
+        <input>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
+        <a class="modal-close waves-effect waves-light btn" id="modal-reading-page-all-btn">決定</a>
+      </div>
+    </div>
+  </div>
+  <div id="modal-category-goal-set-new" class="modal">
+    <div class="modal-content">
+      <h4>このカテゴリーの新しい目標を入力</h4>
+      <input>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">取り消し</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn" id="decide-category-goal-btn">入力を完了</a>
+    </div>
+  </div>
+
+  <div class="row center-align">
+    <a class="waves-effect waves-light btn modal-trigger red" href="#modal-day-start-end-delete-all"><i class="fas fa-eraser"></i></a>
+  </div>
+  <div id="modal-day-start-end-delete-all" class="modal">
+    <div class="modal-content">
+      <p>注意</p>
+      <p class="red-text">ローカルストレージの全てのデータが消去されます。</p>
+      <p>本当に消去しますか？</p>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-light btn">消去しない</a>
+      <a class="modal-close waves-effect waves-light btn modal-trigger red" href="#modal-day-start-end-delete-all-confirm">データを消去</a>
+    </div>
+  </div>
+  <div id="modal-day-start-end-delete-all-confirm" class="modal">
+    <div class="modal-content">
+      <p>iMacを経由することでこのiPhoneの不要なローカルストレージのデータを個別に削除することもできます。</p>
+      <p class="red-text">本当に全てのデータを消去しますか？</p>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-light btn">取り消し</a>
+      <a class="modal-close waves-effect waves-light btn red" id="modal-day-start-end-delete-yes">確認</a>
+    </div>
+  </div>
+</body>
+
+</html>

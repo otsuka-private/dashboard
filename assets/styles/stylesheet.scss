@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html {
+  font-family: 'Roboto', 'Yu-Gothic', sans-serif;
+}
+
+p, a {
+  font-size: 16px;
+}
+
+.hw100 {
+  height: 100vh;
+  width: 100%;
+}
+
+.relative {
+  position: relative;
+}
+
+.overflowHidden {
+  overflow: hidden;
+}
+
+.overflowXHidden {
+  overflow-x: hidden;
+}
+
+.overflowYHidden {
+  overflow-y: hidden;
+}
+
+.chart {
+  margin: 10px;
+}
+
+.chart p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 200%;
+}

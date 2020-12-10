@@ -159,7 +159,7 @@ const amount = todai + js + website + reading + rest;
 new Chart(document.getElementById('category-time-doughnut'), {
   type: 'doughnut',
   data: {
-    labels: ['東大', 'JS', 'ポケヨビ', '読書', '休憩'],
+    labels: ['東大', 'プログラミング', 'ポケヨビ', '読書', '休憩'],
     datasets: [{
       data: [
         todai / amount * 100,
@@ -168,7 +168,38 @@ new Chart(document.getElementById('category-time-doughnut'), {
         reading / amount * 100,
         rest / amount * 100
       ],
-      backgroundColor: ['#f44336', '#ffeb3b', '#e91e63', '#795548', '#4caf50']
+      backgroundColor: ['#f44336', '#90a4ae', '#e91e63', '#795548', '#4caf50']
+    }]
+  },
+});
+
+new Chart(document.getElementById('this-month-spent'), {
+  type: 'line',
+  data: {
+    labels: ['1', '2', '3','4', '5', '6','7', '8', '9','10', '11', '','', '', '','', '', '','', '', '','', '', '','', '', '','', '', '',],
+    datasets: [{
+      data: [2000, 4000, 2400, 2400, 3400, 1000, 4200,2000, 4000, 2400, 2400, 3400, 1000, 4200,2000, 4000, 2400, 2400, 3400, 1000, 4200,2000, 4000, 2400, 2400, 3400, 1000, 4200,2000],
+      borderColor: '#ff8f00',
+      fill: false,
+      lineTension: 0.2,
+      borderWidth: 2,
+      radius: 3
+    }]
+  },
+});
+
+new Chart(document.getElementById('category-money-doughnut'), {
+  type: 'doughnut',
+  data: {
+    labels: ['食費', '交通費', '生活費', '公共料金＆その他'],
+    datasets: [{
+      data: [
+        40,
+        20,
+        15,
+        25
+      ],
+      backgroundColor: ['#f44336', '#90a4ae', '#e91e63', '#795548'],
     }]
   },
 });

@@ -33,6 +33,11 @@ p, a {
   height: auto;
 }
 
+.margin-top-bottom-20px {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .chart {
   margin: 10px;
 }

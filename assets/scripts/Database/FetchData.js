@@ -36,11 +36,11 @@ export class FetchData {
   if (!startHour) {
     return;
   }
-  document.getElementById('wake-time').textContent = startHour + ' : ' + startMinute;
+  document.getElementById('wake-time').textContent = startHour + ' : ' + ('0' + startMinute).slice(-2);
   const endHour = localStorage.getItem('endHour');
   const endMinute = localStorage.getItem('endMinute');
   if (endHour) {
-    document.getElementById('end-time').textContent = endHour + ' : ' + endMinute;
+    document.getElementById('end-time').textContent = endHour + ' : ' + ('0' + endMinute).slice(-2);
     const wakingHour = localStorage.getItem('wakingHour');
     const wakingMinute = localStorage.getItem('wakingMinute');
     document.getElementById('waking-time').textContent = wakingHour + 'h ' + wakingMinute + 'm';

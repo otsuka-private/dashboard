@@ -188,6 +188,22 @@ new Chart(document.getElementById('this-month-spent'), {
   },
 });
 
+
+new Chart(document.getElementById('health-prportion-doughnut'), {
+  type: 'doughnut',
+  data: {
+    labels: ['健康的', '微妙', '悪い'],
+    datasets: [{
+      data: [
+        70,
+        10,
+        20
+      ],
+      backgroundColor: ['#4caf50', '#ffeb3b', '#e91e63']
+    }]
+  },
+});
+
 new Chart(document.getElementById('category-money-doughnut'), {
   type: 'doughnut',
   data: {

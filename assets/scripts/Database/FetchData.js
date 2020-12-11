@@ -9,27 +9,6 @@ export class FetchData {
     this.fetchReadingCardLocalStorage();
   }
 
-  // fetchDayStartEndLocalStorage() {
-  //   const startHour = localStorage.getItem('startHour');
-  //   const startMinute = localStorage.getItem('startMinute');
-  //   if (!startHour) {
-  //     return;
-  //   }
-  //   document.getElementById('wake-time').textContent = startHour + ' : ' + startMinute;
-  //   const endHour = localStorage.getItem('endHour');
-  //   const endMinute = localStorage.getItem('endMinute');
-  //   if (!endHour) {
-  //     return;
-  //   }
-  //   document.getElementById('end-time').textContent = endHour + ' : ' + endMinute;
-  //   const wakingHour = localStorage.getItem('wakingHour');
-  //   const wakingMinute = localStorage.getItem('wakingMinute');
-  //   document.getElementById('waking-time').textContent = wakingHour + 'h ' + wakingMinute + 'm';
-  //   const workingHour = localStorage.getItem('workingHour');
-  //   const workingMinute = localStorage.getItem('workingMinute');
-  //   document.getElementById('working-time').textContent = workingHour + 'h ' + workingMinute + 'm';
-  // }
-
   fetchDayStartEndLocalStorage() {
   const startHour = localStorage.getItem('startHour');
   const startMinute = localStorage.getItem('startMinute');

@@ -28,6 +28,11 @@ p, a {
   overflow-y: hidden;
 }
 
+.width90 {
+  width: 90%;
+  height: auto;
+}
+
 .chart {
   margin: 10px;
 }

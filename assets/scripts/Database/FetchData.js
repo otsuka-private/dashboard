@@ -75,8 +75,8 @@ export class FetchData {
     if (localStorage.getItem('programmingAll')) {
       document.getElementById('programming-all').textContent = +localStorage.getItem('programmingAll');
     }
-    if (localStorage.getItem('programmingNow') && localStorage.getItem('programmingNow') != 'null') {
-      document.getElementById('programming-progress-now').textContent = localStorage.getItem('programmingNow');
+    if (localStorage.getItem('programmingProgress1') && localStorage.getItem('programmingProgress1') != 'null') {
+      document.getElementById('programming-progress-now').textContent = +localStorage.getItem('programmingProgress1') + +localStorage.getItem('programmingProgress2');
     }
   }
 

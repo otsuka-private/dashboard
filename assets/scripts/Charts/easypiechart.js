@@ -19,9 +19,11 @@ new EasyPieChart(document.getElementById('chart-working-percentage'), {
   size: 200
 });
 
-const programmingNow = localStorage.getItem(`programmingNow`);
+const programmingProgress1 = localStorage.getItem(`programmingProgress1`);
+const programmingProgress2 = localStorage.getItem(`programmingProgress2`);
 const programmingAll = localStorage.getItem(`programmingAll`);
-const programmingPercentage = +programmingNow / +programmingAll * 100;
+
+const programmingPercentage = (+programmingProgress1 + +programmingProgress2) / +programmingAll * 100;
 if (programmingPercentage) {
   document.getElementById('chart-programming-percentage').setAttribute('data-percent', programmingPercentage);
   document.querySelector('#chart-programming-percentage p').textContent = parseInt(programmingPercentage) + '%';

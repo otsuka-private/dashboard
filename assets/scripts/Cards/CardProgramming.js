@@ -7,7 +7,7 @@ export class CardProgramming {
 
   addEventListenerToModalBtn() {
     document.getElementById('programming-progress-now').addEventListener('click', () => {
-      if(+localStorage.getItem('programmingProgress1')) {
+      if(+localStorage.getItem('programmingProgress1') == 154) {
         document.getElementById('programming-progress-1').value = +localStorage.getItem('programmingProgress1');
       }
     });

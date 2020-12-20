@@ -478,8 +478,8 @@
     <div id="modal-programming-progress-now" class="modal">
       <div class="modal-content">
         <p>どのくらい進みましたか</p>
-          <input id="programming-progress-1" placeholder="基礎だけ学ぶPHP" type="number">
-          <input id="programming-progress-2" placeholder="PHP+MySQL" type="number">
+          <input id="programming-progress-1" placeholder="基礎だけ学ぶPHP" type="number" pattern="\d*">
+          <input id="programming-progress-2" placeholder="PHP+MySQL" type="number" pattern="\d*">
       </div>
       <div class="modal-footer">
         <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
@@ -489,7 +489,7 @@
     <div id="modal-programming-all" class="modal">
       <div class="modal-content">
         <p>全部でどれくらいありますか？</p>
-        <input type="number">
+        <input type="number" pattern="\d*">
       </div>
       <div class="modal-footer">
         <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
@@ -549,7 +549,7 @@
     <div id="modal-reading-page-read" class="modal">
       <div class="modal-content">
         <p>何ページまで読みましたか？</p>
-        <input type="number">
+        <input type="number" pattern="\d*">
       </div>
       <div class="modal-footer">
         <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
@@ -559,7 +559,7 @@
     <div id="modal-reading-page-all" class="modal">
       <div class="modal-content">
         <p>全部で何ページありますか？</p>
-        <input type="number">
+        <input type="number" pattern="\d*">
       </div>
       <div class="modal-footer">
         <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>

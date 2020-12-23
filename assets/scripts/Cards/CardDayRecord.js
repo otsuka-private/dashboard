@@ -1,4 +1,3 @@
-// import { calcTime } from '../Functions/calc_function.js';
 import { CalcCategoryTime } from './CalcCategoryTime.js';
 import { FetchData } from '../Database/FetchData.js';
 
@@ -35,6 +34,7 @@ export class CardDayRecord {
       }
       new CalcCategoryTime(false);
       this.calcPrintWorkingTime();
+      new FetchData();
     });
   }
 

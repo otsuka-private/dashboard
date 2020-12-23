@@ -14,6 +14,7 @@ export class Category {
           document.querySelector('#modal-category-goal-set-new input').addEventListener('click', () => {
           document.querySelector('#modal-category-goal-set-new input').style.color = 'rgba(0, 0, 0, 1)';
           });
+          new Fetchdata();
         });
       }
     }

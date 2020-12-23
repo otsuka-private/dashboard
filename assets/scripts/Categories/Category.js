@@ -26,6 +26,7 @@ export class Category {
           const id = localStorage.getItem('currentSelectedCategoryGoal');
           localStorage.setItem(`${id}`, content);
         }
+        M.toast({html: '新しい目標を記録しました', classes: 'cyan'});
       })
     }
   }

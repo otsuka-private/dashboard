@@ -25,6 +25,7 @@ export class SetTodaiCardContent {
           const id = localStorage.getItem('currentSelectedTodaiCardContentId');
           localStorage.setItem(`${id}`, content);
         }
+        M.toast({html: '新しい目標を記録しました', classes: 'cyan'});
       })
     }
   }

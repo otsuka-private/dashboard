@@ -23,6 +23,7 @@ export class CardProgramming {
       }
       localStorage.setItem('programmingProgress2', programmingProgress2);
       document.getElementById('programming-progress-now').textContent = +localStorage.getItem('programmingProgress1') + +programmingProgress2;
+      M.toast({html: '進捗を記録しました', classes: 'cyan'});
     })
   }
 
@@ -33,6 +34,7 @@ export class CardProgramming {
         localStorage.setItem('programmingAll', programmingAll);
         document.getElementById('programming-all').textContent = programmingAll;
       }
+      M.toast({html: '合計の数を記録しました', classes: 'cyan'});
     });
   }
 }

@@ -33,6 +33,7 @@ export class CardDayStartEnd {
         localStorage.setItem('startMinute', minute);
         localStorage.setItem('dayToday', day);
         document.getElementById('wake-time').textContent = hour + ' : ' + ('0' + minute).slice(-2);
+        M.toast({html: '開始時間を記録しました', classes: 'cyan'});
       } else if (radioEnd.checked) {
         const nowTime = new Date();
         const minute = nowTime.getMinutes();
@@ -43,6 +44,7 @@ export class CardDayStartEnd {
         this.calcPrintWakingTime();
         new CalcCategoryTime(true);
         this.calcPrintWorkingTime();
+        M.toast({html: '終了時間を記録しました', classes: 'cyan'});
       }
     })
   }
@@ -97,6 +99,7 @@ export class CardDayStartEnd {
       localStorage.removeItem('wakingMinute');
       localStorage.removeItem('workingHour');
       localStorage.removeItem('workingMinute');
+      M.toast({html: '開始時間と終了時間をリセットしました', classes: 'orange'});
     });
   }
 }

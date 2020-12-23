@@ -80,6 +80,7 @@ export class CardDayRecord {
       localStorage.removeItem('categoryRestMinute');
       new FetchData().fetchCategoryTimeLocalStorage();
       this.recordNumber = 0;
+      M.toast({html: '本日の記録をリセットしました', classes: 'orange'});
     })
   }
 }

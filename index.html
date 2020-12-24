@@ -36,7 +36,7 @@
       <p class="col animate__animated animate__fadeInUp animate__delay-3s">成長</p>
     </div>
     <div class="center-align">
-      <img class="width90 margin-top-bottom-20px" src="./assets/images/chart_man.svg" alt="">
+      <img class="width90 margin-top-bottom-20px" src="./assets/images/chart_man.svg">
     </div>
   </div>
   <div id="analytics" class="grey lighten-1 overflowHidden">
@@ -65,7 +65,6 @@
             </div>
             <a class="waves-effect waves-light btn-large modal-trigger" href="#modal-day-start-end">記録</a>
             <a class="waves-effect waves-light btn-large modal-trigger amber accent-4" href="#modal-day-start-end-delete">データを消去</a>
-
           </div>
         </div>
       </div>
@@ -81,16 +80,14 @@
                   <div class="card-content" id="card-content-day-record">
                     <span class="card-title">Day Record</span>
                     <template id="template-record-p">
-                      <div class="row">
+                      <div class="row margin-bottom-10px">
                         <p class="col s12"></p>
                       </div>
                     </template>
                   </div>
                 </div>
                 <a class="waves-effect waves-light btn-large modal-trigger" href="#modal-day-record">記録</a>
-
                 <a class="waves-effect waves-light btn-large modal-trigger amber accent-4" href="#modal-day-record-delete">データを消去</a>
-
               </div>
             </div>
           </div>
@@ -164,10 +161,12 @@
     </div>
   </div>
 
+  <!-- todai -->
+
   <div id="todai" class="red lighten-2 overflowXHidden">
     <h2 class="center-align">東大</h2>
     <div class="center-align">
-      <img class="width90 margin-top-bottom-20px" src="./assets/images/online_learning.svg" alt="">
+      <img class="width90 margin-top-bottom-20px" src="./assets/images/online_learning.svg">
     </div>
     <div class="row">
       <div class="col s12">
@@ -181,29 +180,34 @@
     </div>
     <div class="row">
       <div class="col s12">
-        <div class="card white">
+        <div class="card red lighten-4">
           <div class="card-content">
             <span class="card-title">月曜日</span>
             <div class="row">
-              <div class="col s12">
-                <div class="card teal">
+              <div class="col s12" id="todai-monday-card-place">
+                <template id="todai-monday-template">
+                  <div class="card white">
+                    <div class="card-content">
+                      <span class="card-title"></span>
+                      <a class="modal-trigger black-text" href="#modal-todai-set-card-content"></a>
+                    </div>
+                  </div>
+                </template>
+                <div class="card white">
                   <div class="card-content">
                     <span class="card-title">哲学概論</span>
-                    <a class="modal-trigger white-text" href="#modal-todai-set-card-content" id="todai-mon-card1-content">１つめのレポートは提出したので、最終レポートを提出すれば完了だ。</a>
+                    <a class="modal-trigger black-text" href="#modal-todai-set-card-content" id="todai-mon-card1-content">１つめのレポートは提出したので、最終レポートを提出すれば完了だ。</a>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col s12">
-                <div class="card teal">
+                <div class="card white">
                   <div class="card-content">
                     <span class="card-title">経済思想史</span>
-                    <a class="modal-trigger white-text" href="#modal-todai-set-card-content" id="todai-mon-card2-content">11月中にメールでどの本を取り上げるか報告。どういうことかわからないのでメールで確認するなりする。</a>
+                    <a class="modal-trigger black-text" href="#modal-todai-set-card-content" id="todai-mon-card2-content">11月中にメールでどの本を取り上げるか報告。どういうことかわからないのでメールで確認するなりする。</a>
                   </div>
                 </div>
               </div>
             </div>
+            <a class="modal-trigger black-text" href="#modal-test">Test</a>
           </div>
         </div>
       </div>
@@ -211,15 +215,15 @@
 
     <div class="row">
       <div class="col s12">
-        <div class="card white">
+        <div class="card red lighten-4">
           <div class="card-content">
             <span class="card-title">火曜日</span>
             <div class="row">
               <div class="col s12">
-                <div class="card teal">
+                <div class="card white">
                   <div class="card-content">
                     <span class="card-title">国際関係論</span>
-                    <a class="modal-trigger white-text" href="#modal-todai-set-card-content" id="todai-tue-card1-content">授業に出席してレポートの情報を得る。</a>
+                    <a class="modal-trigger black-text" href="#modal-todai-set-card-content" id="todai-tue-card1-content">授業に出席してレポートの情報を得る。</a>
                   </div>
                 </div>
               </div>
@@ -251,7 +255,7 @@
 
     <div class="row">
       <div class="col s12">
-        <div class="card white">
+        <div class="card red lighten-4">
           <div class="card-content">
             <span class="card-title">水曜日</span>
             <div class="row">
@@ -271,7 +275,7 @@
 
     <div class="row">
       <div class="col s12">
-        <div class="card white">
+        <div class="card red lighten-4">
           <div class="card-content">
             <span class="card-title">木曜日</span>
             <div class="row">
@@ -291,7 +295,7 @@
 
     <div class="row">
       <div class="col s12">
-        <div class="card white">
+        <div class="card red lighten-4">
           <div class="card-content">
             <span class="card-title">金曜日</span>
             <div class="row">
@@ -334,7 +338,7 @@
   <div id="javascript" class="blue-grey overflowHidden lighten-2">
     <h2 class="center-align">プログラミング</h2>
     <div class="center-align">
-      <img class="width90 margin-top-bottom-20px" src="./assets/images/hacker_ish.svg" alt="">
+      <img class="width90 margin-top-bottom-20px" src="./assets/images/hacker_ish.svg">
     </div>
     <div class="row">
       <div class="col s12">
@@ -367,7 +371,7 @@
   <div id="reading" class="brown lighten-3 overflowXHidden">
     <h2 class="center-align">読書</h2>
     <div class="center-align">
-      <img class="width90 margin-top-bottom-20px" src="./assets/images/reading.svg" alt="">
+      <img class="width90 margin-top-bottom-20px" src="./assets/images/reading.svg">
     </div>
     <div class="row">
       <div class="col s12">
@@ -539,6 +543,19 @@
     <div class="modal-footer">
       <a class="modal-close waves-effect waves-green btn-flat">取り消し</a>
       <a class="modal-close waves-effect waves-light btn" id="set-todai-card-content-btn">決定</a>
+    </div>
+  </div>
+
+  <div id="modal-test" class="modal">
+    <div class="modal-content">
+      <p>授業のタイトル</p>
+      <input id="class-title">
+      <p>授業の課題</p>
+      <input id="class-assignment">
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
+      <a class="modal-close waves-effect waves-light btn" id="modal-test-decide-btn">決定</a>
     </div>
   </div>
 

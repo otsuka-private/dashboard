@@ -25,9 +25,7 @@ export class SetTodaiCardContent {
     const btns = document.getElementsByClassName('todai-add-class');
     for (const btn of btns) {
       btn.addEventListener('click', event => {
-        const idArray = event.target.id.split('-');
         const cardContainer = event.target.previousElementSibling.firstElementChild.id;
-        console.log(cardContainer);
         const order = event.target.parentElement.parentElement.querySelectorAll('.card').length;
         const array = [cardContainer, order];
         const cardId = document.getElementsByClassName('todai-class-card').length;

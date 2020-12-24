@@ -62,9 +62,8 @@ export class FetchData {
         todaiCardContent.textContent = localStorage.getItem(`${todaiCardContent.id}`);
       }
     }
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 20; i++) {
       if (!localStorage.getItem(`todaiClassCard${i}`)) {
-        console.log('here');
         continue;
       }
       const cardContentArray = localStorage.getItem(`todaiClassCard${i}`).split(',');

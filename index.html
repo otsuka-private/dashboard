@@ -5,41 +5,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>My dashboard</title>
-  <!-- destyle -->
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@2.0.2/destyle.css">
-  <!-- materialize icons -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <!-- materializecss -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <!-- animatecss -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <!-- chartjs css -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.css">
-  <!-- font awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-  <!-- my original stylesheet -->
+
   <link rel="stylesheet" href="assets/styles/stylesheet.min.css">
 
-  <!-- jquery -->
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- chartjs -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-  <!-- materializejs -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
-  <!-- easypiechart js vanilla version -->
+
   <script src="./assets/scripts/Libraries/vanilla_easypiechart.js"></script>
-  <!-- my original chart js -->
   <script src="./assets/scripts/Charts/chart.js" defer></script>
-  <!-- my original easy-pie-chart js -->
   <script src="./assets/scripts/Charts/easypiechart.js" defer></script>
-  <!-- my original js -->
   <script src="./index.js" defer type="module"></script>
 </head>
 
 <body>
   <div id="top" class="hw100 overflowHidden">
     <h1 class="center-align animate__animated animate__zoomIn ">My Dashboard</h1>
-    <div class="center-align flow-text" style="margin-bottom: 100px;">
+    <div class="center-align flow-text margin-bottom-100px">
       <p class="col animate__animated animate__fadeInUp animate__delay-1s">記録</p>
       <p class="col animate__animated animate__fadeInUp animate__delay-2s">分析</p>
       <p class="col animate__animated animate__fadeInUp animate__delay-3s">成長</p>
@@ -73,51 +64,8 @@
               <p class="col s6" id="working-time">--</p>
             </div>
             <a class="waves-effect waves-light btn-large modal-trigger" href="#modal-day-start-end">記録</a>
-            <a class="waves-effect waves-light btn-large modal-trigger red" href="#modal-day-start-end-delete">データを消去</a>
-            <div id="modal-day-start-end" class="modal">
-              <div class="modal-content">
-                <h4>内容</h4>
-                <p>
-                  <label>
-                    <input name="day-record-thing" type="radio" value="起床" id="radio-start" />
-                    <span>起床</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input name="day-record-thing" type="radio" value="終了" id="radio-end" />
-                    <span>終了</span>
-                  </label>
-                </p>
-              </div>
-              <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">取り消し</a>
-                <a href="#!" class="modal-close waves-effect waves-green btn" id="decide-day-start-end-button">入力を完了</a>
-              </div>
-            </div>
-            <div id="modal-day-start-end-delete" class="modal">
-              <div class="modal-content">
-                <p>消去されるものは</p>
-                <br>
-                <p>・このカードの時間の表記</p>
-                <p>・このカードに関するローカルストレージのデータ</p>
-                <br>
-                <p>です。本当に消去しますか？</p>
-              </div>
-              <div class="modal-footer">
-                <a class="modal-close waves-effect waves-light btn">消去しない</a>
-                <a class="modal-close waves-effect waves-light btn red" id="delete-day-start-end-button">消去</a>
-              </div>
-            </div>
-            <div id="modal-set-new-week" class="modal">
-              <div class="modal-content">
-                <p>新しい週に更新しますか？</p>
-              </div>
-              <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">取り消し</a>
-                <a href="#!" class="modal-close waves-effect waves-green btn" id="decide-set-new-week-button">新しい週に更新する</a>
-              </div>
-            </div>
+            <a class="waves-effect waves-light btn-large modal-trigger amber accent-4" href="#modal-day-start-end-delete">データを消去</a>
+
           </div>
         </div>
       </div>
@@ -139,62 +87,10 @@
                     </template>
                   </div>
                 </div>
-                <!-- Modal -->
                 <a class="waves-effect waves-light btn-large modal-trigger" href="#modal-day-record">記録</a>
-                <div id="modal-day-record" class="modal">
-                  <div class="modal-content">
-                    <h4>内容</h4>
-                    <p>
-                      <label>
-                        <input name="day-record-thing" type="radio" value="東大" />
-                        <span>東大</span>
-                      </label>
-                    </p>
-                    <p>
-                      <label>
-                        <input name="day-record-thing" type="radio" value="プログラミング" />
-                        <span>プログラミング</span>
-                      </label>
-                    </p>
-                    <p>
-                      <label>
-                        <input name="day-record-thing" type="radio" value="ポケヨビ" />
-                        <span>ポケヨビ</span>
-                      </label>
-                    </p>
-                    <p>
-                      <label>
-                        <input name="day-record-thing" type="radio" value="読書" />
-                        <span>読書</span>
-                      </label>
-                    </p>
-                    <p>
-                      <label>
-                        <input name="day-record-thing" type="radio" value="休憩" />
-                        <span>休憩</span>
-                      </label>
-                    </p>
-                  </div>
-                  <div class="modal-footer">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">取り消し</a>
-                    <a href="#!" class="modal-close waves-effect waves-green btn" id="decide-day-record">入力を完了</a>
-                  </div>
-                </div>
-                <a class="waves-effect waves-light btn-large modal-trigger red" href="#modal-day-record-delete">データを消去</a>
-                <div id="modal-day-record-delete" class="modal">
-                  <div class="modal-content">
-                    <p>消去されるものは</p>
-                    <br>
-                    <p>・このカードの時間の表記</p>
-                    <p>・このカードに関するローカルストレージのデータ</p>
-                    <br>
-                    <p>です。本当に消去しますか？</p>
-                  </div>
-                  <div class="modal-footer">
-                    <a class="modal-close waves-effect waves-light btn">消去しない</a>
-                    <a class="modal-close waves-effect waves-light btn red" id="delete-day-record-button">消去</a>
-                  </div>
-                </div>
+
+                <a class="waves-effect waves-light btn-large modal-trigger amber accent-4" href="#modal-day-record-delete">データを消去</a>
+
               </div>
             </div>
           </div>
@@ -432,16 +328,7 @@
         </div>
       </div>
     </div>
-    <div id="modal-todai-set-card-content" class="modal">
-      <div class="modal-content">
-        <p>この授業の新しい課題を入力してください。</p>
-        <input>
-      </div>
-      <div class="modal-footer">
-        <a class="modal-close waves-effect waves-green btn-flat">取り消し</a>
-        <a class="modal-close waves-effect waves-light btn" id="set-todai-card-content-btn">決定</a>
-      </div>
-    </div>
+
   </div>
 
   <div id="javascript" class="blue-grey overflowHidden lighten-2">
@@ -473,28 +360,10 @@
         </div>
       </div>
     </div>
-    <div id="modal-programming-progress-now" class="modal">
-      <div class="modal-content">
-        <p>どのくらい進みましたか</p>
-          <input id="programming-progress-1" placeholder="基礎だけ学ぶPHP" type="number" pattern="\d*">
-          <input id="programming-progress-2" placeholder="PHP+MySQL" type="number" pattern="\d*">
-      </div>
-      <div class="modal-footer">
-        <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
-        <a class="modal-close waves-effect waves-light btn" id="decide-programming-progress-btn">決定</a>
-      </div>
-    </div>
-    <div id="modal-programming-all" class="modal">
-      <div class="modal-content">
-        <p>全部でどれくらいありますか？</p>
-        <input type="number" pattern="\d*">
-      </div>
-      <div class="modal-footer">
-        <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
-        <a class="modal-close waves-effect waves-light btn" id="decide-programming-all-btn">決定</a>
-      </div>
-    </div>
   </div>
+
+  <!-- reading -->
+
   <div id="reading" class="brown lighten-3 overflowXHidden">
     <h2 class="center-align">読書</h2>
     <div class="center-align">
@@ -534,37 +403,17 @@
         </div>
       </div>
     </div>
-    <div id="modal-book-now-reading" class="modal">
-      <div class="modal-content">
-        <p>今読んでる本のタイトル</p>
-        <input>
-      </div>
-      <div class="modal-footer">
-        <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
-        <a class="modal-close waves-effect waves-light btn" id="modal-book-now-reading-btn">決定</a>
-      </div>
-    </div>
-    <div id="modal-reading-page-read" class="modal">
-      <div class="modal-content">
-        <p>何ページまで読みましたか？</p>
-        <input type="number" pattern="\d*">
-      </div>
-      <div class="modal-footer">
-        <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
-        <a class="modal-close waves-effect waves-light btn" id="modal-reading-page-btn">決定</a>
-      </div>
-    </div>
-    <div id="modal-reading-page-all" class="modal">
-      <div class="modal-content">
-        <p>全部で何ページありますか？</p>
-        <input type="number" pattern="\d*">
-      </div>
-      <div class="modal-footer">
-        <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
-        <a class="modal-close waves-effect waves-light btn" id="modal-reading-page-all-btn">決定</a>
-      </div>
-    </div>
   </div>
+
+  <!-- delete all button -->
+
+  <div class="row center-align">
+    <a class="waves-effect waves-light btn modal-trigger red accent-4" href="#modal-delete-all"><i class="fas fa-eraser"></i></a>
+  </div>
+
+  <!-- Modals -->
+
+  <!-- general -->
 
   <div id="modal-category-goal-set-new" class="modal">
     <div class="modal-content">
@@ -577,10 +426,182 @@
     </div>
   </div>
 
-  <div class="row center-align">
-    <a class="waves-effect waves-light btn modal-trigger red" href="#modal-day-start-end-delete-all"><i class="fas fa-eraser"></i></a>
+  <!-- day start end card -->
+
+  <div id="modal-set-new-week" class="modal">
+    <div class="modal-content">
+      <p>新しい週に更新しますか？</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">取り消し</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn" id="decide-set-new-week-button">新しい週に更新する</a>
+    </div>
   </div>
-  <div id="modal-day-start-end-delete-all" class="modal">
+  <div id="modal-day-start-end" class="modal">
+    <div class="modal-content">
+      <h4>内容</h4>
+      <p>
+        <label>
+          <input name="day-record-thing" type="radio" value="起床" id="radio-start" />
+          <span>起床</span>
+        </label>
+      </p>
+      <p>
+        <label>
+          <input name="day-record-thing" type="radio" value="終了" id="radio-end" />
+          <span>終了</span>
+        </label>
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">取り消し</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn" id="decide-day-start-end-button">入力を完了</a>
+    </div>
+  </div>
+  <div id="modal-day-start-end-delete" class="modal">
+    <div class="modal-content">
+      <p>消去されるものは</p>
+      <br>
+      <p>・このカードの時間の表記</p>
+      <p>・このカードに関するローカルストレージのデータ</p>
+      <br>
+      <p>です。本当に消去しますか？</p>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-light btn-flat">消去しない</a>
+      <a class="modal-close waves-effect waves-light btn red accent-4" id="delete-day-start-end-button">消去</a>
+    </div>
+  </div>
+
+  <!-- day record -->
+
+  <div id="modal-day-record" class="modal">
+    <div class="modal-content">
+      <h4>内容</h4>
+      <p>
+        <label>
+          <input name="day-record-thing" type="radio" value="東大" />
+          <span>東大</span>
+        </label>
+      </p>
+      <p>
+        <label>
+          <input name="day-record-thing" type="radio" value="プログラミング" />
+          <span>プログラミング</span>
+        </label>
+      </p>
+      <p>
+        <label>
+          <input name="day-record-thing" type="radio" value="ポケヨビ" />
+          <span>ポケヨビ</span>
+        </label>
+      </p>
+      <p>
+        <label>
+          <input name="day-record-thing" type="radio" value="読書" />
+          <span>読書</span>
+        </label>
+      </p>
+      <p>
+        <label>
+          <input name="day-record-thing" type="radio" value="休憩" />
+          <span>休憩</span>
+        </label>
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">取り消し</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn" id="decide-day-record">入力を完了</a>
+    </div>
+  </div>
+  <div id="modal-day-record-delete" class="modal">
+    <div class="modal-content">
+      <p>消去されるものは</p>
+      <br>
+      <p>・このカードの時間の表記</p>
+      <p>・このカードに関するローカルストレージのデータ</p>
+      <br>
+      <p>です。本当に消去しますか？</p>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-light btn-flat">消去しない</a>
+      <a class="modal-close waves-effect waves-light btn red accent-4" id="delete-day-record-button">消去</a>
+    </div>
+  </div>
+
+  <!-- todai -->
+
+  <div id="modal-todai-set-card-content" class="modal">
+    <div class="modal-content">
+      <p>この授業の新しい課題を入力してください。</p>
+      <input>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat">取り消し</a>
+      <a class="modal-close waves-effect waves-light btn" id="set-todai-card-content-btn">決定</a>
+    </div>
+  </div>
+
+  <!-- programming -->
+
+  <div id="modal-programming-progress-now" class="modal">
+    <div class="modal-content">
+      <p>どのくらい進みましたか</p>
+      <input id="programming-progress-1" placeholder="基礎だけ学ぶPHP" type="number" pattern="\d*">
+      <input id="programming-progress-2" placeholder="PHP+MySQL" type="number" pattern="\d*">
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
+      <a class="modal-close waves-effect waves-light btn" id="decide-programming-progress-btn">決定</a>
+    </div>
+  </div>
+  <div id="modal-programming-all" class="modal">
+    <div class="modal-content">
+      <p>全部でどれくらいありますか？</p>
+      <input type="number" pattern="\d*">
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
+      <a class="modal-close waves-effect waves-light btn" id="decide-programming-all-btn">決定</a>
+    </div>
+  </div>
+
+  <!-- book -->
+
+  <div id="modal-book-now-reading" class="modal">
+    <div class="modal-content">
+      <p>今読んでる本のタイトル</p>
+      <input>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
+      <a class="modal-close waves-effect waves-light btn" id="modal-book-now-reading-btn">決定</a>
+    </div>
+  </div>
+  <div id="modal-reading-page-read" class="modal">
+    <div class="modal-content">
+      <p>何ページまで読みましたか？</p>
+      <input type="number" pattern="\d*">
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
+      <a class="modal-close waves-effect waves-light btn" id="modal-reading-page-btn">決定</a>
+    </div>
+  </div>
+  <div id="modal-reading-page-all" class="modal">
+    <div class="modal-content">
+      <p>全部で何ページありますか？</p>
+      <input type="number" pattern="\d*">
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
+      <a class="modal-close waves-effect waves-light btn" id="modal-reading-page-all-btn">決定</a>
+    </div>
+  </div>
+
+
+
+  <div id="modal-delete-all" class="modal">
     <div class="modal-content">
       <p>注意</p>
       <p class="red-text">ローカルストレージの全てのデータが消去されます。</p>
@@ -588,17 +609,17 @@
     </div>
     <div class="modal-footer">
       <a class="modal-close waves-effect waves-light btn">消去しない</a>
-      <a class="modal-close waves-effect waves-light btn modal-trigger red" href="#modal-day-start-end-delete-all-confirm">データを消去</a>
+      <a class="modal-close waves-effect waves-light btn modal-trigger red accent-4" href="#modal-delete-all-confirm">データを消去</a>
     </div>
   </div>
-  <div id="modal-day-start-end-delete-all-confirm" class="modal">
+  <div id="modal-delete-all-confirm" class="modal">
     <div class="modal-content">
       <p>iMacを経由することでこのiPhoneの不要なローカルストレージのデータを個別に削除することもできます。</p>
       <p class="red-text">本当に全てのデータを消去しますか？</p>
     </div>
     <div class="modal-footer">
       <a class="modal-close waves-effect waves-light btn">取り消し</a>
-      <a class="modal-close waves-effect waves-light btn red" id="modal-day-start-end-delete-yes">確認</a>
+      <a class="modal-close waves-effect waves-light btn red accent-4" id="modal-day-start-end-delete-yes">確認</a>
     </div>
   </div>
 </body>

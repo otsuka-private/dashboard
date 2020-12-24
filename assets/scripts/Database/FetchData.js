@@ -26,7 +26,9 @@ export class FetchData {
   }
   const workingHour = localStorage.getItem('workingHour');
   const workingMinute = localStorage.getItem('workingMinute');
-  document.getElementById('working-time').textContent = workingHour + 'h ' + workingMinute + 'm';
+  if (workingMinute != null) {
+    document.getElementById('working-time').textContent = workingHour + 'h ' + workingMinute + 'm';
+  }
 }
 
   fetchDayRecordLocalStorage() {

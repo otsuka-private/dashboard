@@ -34,7 +34,6 @@ export class CardDayRecord {
       }
       new CalcCategoryTime(false);
       this.calcPrintWorkingTime();
-      new FetchData();
       M.toast({html: '新しい行動を記録しました', classes: 'cyan'});
     });
   }

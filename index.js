@@ -46,21 +46,3 @@ class App {
 new App();
 
 // test below
-
-const modalTestDecideBtn = document.getElementById('modal-test-decide-btn');
-console.log(modalTestDecideBtn);
-modalTestDecideBtn.addEventListener('click', () => {
-
-  const modal = document.getElementById('modal-test');
-  const classTitle = modal.querySelector('#class-title').value.trim();
-  const classAssignment = modal.querySelector('#class-assignment').value.trim();
-  console.log(classTitle, classAssignment);
-  const template = document.getElementById('todai-monday-template');
-  const clone = template.content.cloneNode(true);
-  console.log(clone.querySelector('.card .card-content span'));
-  clone.querySelector('.card .card-content span').textContent = classTitle;
-  clone.querySelector('a').textContent = classAssignment;
-
-  const mondayCardPlace = document.getElementById('todai-monday-card-place');
-  mondayCardPlace.append(clone);
-});

@@ -62,6 +62,20 @@ export class FetchData {
         todaiCardContent.textContent = localStorage.getItem(`${todaiCardContent.id}`);
       }
     }
+    for (let i = 0; i < 4; i++) {
+      if (!localStorage.getItem(`todaiClassCard${i}`)) {
+        console.log('here');
+        continue;
+      }
+      const cardContentArray = localStorage.getItem(`todaiClassCard${i}`).split(',');
+      const template = document.getElementById('todai-class-template');
+      const clone = template.content.cloneNode(true);
+      clone.querySelector('span').textContent = cardContentArray[2];
+      clone.querySelector('p').textContent = cardContentArray[3];
+      const cardContainerId = cardContentArray[0];
+      const cardContainer = document.getElementById(cardContainerId);
+      cardContainer.append(clone);
+    }
   }
 
   fetchCategoryGoalLocalStorage() {

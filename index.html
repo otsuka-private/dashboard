@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>My dashboard</title>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@2.0.2/destyle.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -195,18 +194,6 @@
                     </div>
                   </div>
                 </template>
-                <div class="card todai-class-card">
-                  <div class="card-content">
-                    <span class="card-title">哲学概論</span>
-                    <a class="modal-trigger black-text" href="#modal-todai-set-card-content" id="todai-mon-card1-content">１つめのレポートは提出したので、最終レポートを提出すれば完了だ。</a>
-                  </div>
-                </div>
-                <div class="card todai-class-card">
-                  <div class="card-content">
-                    <span class="card-title">経済思想史</span>
-                    <a class="modal-trigger black-text" href="#modal-todai-set-card-content" id="todai-mon-card2-content">11月中にメールでどの本を取り上げるか報告。どういうことかわからないのでメールで確認するなりする。</a>
-                  </div>
-                </div>
               </div>
             </div>
             <a class="modal-trigger btn todai-add-class" href="#modal-todai-add-class-card" id="todai-add-class-1">授業を追加</a>
@@ -222,24 +209,6 @@
             <span class="card-title">火曜日</span>
             <div class="row">
               <div class="col s12" id="todai-tuesday-class-cards-container">
-                <div class="card todai-class-card">
-                  <div class="card-content">
-                    <span class="card-title">国際関係論</span>
-                    <a class="modal-trigger black-text" href="#modal-todai-set-card-content" id="todai-tue-card1-content">授業に出席してレポートの情報を得る。</a>
-                  </div>
-                </div>
-                <div class="card todai-class-card">
-                  <div class="card-content">
-                    <span class="card-title">美学概論</span>
-                    <a class="modal-trigger black-text" href="#modal-todai-set-card-content" id="todai-tue-card2-content">試験前にシケタイと陽太で勉強会をする。</a>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-content">
-                    <span class="card-title">美術史学特殊講義</span>
-                    <a class="modal-trigger black-text" href="#modal-todai-set-card-content" id="todai-tue-card3-content">３週間ごとに交代で授業に出席し、毎週の課題を提出する。</a>
-                  </div>
-                </div>
               </div>
             </div>
             <a class="modal-trigger btn todai-add-class" href="#modal-todai-add-class-card" id="todai-add-class-2">授業を追加</a>
@@ -255,12 +224,6 @@
             <span class="card-title">水曜日</span>
             <div class="row">
               <div class="col s12" id="todai-wednesday-class-cards-container">
-                <div class="card">
-                  <div class="card-content">
-                    <span class="card-title">東洋史特殊講義</span>
-                    <a class="modal-trigger black-text" href="#modal-todai-set-card-content" id="todai-wed-card1-content">最終レポートへの準備をしよう。</a>
-                  </div>
-                </div>
               </div>
             </div>
             <a class="modal-trigger btn todai-add-class" href="#modal-todai-add-class-card" id="todai-add-class-2">授業を追加</a>
@@ -275,13 +238,7 @@
           <div class="card-content">
             <span class="card-title">木曜日</span>
             <div class="row">
-              <div class="col s12">
-                <div class="card">
-                  <div class="card-content">
-                    <span class="card-title">世界史論</span>
-                    <a class="modal-trigger black-text" href="#modal-todai-set-card-content" id="todai-thu-card1-content">授業に出席して映画の課題を提出する。</a>
-                  </div>
-                </div>
+              <div class="col s12" id="todai-thursday-class-cards-container">
               </div>
             </div>
             <a class="modal-trigger btn todai-add-class" href="#modal-todai-add-class-card" id="todai-add-class-2">授業を追加</a>
@@ -296,25 +253,7 @@
           <div class="card-content">
             <span class="card-title">金曜日</span>
             <div class="row">
-              <div class="col s12">
-                <div class="card">
-                  <div class="card-content">
-                    <span class="card-title">史学概論</span>
-                    <a class="modal-trigger black-text" href="#modal-todai-set-card-content" id="todai-fri-card1-content">録画された授業を確認しよう。</a>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-content">
-                    <span class="card-title">中国語演習</span>
-                    <a class="modal-trigger black-text" href="#modal-todai-set-card-content" id="todai-fri-card2-content">１３時に忘れず出席送信をしよう。課題も間違わないように出そう。</a>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-content">
-                    <span class="card-title">美術史学特殊講義</span>
-                    <a class="modal-trigger black-text" href="#modal-todai-set-card-content" id="todai-fri-card3-content">毎週課題をこなして授業に出席しよう。</a>
-                  </div>
-                </div>
+              <div class="col s12" id="todai-friday-class-cards-container">
               </div>
             </div>
             <a class="modal-trigger btn todai-add-class" href="#modal-todai-add-class-card" id="todai-add-class-2">授業を追加</a>
@@ -527,21 +466,30 @@
 
   <div id="modal-todai-set-card-content" class="modal">
     <div class="modal-content">
+      <h4>授業カードを変更</h4>
+      <p>授業名を入力してください</p>
+      <input id="modai-input-todai-card-title">
       <p>この授業の新しい課題を入力してください。</p>
-      <input>
+      <input id="modai-input-todai-card-assignment">
     </div>
     <div class="modal-footer">
       <a class="modal-close waves-effect waves-green btn-flat">取り消し</a>
+      <a class="modal-close waves-effect waves-light btn red accent-4" id="delete-todai-card-btn">カードを消去</a>
       <a class="modal-close waves-effect waves-light btn" id="set-todai-card-content-btn">決定</a>
     </div>
   </div>
 
   <div id="modal-todai-add-class-card" class="modal">
     <div class="modal-content">
-      <p>授業のタイトル</p>
-      <input id="class-title">
-      <p>授業の課題</p>
-      <input id="class-assignment">
+      <h4>授業カードを追加</h4>
+      <div class="input-field">
+        <input id="class-title" class="validate" type="text">
+        <label for="class-title">授業名</label>
+      </div>
+      <div class="input-field">
+        <input id="class-assignment" class="validate" type="text">
+        <label for="class-assignment">授業の新しい課題</label>
+      </div>
     </div>
     <div class="modal-footer">
       <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>

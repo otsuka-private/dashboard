@@ -62,15 +62,17 @@ export class FetchData {
         todaiCardContent.textContent = localStorage.getItem(`${todaiCardContent.id}`);
       }
     }
-    for (let i = 0; i < 20; i++) {
+    const todaiCardIdNumber = localStorage.getItem('todaiCardIdNumber');
+    for (let i = 0; i <= todaiCardIdNumber; i++) {
       if (!localStorage.getItem(`todaiClassCard${i}`)) {
         continue;
       }
       const cardContentArray = localStorage.getItem(`todaiClassCard${i}`).split(',');
       const template = document.getElementById('todai-class-template');
       const clone = template.content.cloneNode(true);
-      clone.querySelector('span').textContent = cardContentArray[2];
-      clone.querySelector('p').textContent = cardContentArray[3];
+      clone.querySelector('span').textContent = cardContentArray[1];
+      clone.querySelector('p').textContent = cardContentArray[2];
+      clone.querySelector('div').classList.add(`todaiClassCard${i}`);
       const cardContainerId = cardContentArray[0];
       const cardContainer = document.getElementById(cardContainerId);
       cardContainer.append(clone);

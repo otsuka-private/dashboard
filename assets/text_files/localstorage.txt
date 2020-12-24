@@ -1,0 +1,15 @@
+general
+
+day start end
+
+day record
+
+todai
+
+  class card arrays = [cardID, class title, class content];
+  currentlySelectedTodaiCardId;
+  todaiCardIdNumber;
+
+programming
+
+reading

@@ -48,14 +48,21 @@ p, a {
   font-weight: bold;
 }
 
-.chart {
-  margin: 10px;
+.modal {
+
+  h4 {
+    font-size: 1.8rem;
+  }
 }
 
-.chart p {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 200%;
+.chart {
+  margin: 10px;
+
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 200%;
+  }
 }

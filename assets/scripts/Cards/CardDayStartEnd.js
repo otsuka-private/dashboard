@@ -44,6 +44,9 @@ export class CardDayStartEnd {
         this.calcPrintWakingTime();
         new CalcCategoryTime(true);
         this.calcPrintWorkingTime();
+        setTimeout(() => {
+          location.reload(true);
+        }, 4000);
         M.toast({html: '終了時間を記録しました 今日もよく頑張りました！🎉', classes: 'cyan'});
       }
     })

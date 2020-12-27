@@ -34,6 +34,9 @@ export class CardDayRecord {
       }
       new CalcCategoryTime(false);
       this.calcPrintWorkingTime();
+      setTimeout(() => {
+        location.reload(true);
+      }, 4000);
       M.toast({html: '新しい行動を記録しました', classes: 'cyan'});
     });
   }

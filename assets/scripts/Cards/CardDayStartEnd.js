@@ -1,12 +1,16 @@
-import { calcTime} from '../Functions/calc_function.js';
-import { CalcCategoryTime } from './CalcCategoryTime.js';
+import {
+  calcTime
+} from '../Functions/calc_function.js';
+import {
+  CalcCategoryTime
+} from './CalcCategoryTime.js';
 
 export class CardDayStartEnd {
   constructor() {
     this.showNewWeekBtn();
     this.startTime = 0,
-    this.endTime = 0,
-    this.addStartEnd();
+      this.endTime = 0,
+      this.addStartEnd();
     this.setNewWeek();
     this.deleteDayStartEnd();
   }
@@ -33,7 +37,10 @@ export class CardDayStartEnd {
         localStorage.setItem('startMinute', minute);
         localStorage.setItem('dayToday', day);
         document.getElementById('wake-time').textContent = hour + ' : ' + ('0' + minute).slice(-2);
-        M.toast({html: '開始時間を記録しました。<br>素晴らしい１日に感謝して今日も精一杯生きましょう！', classes: 'cyan'});
+        M.toast({
+          html: '開始時間を記録しました。<br>素晴らしい１日に感謝して今日も精一杯生きましょう！',
+          classes: 'cyan'
+        });
       } else if (radioEnd.checked) {
         const nowTime = new Date();
         const minute = nowTime.getMinutes();
@@ -46,10 +53,13 @@ export class CardDayStartEnd {
         this.calcPrintWorkingTime();
         setTimeout(() => {
           location.reload(true);
-        }, 4000);
-        M.toast({html: '終了時間を記録しました 今日もよく頑張りました！🎉', classes: 'cyan'});
+        }, 2000);
+        M.toast({
+          html: '終了時間を記録しました 今日もよく頑張りました！🎉',
+          classes: 'cyan'
+        });
       }
-    })
+    });
   }
 
   calcPrintWakingTime() {
@@ -102,7 +112,10 @@ export class CardDayStartEnd {
       localStorage.removeItem('wakingMinute');
       localStorage.removeItem('workingHour');
       localStorage.removeItem('workingMinute');
-      M.toast({html: '開始時間と終了時間をリセットしました', classes: 'orange'});
+      M.toast({
+        html: '開始時間と終了時間をリセットしました',
+        classes: 'orange'
+      });
     });
   }
 }

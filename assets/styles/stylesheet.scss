@@ -61,6 +61,11 @@ a {
   }
 }
 
+.toast {
+    margin: 20px auto;
+    width: 95%;
+}
+
 .chart {
   margin: 10px;
 
@@ -70,5 +75,12 @@ a {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 200%;
+  }
+}
+
+.a-inside-of-this-element-color-black {
+
+  a {
+    color: rgba(0,0,0,0.87);
   }
 }

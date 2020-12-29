@@ -5,8 +5,7 @@ export class FetchData {
     this.fetchCategoryTimeLocalStorage();
     this.fetchTodaiCardContentLocalStorage();
     this.fetchCategoryGoalLocalStorage();
-    this.fetchProgrammingCardLocalStorage();
-    this.fetchReadingCardLocalStorage();
+    this.fetchGoalCardsLocalStorage();
   }
 
   fetchDayStartEndLocalStorage() {
@@ -15,19 +14,19 @@ export class FetchData {
   if (!startHour) {
     return;
   }
-  document.getElementById('wake-time').textContent = startHour + ' : ' + ('0' + startMinute).slice(-2);
+  document.getElementById('wake-time').textContent = `${startHour} : ${(`0${startMinute}`).slice(-2)}`;
   const endHour = localStorage.getItem('endHour');
   const endMinute = localStorage.getItem('endMinute');
   if (endHour) {
-    document.getElementById('end-time').textContent = endHour + ' : ' + ('0' + endMinute).slice(-2);
+    document.getElementById('end-time').textContent = `${endHour} : ${(`0${endMinute}`).slice(-2)}`;
     const wakingHour = localStorage.getItem('wakingHour');
     const wakingMinute = localStorage.getItem('wakingMinute');
-    document.getElementById('waking-time').textContent = wakingHour + 'h ' + wakingMinute + 'm';
+    document.getElementById('waking-time').textContent = `${wakingHour}h ${wakingMinute}m`;
   }
   const workingHour = localStorage.getItem('workingHour');
   const workingMinute = localStorage.getItem('workingMinute');
   if (workingMinute != null) {
-    document.getElementById('working-time').textContent = workingHour + 'h ' + workingMinute + 'm';
+    document.getElementById('working-time').textContent = `${workingHour}h ${workingMinute}m`;
   }
 }
 
@@ -37,7 +36,7 @@ export class FetchData {
     for (let i = 1; i <= recordNumber; i++) {
       const template = document.getElementById('template-record-p');
       const clone = template.content.cloneNode(true);
-      clone.querySelector('p').textContent = localStorage.getItem(`hour${i}`) + ' : ' + ('0' + +localStorage.getItem(`minute${i}`)).slice(-2) + '　' + localStorage.getItem(`thing${i}`);
+      clone.querySelector('p').textContent = `${localStorage.getItem(`hour${i}`)} : ${(`0${+localStorage.getItem(`minute${i}`)}`).slice(-2)}　${localStorage.getItem(`thing${i}`)}`;
       cardContentDayRecord.append(clone);
     }
   }
@@ -48,11 +47,11 @@ export class FetchData {
     const categoryWebsite = document.getElementById('category-p-website');
     const categoryReading = document.getElementById('category-p-reading');
     const categoryRest = document.getElementById('category-p-rest');
-    categoryTodai.textContent = +localStorage.getItem('categoryTodaiHour') + ' : ' + ('0' + +localStorage.getItem('categoryTodaiMinute')).slice(-2);
-    categoryJs.textContent = +localStorage.getItem('categoryJsHour') + ' : ' + ('0' + +localStorage.getItem('categoryJsMinute')).slice(-2);
-    categoryWebsite.textContent = +localStorage.getItem('categoryWebsiteHour') + ' : ' + ('0' + +localStorage.getItem('categoryWebsiteMinute')).slice(-2);
-    categoryReading.textContent = +localStorage.getItem('categoryReadingHour') + ' : ' + ('0' + +localStorage.getItem('categoryReadingMinute')).slice(-2);
-    categoryRest.textContent = +localStorage.getItem('categoryRestHour') + ' : ' + ('0' + +localStorage.getItem('categoryRestMinute')).slice(-2);
+    categoryTodai.textContent = `${+localStorage.getItem('categoryTodaiHour')} : ${(`0${+localStorage.getItem('categoryTodaiMinute')}`).slice(-2)}`;
+    categoryJs.textContent = `${+localStorage.getItem('categoryJsHour')} : ${(`0${+localStorage.getItem('categoryJsMinute')}`).slice(-2)}`;
+    categoryWebsite.textContent = `${+localStorage.getItem('categoryWebsiteHour')} : ${(`0${+localStorage.getItem('categoryWebsiteMinute')}`).slice(-2)}`;
+    categoryReading.textContent = `${+localStorage.getItem('categoryReadingHour')} : ${(`0${+localStorage.getItem('categoryReadingMinute')}`).slice(-2)}`;
+    categoryRest.textContent = `${+localStorage.getItem('categoryRestHour')} : ${(`0${+localStorage.getItem('categoryRestMinute')}`).slice(-2)}`;
   }
 
   fetchTodaiCardContentLocalStorage() {
@@ -88,24 +87,44 @@ export class FetchData {
     }
   }
 
-  fetchProgrammingCardLocalStorage() {
-    if (localStorage.getItem('programmingAll')) {
-      document.getElementById('programming-all').textContent = +localStorage.getItem('programmingAll');
+  fetchGoalCardsLocalStorage() {
+    const goalCardsIDNumber = localStorage.getItem('goal_card_ID_number');
+    if (!goalCardsIDNumber) {
+      localStorage.setItem('goal_card_ID_number', 0);
+      return;
     }
-    if (localStorage.getItem('programmingProgress1') && localStorage.getItem('programmingProgress1') != 'null') {
-      document.getElementById('programming-progress-now').textContent = +localStorage.getItem('programmingProgress1') + +localStorage.getItem('programmingProgress2');
-    }
-  }
+    const container = document.getElementById('goal-cards__container');
 
-  fetchReadingCardLocalStorage() {
-    if (localStorage.getItem('pageAll')) {
-      document.getElementById('page-all').textContent = +localStorage.getItem('pageAll');
-    }
-    if (localStorage.getItem('pageRead') && localStorage.getItem('pageRead') != 'null') {
-      document.getElementById('page-read').textContent = localStorage.getItem('pageRead');
-    }
-    if (localStorage.getItem('bookTitle')) {
-      document.getElementById('book-now-reading').textContent = localStorage.getItem('bookTitle');
+    for (let i = 0; i < goalCardsIDNumber; i++) {
+      const dataArray = localStorage.getItem(`goal_card_${i}`).split(',');
+      const template = document.getElementById('goal-cards__template-card');
+      const clone = template.content.cloneNode(true);
+
+      const title = dataArray[0];
+      const content = dataArray[1];
+      const progressNow = dataArray[3];
+      const all = dataArray[4];
+      const backgroundColor = dataArray[5];
+      clone.querySelector('.card-title').textContent = title;
+      clone.querySelector('#goal-cards__template-card__content').textContent = content;
+      // clone.querySelector('#date').textContent = dataArray[2];
+      const percentage = parseInt(progressNow * 100 / all);
+      clone.querySelector('.chart').setAttribute('data-percent', percentage);
+      clone.querySelector('.chart').querySelector('p').textContent = `${percentage}%`;
+      clone.querySelector('#goal-cards__template-card__progress-now').textContent = progressNow;
+      clone.querySelector('#goal-cards__template-card__all').textContent = all;
+      clone.querySelector('.card').classList.add(`${backgroundColor}`);
+      clone.querySelector('.card').classList.add('lighten-4');
+      // const barColor = `#${dataArray[6]}`;
+
+      new EasyPieChart(clone.querySelector('.chart'), {
+        barColor: '#1de9b6',
+        scaleColor: false,
+        lineWidth: 15,
+        size: 200
+      });
+
+      container.append(clone);
     }
   }
 }

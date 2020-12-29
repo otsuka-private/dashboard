@@ -124,7 +124,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" style="display: none;">
       <div class="col s12">
         <div class="card">
           <div class="card-content" id="card-content-category-time">
@@ -257,80 +257,32 @@
         </div>
       </div>
     </div>
-
   </div>
 
-  <div id="javascript" class="blue-grey overflowHidden lighten-2">
-    <h2 class="center-align">プログラミング</h2>
-    <div class="center-align">
-      <img class="width90 margin-top-bottom-20px" src="./assets/images/hacker_ish.svg">
-    </div>
-    <div class="row">
-      <div class="col s12">
-        <div class="card">
-          <div class="card-content">
-            <span class="card-title">目標</span>
-            <a class="black-text modal-trigger category-goal" href="#modal-category-goal-set-new" id="category-goal-2">12月15日までに英語講座を修了する。</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col s12">
-        <div class="card">
-          <div class="card-content">
-            <span class="card-title">進み具合</span>
-            <div class="chart center-align relative" data-percent="0" id="chart-programming-percentage">
-              <p>0%</p>
+  <div class="row">
+    <div class="col s12">
+      <h3>Goal Cards</h3>
+      <div id="goal-cards__container" class="a-inside-of-this-element-color-black">
+        <template id="goal-cards__template-card">
+          <div class="row">
+            <div class="col s12">
+              <a class="modal-trigger" href="#goal-cards__modal-fix-card">
+              <div class="card">
+                <div class="card-content">
+                  <span class="card-title">title</span>
+                  <p><span id="goal-cards__template-card__content"></span> ( <span id="date"></span> )</p>
+                  <div class="chart center-align relative">
+                    <p>progress</p>
+                  </div>
+                  <p class="center-align"><span id="goal-cards__template-card__progress-now"></span> / <span id="goal-cards__template-card__all"></span></p>
+                </div>
+              </div>
+            </a>
             </div>
-            <p class="center-align"><a class="waves-effect waves-light modal-trigger black-text" href="#modal-programming-progress-now" id="programming-progress-now">今どのあたり</a> / <a class="waves-effect waves-light modal-trigger black-text"
-                href="#modal-programming-all" id="programming-all">全部でどのくらい</a></p>
           </div>
-        </div>
+        </template>
       </div>
-    </div>
-  </div>
-
-  <!-- reading -->
-
-  <div id="reading" class="brown lighten-3 overflowXHidden">
-    <h2 class="center-align">読書</h2>
-    <div class="center-align">
-      <img class="width90 margin-top-bottom-20px" src="./assets/images/reading.svg">
-    </div>
-    <div class="row">
-      <div class="col s12">
-        <div class="card">
-          <div class="card-content">
-            <span class="card-title">目標</span>
-            <a class="black-text modal-trigger category-goal" href="#modal-category-goal-set-new" id="category-goal-3">12/10までにハンニバルの本を読み切る。</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col s12">
-        <div class="card">
-          <div class="card-content">
-            <span class="card-title">今読んでいる本</span>
-            <a class="waves-effect waves-light modal-trigger black-text" href="#modal-book-now-reading" id="book-now-reading">今読んでいる本のタイトルを入力</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col s12">
-        <div class="card">
-          <div class="card-content">
-            <span class="card-title">進み具合</span>
-            <div class="chart center-align relative" data-percent="0" id="chart-reading">
-              <p>0%</p>
-            </div>
-            <p class="center-align">p.<a class="waves-effect waves-light modal-trigger black-text" href="#modal-reading-page-read" id="page-read">今のページ</a> / p.<a class="waves-effect waves-light modal-trigger black-text"
-                href="#modal-reading-page-all" id="page-all">本のページ数</a></p>
-          </div>
-        </div>
-      </div>
+      <a class="waves-effect waves-light btn modal-trigger margin-top-bottom-20px" href="#goal-cards__modal-add-new-card">新しい目標カードを追加</a>
     </div>
   </div>
 
@@ -340,33 +292,6 @@
       <a class="waves-effect waves-light btn modal-trigger red accent-4 margin-top-bottom-20px" href="#modal-delete-all">全データ消去</a>
     </div>
   </div>
-
-  <!-- test below -->
-
-  <div id="test-container">
-    <template id="template-goal-card">
-      <div class="row">
-        <div class="col s12">
-          <div class="card">
-            <div class="card-content">
-              <span class="card-title">title</span>
-              <div class="chart center-align relative">
-                <p>progress</p>
-              </div>
-              <!-- <p class="center-align"><a class="waves-effect waves-light modal-trigger black-text" href="#modal-reading-page-read" id="page-read">now progress</a> / <a class="waves-effect waves-light modal-trigger black-text"
-                href="#modal-reading-page-all" id="page-all">all</a></p> -->
-              <p class="center-align"><span id="first-span"></span> / <span id="second-span"></span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </template>
-    <a class="waves-effect waves-light btn modal-trigger red accent-4 margin-top-bottom-20px" href="#modal-test">Test Button</a>
-  </div>
-
-
-
-  <!-- test above -->
 
   <!-- Modals -->
 
@@ -521,63 +446,6 @@
     </div>
   </div>
 
-  <!-- programming -->
-
-  <div id="modal-programming-progress-now" class="modal">
-    <div class="modal-content">
-      <p>どのくらい進みましたか</p>
-      <input id="programming-progress-1" placeholder="基礎だけ学ぶPHP" type="number" pattern="\d*">
-      <input id="programming-progress-2" placeholder="PHP+MySQL" type="number" pattern="\d*">
-    </div>
-    <div class="modal-footer">
-      <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
-      <a class="modal-close waves-effect waves-light btn" id="decide-programming-progress-btn">決定</a>
-    </div>
-  </div>
-  <div id="modal-programming-all" class="modal">
-    <div class="modal-content">
-      <p>全部でどれくらいありますか？</p>
-      <input type="number" pattern="\d*">
-    </div>
-    <div class="modal-footer">
-      <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
-      <a class="modal-close waves-effect waves-light btn" id="decide-programming-all-btn">決定</a>
-    </div>
-  </div>
-
-  <!-- book -->
-
-  <div id="modal-book-now-reading" class="modal">
-    <div class="modal-content">
-      <p>今読んでる本のタイトル</p>
-      <input>
-    </div>
-    <div class="modal-footer">
-      <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
-      <a class="modal-close waves-effect waves-light btn" id="modal-book-now-reading-btn">決定</a>
-    </div>
-  </div>
-  <div id="modal-reading-page-read" class="modal">
-    <div class="modal-content">
-      <p>何ページまで読みましたか？</p>
-      <input type="number" pattern="\d*">
-    </div>
-    <div class="modal-footer">
-      <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
-      <a class="modal-close waves-effect waves-light btn" id="modal-reading-page-btn">決定</a>
-    </div>
-  </div>
-  <div id="modal-reading-page-all" class="modal">
-    <div class="modal-content">
-      <p>全部で何ページありますか？</p>
-      <input type="number" pattern="\d*">
-    </div>
-    <div class="modal-footer">
-      <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
-      <a class="modal-close waves-effect waves-light btn" id="modal-reading-page-all-btn">決定</a>
-    </div>
-  </div>
-
   <div id="modal-delete-all" class="modal">
     <div class="modal-content">
       <p>注意</p>
@@ -600,31 +468,81 @@
     </div>
   </div>
 
-  <!-- test modal -->
+  <!-- goals cards modal -->
 
-  <div id="modal-test" class="modal">
+  <div id="goal-cards__modal-add-new-card" class="modal">
     <div class="modal-content">
-      <p>Hello World</p>
+      <p>新しい目標カードを追加</p>
       <div class="input-field">
-        <input id="input-1" class="validate" type="text">
-        <label for="input-1">goal</label>
+        <input id="goal-cards__modal-add-new-card__input-goal" class="validate" type="text">
+        <label for="goal-cards__modal-add-new-card__input-goal">目標</label>
       </div>
       <div class="input-field">
-        <input id="input-2" class="validate" type="text">
-        <label for="input-2">now</label>
+        <input id="goal-cards__modal-add-new-card__input-content" class="validate" type="text">
+        <label for="goal-cards__modal-add-new-card__input-content">内容</label>
       </div>
       <div class="input-field">
-        <input id="input-3" class="validate" type="text">
-        <label for="input-3">all</label>
+        <input type="text" class="datepicker" id="goal-cards__modal-add-new-card__input-date">
+        <label>期日</label>
       </div>
       <div class="input-field">
-        <input id="input-4" class="validate" type="text">
-        <label for="input-4">color</label>
+        <input id="goal-cards__modal-add-new-card__input-now" class="validate" type="text">
+        <label for="goal-cards__modal-add-new-card__input-now">今の進捗</label>
+      </div>
+      <div class="input-field">
+        <input id="goal-cards__modal-add-new-card__input-all" class="validate" type="text">
+        <label for="goal-cards__modal-add-new-card__input-all">全ての課題数</label>
+      </div>
+      <div class="input-field">
+        <input id="goal-cards__modal-add-new-card__input-background-color" class="validate" type="text">
+        <label for="goal-cards__modal-add-new-card__input-background-color">背景色</label>
+      </div>
+      <div class="input-field">
+        <input id="goal-cards__modal-add-new-card__input-bar-color" class="validate" type="text">
+        <label for="goal-cards__modal-add-new-card__input-bar-color">グラフの色</label>
       </div>
     </div>
     <div class="modal-footer">
-      <a class="modal-close waves-effect waves-light btn">Cancel</a>
-      <a class="modal-close waves-effect waves-light btn red accent-4" id="test-modal-button-ok">OK</a>
+      <a class="modal-close waves-effect waves-light btn">取り消し</a>
+      <a class="modal-close waves-effect waves-light btn red accent-4" id="goal-cards__modal-add-new-card__ok-button">決定</a>
+    </div>
+  </div>
+
+  <div id="goal-cards__modal-fix-card" class="modal">
+    <div class="modal-content">
+      <p>カードの内容を変更</p>
+      <div class="input-field">
+        <input id="goal-cards__modal-fix-card__input-goal" class="validate" type="text">
+        <label for="goal-cards__modal-fix-card__input-goal">目標</label>
+      </div>
+      <div class="input-field">
+        <input id="goal-cards__modal-fix-card__input-content" class="validate" type="text">
+        <label for="goal-cards__modal-fix-card__input-content">内容</label>
+      </div>
+      <div class="input-field">
+        <input type="text" class="datepicker" id="goal-cards__modal-fix-card__input-date">
+        <label>期日</label>
+      </div>
+      <div class="input-field">
+        <input id="goal-cards__modal-fix-card__input-now" class="validate" type="text">
+        <label for="goal-cards__modal-fix-card__input-now">今の進捗</label>
+      </div>
+      <div class="input-field">
+        <input id="goal-cards__modal-fix-card__input-all" class="validate" type="text">
+        <label for="goal-cards__modal-fix-card__input-all">全ての課題数</label>
+      </div>
+      <div class="input-field">
+        <input id="goal-cards__modal-fix-card__input-background-color" class="validate" type="text">
+        <label for="goal-cards__modal-fix-card__input-background-color">背景色</label>
+      </div>
+      <div class="input-field">
+        <input id="goal-cards__modal-fix-card__input-bar-color" class="validate" type="text">
+        <label for="goal-cards__modal-fix-card__input-bar-color">グラフの色</label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-light btn">取り消し</a>
+      <a class="modal-close waves-effect waves-light btn red accent-4" id="goal-cards__modal-fix-card__ok-button">決定</a>
     </div>
   </div>
 

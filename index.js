@@ -64,6 +64,7 @@ testButton.addEventListener('click', (event) => {
   const percentage = parseInt(testArray[1] * 100 / testArray[2]);
   clone.querySelector('.chart').setAttribute('data-percent', percentage);
   clone.querySelector('.chart').setAttribute('id', 'random');
+  clone.querySelector('.card').style.background = `#${testArray[3]}`;
   new EasyPieChart(clone.querySelector('.chart'), {
     barColor: '#00bfa5',
     scaleColor: false,

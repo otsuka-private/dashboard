@@ -61,6 +61,10 @@ export class SetTodaiCardContent {
 
       this.addEventListnerToCardContent();
       this.clearInputValue();
+
+      setTimeout(() => {
+        location.reload();
+      }, 2000);
     });
   }
 

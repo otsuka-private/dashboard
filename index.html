@@ -12,14 +12,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-
   <link rel="stylesheet" href="assets/styles/stylesheet.min.css">
-
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
-
   <script src="./assets/scripts/Libraries/vanilla_easypiechart.js"></script>
   <script src="./assets/scripts/Charts/chart.js" defer></script>
   <script src="./assets/scripts/Charts/easypiechart.js" defer></script>
@@ -339,10 +336,34 @@
   </div>
 
   <!-- delete all button -->
-
-  <div class="row center-align">
-    <a class="waves-effect waves-light btn modal-trigger red accent-4" href="#modal-delete-all"><i class="fas fa-eraser"></i></a>
+  <div class="red lighten-3">
+    <div class="center-align">
+      <a class="waves-effect waves-light btn modal-trigger red accent-4 margin-top-bottom-20px" href="#modal-delete-all"><i class="fas fa-eraser"></i></a>
+    </div>
   </div>
+
+  <!-- test below -->
+
+  <div class="blue lighten-4">
+    <template id="template-goal-card">
+      <div class="row">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">title</span>
+              <div class="chart center-align relative" data-percent="30" id="chart-test">
+                <p>progress%</p>
+              </div>
+              <p class="center-align"><a class="waves-effect waves-light modal-trigger black-text" href="#modal-reading-page-read" id="page-read">now progress</a> / <a class="waves-effect waves-light modal-trigger black-text"
+                  href="#modal-reading-page-all" id="page-all">all</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+
+  <!-- test above -->
 
   <!-- Modals -->
 
@@ -554,8 +575,6 @@
     </div>
   </div>
 
-
-
   <div id="modal-delete-all" class="modal">
     <div class="modal-content">
       <p>注意</p>
@@ -577,6 +596,9 @@
       <a class="modal-close waves-effect waves-light btn red accent-4" id="modal-day-start-end-delete-yes">確認</a>
     </div>
   </div>
+
+  <!-- Modals -->
+
 </body>
 
 </html>

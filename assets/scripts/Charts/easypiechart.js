@@ -53,3 +53,10 @@ new EasyPieChart(document.getElementById('chart-reading'), {
   lineWidth: 15,
   size: 200
 });
+
+// new EasyPieChart(document.getElementById('chart-test'), {
+//   barColor: '#8d6e63',
+//   scaleColor: false,
+//   lineWidth: 15,
+//   size: 200
+// });

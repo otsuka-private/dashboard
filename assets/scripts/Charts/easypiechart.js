@@ -19,9 +19,9 @@ new EasyPieChart(document.getElementById('chart-working-percentage'), {
   size: 200
 });
 
-const programmingProgress1 = localStorage.getItem(`programmingProgress1`);
-const programmingProgress2 = localStorage.getItem(`programmingProgress2`);
-const programmingAll = localStorage.getItem(`programmingAll`);
+const programmingProgress1 = localStorage.getItem('programmingProgress1');
+const programmingProgress2 = localStorage.getItem('programmingProgress2');
+const programmingAll = localStorage.getItem('programmingAll');
 
 const programmingPercentage = (+programmingProgress1 + +programmingProgress2) / +programmingAll * 100;
 if (programmingPercentage) {
@@ -42,7 +42,7 @@ new EasyPieChart(document.getElementById('chart-programming-percentage'), {
 
 if (+localStorage.getItem('pageRead') && +localStorage.getItem('pageAll')) {
   document.getElementById('chart-reading').setAttribute('data-percent', parseInt(+localStorage.getItem('pageRead') * 100 / localStorage.getItem('pageAll')));
-  document.querySelector('#chart-reading p').textContent = parseInt(+localStorage.getItem('pageRead') * 100 / localStorage.getItem('pageAll')) + '%';
+  document.querySelector('#chart-reading p').textContent = `${parseInt(+localStorage.getItem('pageRead') * 100 / localStorage.getItem('pageAll'))}%`;
 } else {
   document.querySelector('#chart-reading p').textContent = '0%';
 }

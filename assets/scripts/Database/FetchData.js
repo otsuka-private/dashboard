@@ -114,7 +114,7 @@ export class FetchData {
       clone.querySelector('#goal-cards__template-card__progress-now').textContent = progressNow;
       clone.querySelector('#goal-cards__template-card__all').textContent = all;
       clone.querySelector('.card').classList.add(`${backgroundColor}`);
-      clone.querySelector('.card').classList.add('lighten-4');
+      clone.querySelector('.card').classList.add('lighten-3');
       // const barColor = `#${dataArray[6]}`;
 
       new EasyPieChart(clone.querySelector('.chart'), {

@@ -15,7 +15,6 @@
     "no-new-object": "error",
     "object-shorthand": "warn",
     "no-array-constructor": "error",
-    "prefer-destructuring": "warn",
     "quotes": ["warn", "single"],
     "prefer-template": "warn",
     "template-curly-spacing": "warn",

@@ -7,7 +7,7 @@ const wakingTimeToday = localStorage.getItem(`wakingTime${localStorage.getItem('
 const workingPercontageToday = +workingTimeToday / +wakingTimeToday * 100;
 if (parseInt(workingPercontageToday)) {
   document.getElementById('chart-working-percentage').setAttribute('data-percent', workingPercontageToday);
-  document.querySelector('#chart-working-percentage p').textContent = parseInt(workingPercontageToday) + '%';
+  document.querySelector('#chart-working-percentage p').textContent = `${parseInt(workingPercontageToday)}%`;
 } else {
   document.querySelector('#chart-working-percentage p').textContent = '0%';
 }
@@ -26,7 +26,7 @@ const programmingAll = localStorage.getItem(`programmingAll`);
 const programmingPercentage = (+programmingProgress1 + +programmingProgress2) / +programmingAll * 100;
 if (programmingPercentage) {
   document.getElementById('chart-programming-percentage').setAttribute('data-percent', programmingPercentage);
-  document.querySelector('#chart-programming-percentage p').textContent = parseInt(programmingPercentage) + '%';
+  document.querySelector('#chart-programming-percentage p').textContent = `${parseInt(programmingPercentage)}%`;
 } else {
   document.querySelector('#chart-programming-percentage p').textContent = '0%';
 }

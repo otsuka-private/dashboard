@@ -32,7 +32,7 @@ export class GoalCards {
       card.addEventListener('click', (event) => {
         const currentlySelectedGoalCardID = event.target.closest('a').querySelector('div').id;
         const currentlySelectedGoalCardIDNumber = currentlySelectedGoalCardID.slice(-1);
-        localStorage.setItem('currentlySelectedGoalCardIDNumber', currentlySelectedGoalCardIDNumber);
+        localStorage.setItem('currently_selected_goal_card_ID_number', currentlySelectedGoalCardIDNumber);
 
         const modal = document.getElementById('goal-cards__modal-fix-card');
         modal.querySelector('#goal-cards__modal-fix-card__input-goal').value = card.querySelector('.card-title').textContent;
@@ -57,7 +57,7 @@ export class GoalCards {
       for (const input of inputs) {
         fixedDataArray.push(input.value.trim());
       }
-      const currentlySelectedGoalCardIDNumber = localStorage.getItem('currentlySelectedGoalCardIDNumber');
+      const currentlySelectedGoalCardIDNumber = localStorage.getItem('currently_selected_goal_card_ID_number');
       localStorage.setItem(`goal_card_${currentlySelectedGoalCardIDNumber}`, fixedDataArray);
       M.toast({
         html: 'リロードします...',
@@ -70,7 +70,7 @@ export class GoalCards {
 
     const modalFixDeleteButton = document.getElementById('goal-cards__modal-fix-card__delete-button');
     modalFixDeleteButton.addEventListener('click', () => {
-      const currentlySelectedGoalCardIDNumber = localStorage.getItem('currentlySelectedGoalCardIDNumber');
+      const currentlySelectedGoalCardIDNumber = localStorage.getItem('currently_selected_goal_card_ID_number');
       localStorage.removeItem(`goal_card_${currentlySelectedGoalCardIDNumber}`);
       M.toast({
         html: 'リロードします...',

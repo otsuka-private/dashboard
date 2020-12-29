@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/styles/stylesheet.min.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -336,32 +335,36 @@
   </div>
 
   <!-- delete all button -->
-  <div class="red lighten-3">
+  <div class="red lighten-3" id="delete-all">
     <div class="center-align">
-      <a class="waves-effect waves-light btn modal-trigger red accent-4 margin-top-bottom-20px" href="#modal-delete-all"><i class="fas fa-eraser"></i></a>
+      <a class="waves-effect waves-light btn modal-trigger red accent-4 margin-top-bottom-20px" href="#modal-delete-all">全データ消去</a>
     </div>
   </div>
 
   <!-- test below -->
 
-  <div class="blue lighten-4">
+  <div id="test-container">
     <template id="template-goal-card">
       <div class="row">
         <div class="col s12">
           <div class="card">
             <div class="card-content">
               <span class="card-title">title</span>
-              <div class="chart center-align relative" data-percent="30" id="chart-test">
-                <p>progress%</p>
+              <div class="chart center-align relative">
+                <p>progress</p>
               </div>
-              <p class="center-align"><a class="waves-effect waves-light modal-trigger black-text" href="#modal-reading-page-read" id="page-read">now progress</a> / <a class="waves-effect waves-light modal-trigger black-text"
-                  href="#modal-reading-page-all" id="page-all">all</a></p>
+              <!-- <p class="center-align"><a class="waves-effect waves-light modal-trigger black-text" href="#modal-reading-page-read" id="page-read">now progress</a> / <a class="waves-effect waves-light modal-trigger black-text"
+                href="#modal-reading-page-all" id="page-all">all</a></p> -->
+              <p class="center-align"><span id="first-span"></span> / <span id="second-span"></span></p>
             </div>
           </div>
         </div>
       </div>
     </template>
+    <a class="waves-effect waves-light btn modal-trigger red accent-4 margin-top-bottom-20px" href="#modal-test">Test Button</a>
   </div>
+
+
 
   <!-- test above -->
 
@@ -588,12 +591,40 @@
   </div>
   <div id="modal-delete-all-confirm" class="modal">
     <div class="modal-content">
-      <p>iMacを経由することでこのiPhoneの不要なローカルストレージのデータを個別に削除することもできます。</p>
+      <p>Macを経由することでこのiPhoneの不要なローカルストレージのデータを個別に削除することもできます。</p>
       <p class="red-text">本当に全てのデータを消去しますか？</p>
     </div>
     <div class="modal-footer">
       <a class="modal-close waves-effect waves-light btn">取り消し</a>
       <a class="modal-close waves-effect waves-light btn red accent-4" id="modal-day-start-end-delete-yes">確認</a>
+    </div>
+  </div>
+
+  <!-- test modal -->
+
+  <div id="modal-test" class="modal">
+    <div class="modal-content">
+      <p>Hello World</p>
+      <div class="input-field">
+        <input id="input-1" class="validate" type="text">
+        <label for="input-1">goal</label>
+      </div>
+      <div class="input-field">
+        <input id="input-2" class="validate" type="text">
+        <label for="input-2">now</label>
+      </div>
+      <div class="input-field">
+        <input id="input-3" class="validate" type="text">
+        <label for="input-3">all</label>
+      </div>
+      <div class="input-field">
+        <input id="input-4" class="validate" type="text">
+        <label for="input-4">color</label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-light btn">Cancel</a>
+      <a class="modal-close waves-effect waves-light btn red accent-4" id="test-modal-button-ok">OK</a>
     </div>
   </div>
 

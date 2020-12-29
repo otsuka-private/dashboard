@@ -59,6 +59,10 @@ a {
   h4 {
     font-size: 1.8rem;
   }
+
+  .modal__p--as-label {
+    margin-bottom: 0;
+  }
 }
 
 .toast {
@@ -75,6 +79,16 @@ a {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 200%;
+  }
+}
+
+#goal-cards__container {
+
+  .card {
+
+    .card-title {
+      font-weight: bold;
+    }
   }
 }
 

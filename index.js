@@ -2,6 +2,9 @@ import {
   materializeInitialize
 } from './assets/scripts/Libraries/materializeInitialize.js';
 import {
+  FetchData
+} from './assets/scripts/Database/FetchData.js';
+import {
   CardDayStartEnd
 } from './assets/scripts/Cards/CardDayStartEnd.js';
 import {
@@ -13,9 +16,6 @@ import {
 import {
   GoalCards
 } from './assets/scripts/Cards/GoalCards.js';
-import {
-  FetchData
-} from './assets/scripts/Database/FetchData.js';
 import {
   SetTodaiCardContent
 } from './assets/scripts/Cards/SetTodaiCardContent.js';

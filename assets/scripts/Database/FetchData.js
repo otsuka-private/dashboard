@@ -96,7 +96,11 @@ export class FetchData {
     const container = document.getElementById('goal-cards__container');
 
     for (let i = 0; i < goalCardsIDNumber; i++) {
-      const dataArray = localStorage.getItem(`goal_card_${i}`).split(',');
+      const dataArrayLocalStorage = localStorage.getItem(`goal_card_${i}`);
+      if (!dataArrayLocalStorage) {
+        continue;
+      }
+      const dataArray = dataArrayLocalStorage.split(',');
       const template = document.getElementById('goal-cards__template-card');
       const clone = template.content.cloneNode(true);
 
@@ -115,10 +119,11 @@ export class FetchData {
       clone.querySelector('#goal-cards__template-card__all').textContent = all;
       clone.querySelector('.card').classList.add(`${backgroundColor}`);
       clone.querySelector('.card').classList.add('lighten-3');
+      clone.querySelector('.card').setAttribute('id', `goal-cards__card${i}`);
       // const barColor = `#${dataArray[6]}`;
 
       new EasyPieChart(clone.querySelector('.chart'), {
-        barColor: '#1de9b6',
+        barColor: '#00bfa5',
         scaleColor: false,
         lineWidth: 15,
         size: 200

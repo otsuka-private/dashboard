@@ -35,7 +35,7 @@
     </div>
   </div>
   <div id="analytics" class="grey lighten-1 overflowHidden">
-    <h2 class="center-align">統計と分析</h2>
+    <h3 class="center-align">統計と分析</h3>
     <div class="row">
       <a class="waves-effect waves-light btn-large modal-trigger col s6 offset-s3" href="#modal-set-new-week" id="modal-set-new-week-btn">新しい週に更新</a>
     </div>
@@ -159,7 +159,7 @@
   <!-- todai -->
 
   <div id="todai" class="red lighten-2 overflowXHidden">
-    <h2 class="center-align">東大</h2>
+    <h3 class="center-align">東大</h3>
     <div class="center-align">
       <img class="width90 margin-top-bottom-20px" src="./assets/images/online_learning.svg">
     </div>
@@ -267,22 +267,22 @@
           <div class="row">
             <div class="col s12">
               <a class="modal-trigger" href="#goal-cards__modal-fix-card">
-              <div class="card">
-                <div class="card-content">
-                  <span class="card-title">title</span>
-                  <p><span id="goal-cards__template-card__content"></span> ( <span id="date"></span> )</p>
-                  <div class="chart center-align relative">
-                    <p>progress</p>
+                <div class="card">
+                  <div class="card-content">
+                    <span class="card-title">title</span>
+                    <p><span id="goal-cards__template-card__content"></span> ( <span id="date"></span> )</p>
+                    <div class="chart center-align relative">
+                      <p>progress</p>
+                    </div>
+                    <p class="center-align"><span id="goal-cards__template-card__progress-now"></span> / <span id="goal-cards__template-card__all"></span></p>
                   </div>
-                  <p class="center-align"><span id="goal-cards__template-card__progress-now"></span> / <span id="goal-cards__template-card__all"></span></p>
                 </div>
-              </div>
-            </a>
+              </a>
             </div>
           </div>
         </template>
       </div>
-      <a class="waves-effect waves-light btn modal-trigger margin-top-bottom-20px" href="#goal-cards__modal-add-new-card">新しい目標カードを追加</a>
+      <a class="waves-effect waves-light btn-large modal-trigger" href="#goal-cards__modal-add-new-card">新しい目標カードを追加</a>
     </div>
   </div>
 
@@ -470,7 +470,7 @@
 
   <!-- goals cards modal -->
 
-  <div id="goal-cards__modal-add-new-card" class="modal">
+  <div id="goal-cards__modal-add-new-card" class="modal modal-fixed-footer">
     <div class="modal-content">
       <p>新しい目標カードを追加</p>
       <div class="input-field">
@@ -508,41 +508,28 @@
     </div>
   </div>
 
-  <div id="goal-cards__modal-fix-card" class="modal">
+  <div id="goal-cards__modal-fix-card" class="modal modal-fixed-footer">
     <div class="modal-content">
-      <p>カードの内容を変更</p>
-      <div class="input-field">
-        <input id="goal-cards__modal-fix-card__input-goal" class="validate" type="text">
-        <label for="goal-cards__modal-fix-card__input-goal">目標</label>
-      </div>
-      <div class="input-field">
-        <input id="goal-cards__modal-fix-card__input-content" class="validate" type="text">
-        <label for="goal-cards__modal-fix-card__input-content">内容</label>
-      </div>
-      <div class="input-field">
-        <input type="text" class="datepicker" id="goal-cards__modal-fix-card__input-date">
-        <label>期日</label>
-      </div>
-      <div class="input-field">
-        <input id="goal-cards__modal-fix-card__input-now" class="validate" type="text">
-        <label for="goal-cards__modal-fix-card__input-now">今の進捗</label>
-      </div>
-      <div class="input-field">
-        <input id="goal-cards__modal-fix-card__input-all" class="validate" type="text">
-        <label for="goal-cards__modal-fix-card__input-all">全ての課題数</label>
-      </div>
-      <div class="input-field">
-        <input id="goal-cards__modal-fix-card__input-background-color" class="validate" type="text">
-        <label for="goal-cards__modal-fix-card__input-background-color">背景色</label>
-      </div>
-      <div class="input-field">
-        <input id="goal-cards__modal-fix-card__input-bar-color" class="validate" type="text">
-        <label for="goal-cards__modal-fix-card__input-bar-color">グラフの色</label>
-      </div>
+      <h4>カードの内容を変更</h4>
+      <p class="modal__p--as-label">タイトル</p>
+      <input id="goal-cards__modal-fix-card__input-goal" class="validate active" type="text">
+      <p class="modal__p--as-label">内容</p>
+      <input id="goal-cards__modal-fix-card__input-content" class="validate active" type="text">
+      <p class="modal__p--as-label">締め切り</p>
+      <input type="text" class="datepicker" id="goal-cards__modal-fix-card__input-date">
+      <p class="modal__p--as-label">今の進捗</p>
+      <input id="goal-cards__modal-fix-card__input-now" class="validate active" type="number">
+      <p class="modal__p--as-label">全ての課題数</p>
+      <input id="goal-cards__modal-fix-card__input-all" class="validate active" type="number">
+      <p class="modal__p--as-label">背景色</p>
+      <input id="goal-cards__modal-fix-card__input-background-color" class="validate active" type="text">
+      <p class="modal__p--as-label">グラフ色</p>
+      <input id="goal-cards__modal-fix-card__input-bar-color" class="validate active" type="text">
     </div>
     <div class="modal-footer">
-      <a class="modal-close waves-effect waves-light btn">取り消し</a>
-      <a class="modal-close waves-effect waves-light btn red accent-4" id="goal-cards__modal-fix-card__ok-button">決定</a>
+      <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
+      <a class="modal-close waves-effect waves-light btn red accent-4" id="goal-cards__modal-fix-card__delete-button">カードを削除</a>
+      <a class="modal-close waves-effect waves-light btn" id="goal-cards__modal-fix-card__ok-button">決定</a>
     </div>
   </div>
 

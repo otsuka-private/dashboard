@@ -1,5 +1,7 @@
 general
 
+  toast_to_show_after_reloading : ['true/false', 'message', 'color'];
+
 day start end
 
 day record

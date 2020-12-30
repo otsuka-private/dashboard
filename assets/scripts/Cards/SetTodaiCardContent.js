@@ -1,3 +1,5 @@
+import * as functions from '../Functions/functions.js';
+
 export class SetTodaiCardContent {
   constructor() {
     this.addEventListnerToCardContent();
@@ -56,15 +58,14 @@ export class SetTodaiCardContent {
       const cardContainerId = cardContentArray[0];
       const cardContainer = document.getElementById(cardContainerId);
       cardContainer.append(clone);
+      functions.setToastAndReload('新しい授業カードを追加しました！', 'cyan');
+      // M.toast({html: '新しい授業カードを追加しました', classes: 'cyan'});
+      // setTimeout(() => {
+      //   location.reload();
+      // }, 2000);
 
-      M.toast({html: '新しい授業カードを追加しました', classes: 'cyan'});
-
-      this.addEventListnerToCardContent();
-      this.clearInputValue();
-
-      setTimeout(() => {
-        location.reload();
-      }, 2000);
+      // this.addEventListnerToCardContent();
+      // this.clearInputValue();
     });
   }
 
@@ -102,11 +103,12 @@ export class SetTodaiCardContent {
       cardContentArray[1] = titleInputValue;
       cardContentArray[2] = assignmentInputValue;
       localStorage.setItem(cardId, cardContentArray);
-      M.toast({html: '授業カードの情報を更新しました', classes: 'cyan'
-      });
       const currentSelectedCard = document.getElementsByClassName(`${cardId}`);
       currentSelectedCard[0].querySelector('span').textContent = titleInputValue;
       currentSelectedCard[0].querySelector('p').textContent = assignmentInputValue;
+      functions.setToastAndReload('授業カードを更新しました！', 'cyan');
+      // M.toast({html: '授業カードの情報を更新しました', classes: 'cyan'
+      // });
     });
   }
 
@@ -117,7 +119,8 @@ export class SetTodaiCardContent {
       const selectedCard = document.getElementsByClassName(cardId)[0];
       selectedCard.remove();
       localStorage.removeItem(cardId);
-      M.toast({html: '🎉 よく頑張りました！', classes: 'cyan'});
+      functions.setToastAndReload('🎉 よく頑張りました！', 'cyan');
+      // M.toast({html: '🎉 よく頑張りました！', classes: 'cyan'});
     });
   }
 

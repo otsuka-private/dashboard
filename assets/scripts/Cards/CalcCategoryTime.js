@@ -1,7 +1,4 @@
-import {
-  calcTime,
-  addTime
-} from '../Functions/calc_function.js';
+import * as functions from '../Functions/functions.js';
 
 export class CalcCategoryTime {
   constructor(finalCalc) {
@@ -16,28 +13,28 @@ export class CalcCategoryTime {
       i = recordNumber;
       const startHour = localStorage.getItem(`hour${i}`);
       const startMinute = localStorage.getItem(`minute${i}`);
-      const endHour = localStorage.getItem(`endHour`);
-      const endMinute = localStorage.getItem(`endMinute`);
-      const timeArray = calcTime(+startHour, +startMinute, +endHour, +endMinute);
+      const endHour = localStorage.getItem('endHour');
+      const endMinute = localStorage.getItem('endMinute');
+      const timeArray = functions.calcTime(+startHour, +startMinute, +endHour, +endMinute);
       const category = localStorage.getItem(`thing${i}`);
       this.print(timeArray[0], timeArray[1], category);
     } else if (i === 0) {
       i++;
-      const startHour = +localStorage.getItem(`startHour`);
-      const startMinute = +localStorage.getItem(`startMinute`);
+      const startHour = +localStorage.getItem('startHour');
+      const startMinute = +localStorage.getItem('startMinute');
       const endHour = localStorage.getItem(`hour${i}`);
       const endMinute = localStorage.getItem(`minute${i}`);
-      const timeArray = calcTime(+startHour, +startMinute, +endHour, +endMinute);
+      const timeArray = functions.calcTime(+startHour, +startMinute, +endHour, +endMinute);
       const category = '休憩';
       this.print(timeArray[0], timeArray[1], category);
     } else {
       const startHour = localStorage.getItem(`hour${i}`);
       const startMinute = localStorage.getItem(`minute${i}`);
       let iCopy = i;
-      let iPlus1 = ++iCopy;
+      const iPlus1 = ++iCopy;
       const endHour = localStorage.getItem(`hour${iPlus1}`);
       const endMinute = localStorage.getItem(`minute${iPlus1}`);
-      const timeArray = calcTime(+startHour, +startMinute, +endHour, +endMinute);
+      const timeArray = functions.calcTime(+startHour, +startMinute, +endHour, +endMinute);
       const category = localStorage.getItem(`thing${i}`);
       this.print(timeArray[0], timeArray[1], category);
     }
@@ -51,28 +48,28 @@ export class CalcCategoryTime {
     const categoryRest = document.getElementById('category-p-rest');
     switch (category) {
       case '東大': {
-        const todaiTimeArray = addTime(hour, minute, 'Todai');
-        categoryTodai.textContent = todaiTimeArray[0] + ' : ' + ('0' + +todaiTimeArray[1]).slice(-2);
+        const todaiTimeArray = functions.addTime(hour, minute, 'Todai');
+        categoryTodai.textContent = `${todaiTimeArray[0]} : ${(`0${+todaiTimeArray[1]}`).slice(-2)}`;
         break;
       }
       case 'プログラミング': {
-        const jsTimeArray = addTime(hour, minute, 'Js');
-        categoryJs.textContent = jsTimeArray[0] + ' : ' + ('0' + +jsTimeArray[1]).slice(-2);
+        const jsTimeArray = functions.addTime(hour, minute, 'Js');
+        categoryJs.textContent = `${jsTimeArray[0]} : ${(`0${+jsTimeArray[1]}`).slice(-2)}`;
         break;
       }
       case 'ポケヨビ': {
-        const websiteTimeArray = addTime(hour, minute, 'Website');
-        categoryWebsite.textContent = websiteTimeArray[0] + ' : ' + ('0' + +websiteTimeArray[1]).slice(-2);
+        const websiteTimeArray = functions.addTime(hour, minute, 'Website');
+        categoryWebsite.textContent = `${websiteTimeArray[0]} : ${(`0${+websiteTimeArray[1]}`).slice(-2)}`;
         break;
       }
       case '読書': {
-        const readingTimeArray = addTime(hour, minute, 'Reading');
-        categoryReading.textContent = readingTimeArray[0] + ' : ' + ('0' + +readingTimeArray[1]).slice(-2);
+        const readingTimeArray = functions.addTime(hour, minute, 'Reading');
+        categoryReading.textContent = `${readingTimeArray[0]} : ${(`0${+readingTimeArray[1]}`).slice(-2)}`;
         break;
       }
       case '休憩': {
-        const restTimeArray = addTime(hour, minute, 'Rest');
-        categoryRest.textContent = restTimeArray[0] + ' : ' + ('0' + +restTimeArray[1]).slice(-2);
+        const restTimeArray = functions.addTime(hour, minute, 'Rest');
+        categoryRest.textContent = `${restTimeArray[0]} : ${(`0${+restTimeArray[1]}`).slice(-2)}`;
         break;
       }
       default:

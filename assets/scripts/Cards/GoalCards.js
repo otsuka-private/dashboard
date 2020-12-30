@@ -1,3 +1,5 @@
+import * as functions from '../Functions/functions.js';
+
 export class GoalCards {
   constructor() {
     this.addEventListenerToAddNewCardButton();
@@ -16,13 +18,14 @@ export class GoalCards {
       let goalCardIDNumber = localStorage.getItem('goal_card_ID_number');
       localStorage.setItem(`goal_card_${goalCardIDNumber}`, dataArray);
       localStorage.setItem('goal_card_ID_number', ++goalCardIDNumber);
-      M.toast({
-        html: 'リロードします...',
-        classes: 'cyan'
-      });
-      setTimeout(() => {
-        location.reload();
-      }, 1500);
+      functions.setToastAndReload('新しい目標カードを追加しました！', 'cyan');
+      // M.toast({
+      //   html: 'リロードします...',
+      //   classes: 'cyan'
+      // });
+      // setTimeout(() => {
+      //   location.reload();
+      // }, 1500);
     });
   }
 
@@ -72,13 +75,14 @@ export class GoalCards {
     modalFixDeleteButton.addEventListener('click', () => {
       const currentlySelectedGoalCardIDNumber = localStorage.getItem('currently_selected_goal_card_ID_number');
       localStorage.removeItem(`goal_card_${currentlySelectedGoalCardIDNumber}`);
-      M.toast({
-        html: 'リロードします...',
-        classes: 'cyan'
-      });
-      setTimeout(() => {
-        location.reload();
-      }, 1500);
+      functions.setToastAndReload('目標カードを修正しました！', 'cyan');
+    //   M.toast({
+    //     html: 'リロードします...',
+    //     classes: 'cyan'
+    //   });
+    //   setTimeout(() => {
+    //     location.reload();
+    //   }, 1500);
     });
   }
 }

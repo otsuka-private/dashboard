@@ -1,3 +1,4 @@
+import * as functions from '../Functions/functions.js';
 import {
   CalcCategoryTime
 } from './CalcCategoryTime.js';
@@ -38,13 +39,14 @@ export class CardDayRecord {
       }
       new CalcCategoryTime(false);
       this.calcPrintWorkingTime();
-      setTimeout(() => {
-        location.reload(true);
-      }, 2000);
-      M.toast({
-        html: '新しい行動を記録しました',
-        classes: 'cyan'
-      });
+      functions.setToastAndReload('新しい行動を記録しました', 'cyan');
+      // setTimeout(() => {
+      //   location.reload(true);
+      // }, 2000);
+      // M.toast({
+      //   html: '新しい行動を記録しました',
+      //   classes: 'cyan'
+      // });
     });
   }
 
@@ -90,15 +92,16 @@ export class CardDayRecord {
       localStorage.removeItem('categoryRestMinute');
       new FetchData().fetchCategoryTimeLocalStorage();
       this.recordNumber = 0;
-      const toastArray = ['true', '1日をリセットしました', 'cyan'];
-      localStorage.setItem('toast_to_show_after_reloading', toastArray);
-      M.toast({
-        html: 'リロードします...',
-        classes: 'cyan'
-      });
-      setTimeout(() => {
-        location.reload();
-      }, 2000);
+      functions.setToastAndReload('1日をリセットしました', 'cyan');
+      // const toastArray = ['true', '1日をリセットしました', 'cyan'];
+      // localStorage.setItem('toast_to_show_after_reloading', toastArray);
+      // M.toast({
+      //   html: 'リロードします...',
+      //   classes: 'cyan'
+      // });
+      // setTimeout(() => {
+      //   location.reload();
+      // }, 2000);
     })
   }
 }

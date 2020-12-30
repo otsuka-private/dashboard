@@ -28,3 +28,17 @@ export function addTime(hour, minute, categoryName) {
   localStorage.setItem(`category${categoryName}Minute`, newMinute);
   return [newHour, newMinute];
 }
+
+////////// リロード後のトーストを決めてリロードする関数 //////////
+
+export function setToastAndReload(message, color) {
+  const toastArray = ['true', message, color];
+  localStorage.setItem('toast_to_show_after_reloading', toastArray);
+  M.toast({
+    html: 'リロードします...',
+    classes: 'cyan'
+  });
+  setTimeout(() => {
+    location.reload();
+  }, 2000);
+}

@@ -22,17 +22,17 @@ export class CardDayRecord {
       const minute = nowTime.getMinutes();
 
       const thingArray = document.getElementsByName('day-record-thing');
-      for (let thing of thingArray) {
+      for (const thing of thingArray) {
         if (thing.checked) {
           const template = document.getElementById('template-record-p');
           const clone = template.content.cloneNode(true);
-          clone.querySelector('p').textContent = hour + ' : ' + ('0' + minute).slice(-2) + '　' + thing.value;
-          this.recordNumber = localStorage.getItem(`recordNumber`);
+          clone.querySelector('p').textContent = `${hour} : ${(`0${minute}`).slice(-2)}　${thing.value}`;
+          this.recordNumber = localStorage.getItem('recordNumber');
           this.recordNumber++;
           localStorage.setItem(`hour${this.recordNumber}`, hour);
           localStorage.setItem(`minute${this.recordNumber}`, minute);
           localStorage.setItem(`thing${this.recordNumber}`, thing.value);
-          localStorage.setItem(`recordNumber`, this.recordNumber);
+          localStorage.setItem('recordNumber', this.recordNumber);
           cardContentDayRecord.append(clone);
         }
       }
@@ -56,7 +56,7 @@ export class CardDayRecord {
     localStorage.setItem('workingMinute', workingMinute);
     const workingTime = workingHour + (workingMinute / 60);
     localStorage.setItem(`workingTime${localStorage.getItem('dayToday')}`, workingTime);
-    document.getElementById('working-time').textContent = workingHour + 'h ' + workingMinute + 'm';
+    document.getElementById('working-time').textContent = `${workingHour}h ${workingMinute}m`;
   }
 
   deleteDayRecord() {
@@ -77,7 +77,7 @@ export class CardDayRecord {
         localStorage.removeItem(`minute${i}`);
         localStorage.removeItem(`thing${i}`);
       }
-      localStorage.removeItem(`recordNumber`);
+      localStorage.removeItem('recordNumber');
       localStorage.removeItem('categoryTodaiHour');
       localStorage.removeItem('categoryTodaiMinute');
       localStorage.removeItem('categoryJsHour');
@@ -90,10 +90,15 @@ export class CardDayRecord {
       localStorage.removeItem('categoryRestMinute');
       new FetchData().fetchCategoryTimeLocalStorage();
       this.recordNumber = 0;
+      const toastArray = ['true', '1日をリセットしました', 'cyan'];
+      localStorage.setItem('toast_to_show_after_reloading', toastArray);
       M.toast({
-        html: '本日の記録をリセットしました',
-        classes: 'orange'
+        html: 'リロードします...',
+        classes: 'cyan'
       });
+      setTimeout(() => {
+        location.reload();
+      }, 2000);
     })
   }
 }

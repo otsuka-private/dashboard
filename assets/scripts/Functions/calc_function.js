@@ -22,7 +22,7 @@ export function addTime(hour, minute, categoryName) {
   const oldMinute = +localStorage.getItem(`category${categoryName}Minute`);
   let newMinute = oldMinute + minute;
   const oldHour = +localStorage.getItem(`category${categoryName}Hour`);
-  let newHour = oldHour + hour + ((newMinute - newMinute % 60) / 60);
+  const newHour = oldHour + hour + ((newMinute - newMinute % 60) / 60);
   localStorage.setItem(`category${categoryName}Hour`, newHour);
   newMinute = newMinute % 60;
   localStorage.setItem(`category${categoryName}Minute`, newMinute);

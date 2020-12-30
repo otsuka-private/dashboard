@@ -6,6 +6,7 @@ export class FetchData {
     this.fetchTodaiCardContentLocalStorage();
     this.fetchCategoryGoalLocalStorage();
     this.fetchGoalCardsLocalStorage();
+    this.showToast();
   }
 
   fetchDayStartEndLocalStorage() {
@@ -108,7 +109,7 @@ export class FetchData {
       const content = dataArray[1];
       const progressNow = dataArray[3];
       const all = dataArray[4];
-      const backgroundColor = dataArray[5];
+      const backgroundColor = dataArray[5].toLocaleLowerCase();
       clone.querySelector('.card-title').textContent = title;
       clone.querySelector('#goal-cards__template-card__content').textContent = content;
       // clone.querySelector('#date').textContent = dataArray[2];
@@ -130,6 +131,28 @@ export class FetchData {
       });
 
       container.append(clone);
+    }
+  }
+
+  showToast() {
+    const toastArrayData = localStorage.getItem('toast_to_show_after_reloading');
+    if (!toastArrayData) {
+      localStorage.setItem('toast_to_show_after_reloading', 'false');
+      return;
+    }
+    const toastArray = toastArrayData.split(',');
+    const toastObject = {
+      bool: toastArray[0],
+      message: toastArray[1],
+      color: toastArray[2]
+    };
+    if (toastObject.bool == 'true') {
+      M.toast({
+        html: toastObject.message,
+        classes: toastObject.color,
+      });
+      const toastArray = ['false'];
+      localStorage.setItem('toast_to_show_after_reloading', toastArray);
     }
   }
 }

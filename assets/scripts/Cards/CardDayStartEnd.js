@@ -36,7 +36,7 @@ export class CardDayStartEnd {
         localStorage.setItem('startHour', hour);
         localStorage.setItem('startMinute', minute);
         localStorage.setItem('dayToday', day);
-        document.getElementById('wake-time').textContent = hour + ' : ' + ('0' + minute).slice(-2);
+        document.getElementById('wake-time').textContent = `${hour} : ${(`0${minute}`).slice(-2)}`;
         M.toast({
           html: '開始時間を記録しました。<br>素晴らしい１日に感謝して今日も精一杯生きましょう！',
           classes: 'cyan'
@@ -47,7 +47,7 @@ export class CardDayStartEnd {
         const hour = nowTime.getHours();
         localStorage.setItem('endHour', hour);
         localStorage.setItem('endMinute', minute);
-        document.getElementById('end-time').textContent = hour + ' : ' + ('0' + minute).slice(-2);
+        document.getElementById('end-time').textContent = `${hour} : ${(`0${minute}`).slice(-2)}`;
         this.calcPrintWakingTime();
         new CalcCategoryTime(true);
         this.calcPrintWorkingTime();
@@ -72,7 +72,7 @@ export class CardDayStartEnd {
     localStorage.setItem('wakingHour', timeArray[0]);
     localStorage.setItem('wakingMinute', timeArray[1]);
     localStorage.setItem(`wakingTime${localStorage.getItem('dayToday')}`, wakingTime);
-    document.getElementById('waking-time').textContent = timeArray[0] + 'h ' + timeArray[1] + 'm';
+    document.getElementById('waking-time').textContent = `${timeArray[0]}h ${timeArray[1]}m`;
   }
 
   calcPrintWorkingTime() {
@@ -83,7 +83,7 @@ export class CardDayStartEnd {
     localStorage.setItem('workingMinute', workingMinute);
     const workingTime = workingHour + (workingMinute / 60);
     localStorage.setItem(`workingTime${localStorage.getItem('dayToday')}`, workingTime);
-    document.getElementById('working-time').textContent = workingHour + 'h ' + workingMinute + 'm';
+    document.getElementById('working-time').textContent = `${workingHour}h ${workingMinute}m`;
   }
 
   setNewWeek() {

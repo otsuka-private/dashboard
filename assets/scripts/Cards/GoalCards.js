@@ -19,13 +19,6 @@ export class GoalCards {
       localStorage.setItem(`goal_card_${goalCardIDNumber}`, dataArray);
       localStorage.setItem('goal_card_ID_number', ++goalCardIDNumber);
       functions.setToastAndReload('新しい目標カードを追加しました！', 'cyan');
-      // M.toast({
-      //   html: 'リロードします...',
-      //   classes: 'cyan'
-      // });
-      // setTimeout(() => {
-      //   location.reload();
-      // }, 1500);
     });
   }
 
@@ -34,7 +27,7 @@ export class GoalCards {
     for (const card of cards) {
       card.addEventListener('click', (event) => {
         const currentlySelectedGoalCardID = event.target.closest('a').querySelector('div').id;
-        const currentlySelectedGoalCardIDNumber = currentlySelectedGoalCardID.slice(-1);
+        const currentlySelectedGoalCardIDNumber = currentlySelectedGoalCardID.slice(16);
         localStorage.setItem('currently_selected_goal_card_ID_number', currentlySelectedGoalCardIDNumber);
 
         const modal = document.getElementById('goal-cards__modal-fix-card');
@@ -62,27 +55,21 @@ export class GoalCards {
       }
       const currentlySelectedGoalCardIDNumber = localStorage.getItem('currently_selected_goal_card_ID_number');
       localStorage.setItem(`goal_card_${currentlySelectedGoalCardIDNumber}`, fixedDataArray);
-      M.toast({
-        html: 'リロードします...',
-        classes: 'cyan'
-      });
-      setTimeout(() => {
-        location.reload();
-      }, 1500);
+      functions.setToastAndReload('目標カードを修正しました！', 'cyan');
+      // M.toast({
+      //   html: 'リロードします...',
+      //   classes: 'cyan'
+      // });
+      // setTimeout(() => {
+      //   location.reload();
+      // }, 1500);
     });
 
     const modalFixDeleteButton = document.getElementById('goal-cards__modal-fix-card__delete-button');
     modalFixDeleteButton.addEventListener('click', () => {
       const currentlySelectedGoalCardIDNumber = localStorage.getItem('currently_selected_goal_card_ID_number');
       localStorage.removeItem(`goal_card_${currentlySelectedGoalCardIDNumber}`);
-      functions.setToastAndReload('目標カードを修正しました！', 'cyan');
-    //   M.toast({
-    //     html: 'リロードします...',
-    //     classes: 'cyan'
-    //   });
-    //   setTimeout(() => {
-    //     location.reload();
-    //   }, 1500);
+      functions.setToastAndReload('目標カードを削除しました！', 'cyan');
     });
   }
 }

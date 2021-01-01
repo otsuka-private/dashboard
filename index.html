@@ -158,6 +158,8 @@
 
   <!-- todai -->
 
+  <!-- TODO: no longer need ?? -->
+
   <div id="todai" class="red lighten-2 overflowXHidden display-none">
     <h3 class="center-align">東大</h3>
     <div class="center-align">
@@ -264,17 +266,23 @@
       <h3>Goal Cards</h3>
       <div id="goal-cards__container" class="a-inside-of-this-element-color-black">
         <template id="goal-cards__template-card">
+          <!-- TODO: change styles of cards -->
+          <!-- TODO: enable user to change the order of cards -->
           <div class="row">
             <div class="col s12">
               <a class="modal-trigger" href="#goal-cards__modal-fix-card">
                 <div class="card">
-                  <div class="card-content">
-                    <span class="card-title">title</span>
-                    <p><span id="goal-cards__template-card__content"></span> ( <span id="date"></span> )</p>
-                    <div class="chart center-align relative">
-                      <p>progress</p>
+                  <div class="card-content flex">
+                    <div class="card-content__left">
+                      <span class="card-title">title</span>
+                      <p><span id="goal-cards__template-card__content"></span> ( <span id="date"></span> )</p>
+                      <p class="white-text"><span id="goal-cards__template-card__progress-now"></span> / <span id="goal-cards__template-card__all"></span></p>
                     </div>
-                    <p class="center-align white-text"><span id="goal-cards__template-card__progress-now"></span> / <span id="goal-cards__template-card__all"></span></p>
+                    <div class="card-content__right">
+                      <div class="chart center-align relative">
+                        <p class="center-align">progress</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </a>

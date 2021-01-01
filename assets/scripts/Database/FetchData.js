@@ -126,8 +126,8 @@ export class FetchData {
       new EasyPieChart(clone.querySelector('.chart'), {
         barColor: '#00bfa5',
         scaleColor: false,
-        lineWidth: 15,
-        size: 200
+        lineWidth: 9,
+        size: 100,
       });
 
       container.append(clone);

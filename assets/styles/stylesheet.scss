@@ -46,6 +46,10 @@ p {
   height: auto;
 }
 
+.margin-center {
+  margin: 0 auto;
+}
+
 .margin-bottom-100px {
   margin-bottom: 100px;
 }
@@ -64,11 +68,11 @@ p {
 }
 
 .card-content__left {
-  width: 60%;
+  width: 65%;
 }
 
 .card-content__right {
-  width: 40%;
+  width: 35%;
 }
 
 .modal {
@@ -102,4 +106,17 @@ p {
   a {
     color: rgba(0,0,0,0.87);
   }
+}
+
+@keyframes flash-animation {
+  0% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.flash {
+  animation: flash-animation 1.5s infinite;
 }

@@ -10,26 +10,26 @@ export class FetchData {
   }
 
   fetchDayStartEndLocalStorage() {
-  const startHour = localStorage.getItem('startHour');
-  const startMinute = localStorage.getItem('startMinute');
-  if (!startHour) {
-    return;
+    const startHour = localStorage.getItem('startHour');
+    const startMinute = localStorage.getItem('startMinute');
+    if (!startHour) {
+      return;
+    }
+    document.getElementById('wake-time').textContent = `${startHour} : ${(`0${startMinute}`).slice(-2)}`;
+    const endHour = localStorage.getItem('endHour');
+    const endMinute = localStorage.getItem('endMinute');
+    if (endHour) {
+      document.getElementById('end-time').textContent = `${endHour} : ${(`0${endMinute}`).slice(-2)}`;
+      const wakingHour = localStorage.getItem('wakingHour');
+      const wakingMinute = localStorage.getItem('wakingMinute');
+      document.getElementById('waking-time').textContent = `${wakingHour}h ${wakingMinute}m`;
+    }
+    const workingHour = localStorage.getItem('workingHour');
+    const workingMinute = localStorage.getItem('workingMinute');
+    if (workingMinute != null) {
+      document.getElementById('working-time').textContent = `${workingHour}h ${workingMinute}m`;
+    }
   }
-  document.getElementById('wake-time').textContent = `${startHour} : ${(`0${startMinute}`).slice(-2)}`;
-  const endHour = localStorage.getItem('endHour');
-  const endMinute = localStorage.getItem('endMinute');
-  if (endHour) {
-    document.getElementById('end-time').textContent = `${endHour} : ${(`0${endMinute}`).slice(-2)}`;
-    const wakingHour = localStorage.getItem('wakingHour');
-    const wakingMinute = localStorage.getItem('wakingMinute');
-    document.getElementById('waking-time').textContent = `${wakingHour}h ${wakingMinute}m`;
-  }
-  const workingHour = localStorage.getItem('workingHour');
-  const workingMinute = localStorage.getItem('workingMinute');
-  if (workingMinute != null) {
-    document.getElementById('working-time').textContent = `${workingHour}h ${workingMinute}m`;
-  }
-}
 
   fetchDayRecordLocalStorage() {
     const cardContentDayRecord = document.getElementById('card-content-day-record');
@@ -95,42 +95,42 @@ export class FetchData {
       return;
     }
     const container = document.getElementById('goal-cards__container');
+    for (let i = 1; i <= 3; i++) {
 
-    for (let i = 0; i < goalCardsIDNumber; i++) {
-      const dataArrayLocalStorage = localStorage.getItem(`goal_card_${i}`);
-      if (!dataArrayLocalStorage) {
-        continue;
+      for (let j = 0; j < goalCardsIDNumber; j++) {
+        const dataJSON = localStorage.getItem(`goal_card_${j}`);
+        if (!dataJSON) {
+          continue;
+        }
+        const dataObject = JSON.parse(dataJSON);
+        const template = document.getElementById('goal-cards__template-card');
+        const clone = template.content.cloneNode(true);
+        if (dataObject.order == i) {
+          clone.querySelector('.card-title').textContent = dataObject.goalTitle;
+          clone.querySelector('#goal-cards__template-card__content').textContent = dataObject.goalContent;
+          clone.querySelector('#goal-cards__template-card__date').textContent = dataObject.dueDate.toString().slice(-5);
+          const percentage = parseInt(dataObject.progressNow * 100 / dataObject.all);
+          clone.querySelector('.chart').setAttribute('data-percent', percentage);
+          clone.querySelector('.chart').querySelector('p').textContent = `${percentage}%`;
+          clone.querySelector('#goal-cards__template-card__progress-now').textContent = dataObject.progressNow;
+          clone.querySelector('#goal-cards__template-card__all').textContent = dataObject.all;
+          clone.querySelector('.card').classList.add(`${dataObject.backgroundColor}`);
+          clone.querySelector('.card').classList.add(`lighten-${i}`);
+          if (i == 1) {
+            clone.querySelector('.card').classList.add('flash');
+          }
+          clone.querySelector('.card').setAttribute('id', `goal-cards__card${j}`);
+
+          new EasyPieChart(clone.querySelector('.chart'), {
+            barColor: '#00bfa5',
+            scaleColor: false,
+            lineWidth: 9,
+            size: 100,
+          });
+
+          container.append(clone);
+        }
       }
-      const dataArray = dataArrayLocalStorage.split(',');
-      const template = document.getElementById('goal-cards__template-card');
-      const clone = template.content.cloneNode(true);
-
-      const title = dataArray[0];
-      const content = dataArray[1];
-      const progressNow = dataArray[3];
-      const all = dataArray[4];
-      const backgroundColor = dataArray[5].toLocaleLowerCase();
-      clone.querySelector('.card-title').textContent = title;
-      clone.querySelector('#goal-cards__template-card__content').textContent = content;
-      // clone.querySelector('#date').textContent = dataArray[2];
-      const percentage = parseInt(progressNow * 100 / all);
-      clone.querySelector('.chart').setAttribute('data-percent', percentage);
-      clone.querySelector('.chart').querySelector('p').textContent = `${percentage}%`;
-      clone.querySelector('#goal-cards__template-card__progress-now').textContent = progressNow;
-      clone.querySelector('#goal-cards__template-card__all').textContent = all;
-      clone.querySelector('.card').classList.add(`${backgroundColor}`);
-      clone.querySelector('.card').classList.add('lighten-3');
-      clone.querySelector('.card').setAttribute('id', `goal-cards__card${i}`);
-      // const barColor = `#${dataArray[6]}`;
-
-      new EasyPieChart(clone.querySelector('.chart'), {
-        barColor: '#00bfa5',
-        scaleColor: false,
-        lineWidth: 9,
-        size: 100,
-      });
-
-      container.append(clone);
     }
   }
 

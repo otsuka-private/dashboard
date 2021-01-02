@@ -2,6 +2,9 @@ import {
   materializeInitialize
 } from './assets/scripts/Libraries/materializeInitialize.js';
 import {
+  MaterializeSelectFixed
+} from './assets/scripts/Libraries/MaterializeSelectFixed.js'
+import {
   FetchData
 } from './assets/scripts/Database/FetchData.js';
 import {
@@ -23,6 +26,7 @@ import {
 class App {
   constructor() {
     materializeInitialize();
+    MaterializeSelectFixed();
     new FetchData();
     new CardDayStartEnd();
     new CardDayRecord();

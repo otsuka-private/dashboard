@@ -8,17 +8,29 @@ export class GoalCards {
 
   addEventListenerToAddNewCardButton() {
     const modalAddButton = document.getElementById('goal-cards__modal-add-new-card__ok-button');
-    modalAddButton.addEventListener('click', (event) => {
-      const modal = event.target.parentElement.parentElement;
-      const inputs = modal.querySelectorAll('input');
-      const dataArray = [];
-      for (const input of inputs) {
-        dataArray.push(input.value.trim());
+    modalAddButton.addEventListener('click', () => {
+      const backgroundSelect = document.getElementById('goal-cards__modal-add-new-card__input-background-color');
+      const backgroundSelectInstance = M.FormSelect.getInstance(backgroundSelect);
+      const backgrounValue = backgroundSelectInstance.getSelectedValues()[0];
+      const orderSelect = document.getElementById('goal-cards__modal-add-new-card__input-order');
+      const orderSelectInstance = M.FormSelect.getInstance(orderSelect);
+      const orderValue = orderSelectInstance.getSelectedValues()[0];
+      const goalCardObject = {
+        goalTitle: document.getElementById('goal-cards__modal-add-new-card__input-goal').value.trim(),
+        goalContent: document.getElementById('goal-cards__modal-add-new-card__input-content').value.trim(),
+        dueDate: document.getElementById('goal-cards__modal-add-new-card__input-date').value.trim(),
+        progressNow: document.getElementById('goal-cards__modal-add-new-card__input-now').value.trim(),
+        all: document.getElementById('goal-cards__modal-add-new-card__input-all').value.trim(),
+        backgroundColor: backgrounValue.toLowerCase(),
+        order: orderValue,
       }
+      const goalCardObjectJSON = JSON.stringify(goalCardObject);
+
       let goalCardIDNumber = localStorage.getItem('goal_card_ID_number');
-      localStorage.setItem(`goal_card_${goalCardIDNumber}`, dataArray);
+      localStorage.setItem(`goal_card_${goalCardIDNumber}`, goalCardObjectJSON);
       localStorage.setItem('goal_card_ID_number', ++goalCardIDNumber);
       functions.setToastAndReload('新しい目標カードを追加しました！', 'cyan');
+
     });
   }
 
@@ -33,6 +45,7 @@ export class GoalCards {
         const modal = document.getElementById('goal-cards__modal-fix-card');
         modal.querySelector('#goal-cards__modal-fix-card__input-goal').value = card.querySelector('.card-title').textContent;
         modal.querySelector('#goal-cards__modal-fix-card__input-content').value = card.querySelector('#goal-cards__template-card__content').textContent;
+        modal.querySelector('#goal-cards__modal-fix-card__input-date').value = card.querySelector('#goal-cards__template-card__date').textContent;
         modal.querySelector('#goal-cards__modal-fix-card__input-now').value = card.querySelector('#goal-cards__template-card__progress-now').textContent;
         modal.querySelector('#goal-cards__modal-fix-card__input-all').value = card.querySelector('#goal-cards__template-card__all').textContent;
         modal.querySelector('#goal-cards__modal-fix-card__input-background-color').value = card.classList.item(1);
@@ -47,22 +60,32 @@ export class GoalCards {
 
     const modalFixOkButton = document.getElementById('goal-cards__modal-fix-card__ok-button');
     modalFixOkButton.addEventListener('click', () => {
-      const modal = event.target.parentElement.parentElement;
-      const inputs = modal.querySelectorAll('input');
-      const fixedDataArray = [];
-      for (const input of inputs) {
-        fixedDataArray.push(input.value.trim());
+      const backgroundSelect = document.getElementById('goal-cards__modal-fix-card__input-background-color');
+      const backgroundSelectInstance = M.FormSelect.getInstance(backgroundSelect);
+      const backgrounValue = backgroundSelectInstance.getSelectedValues()[0];
+      if (!backgrounValue) {
+        M.toast({
+          html: '背景色が選択されていません',
+          classes: 'orange'
+        });
+        return;
       }
+      const orderSelect = document.getElementById('goal-cards__modal-fix-card__input-order');
+      const orderSelectInstance = M.FormSelect.getInstance(orderSelect);
+      const orderValue = orderSelectInstance.getSelectedValues()[0];
+      const fixedDataObject = {
+        goalTitle: document.getElementById('goal-cards__modal-fix-card__input-goal').value.trim(),
+        goalContent: document.getElementById('goal-cards__modal-fix-card__input-content').value.trim(),
+        dueDate: document.getElementById('goal-cards__modal-fix-card__input-date').value.trim(),
+        progressNow: document.getElementById('goal-cards__modal-fix-card__input-now').value.trim(),
+        all: document.getElementById('goal-cards__modal-fix-card__input-all').value.trim(),
+        backgroundColor: backgrounValue.toLowerCase(),
+        order: orderValue,
+      }
+      const fixedDataObjectJSON = JSON.stringify(fixedDataObject);
       const currentlySelectedGoalCardIDNumber = localStorage.getItem('currently_selected_goal_card_ID_number');
-      localStorage.setItem(`goal_card_${currentlySelectedGoalCardIDNumber}`, fixedDataArray);
+      localStorage.setItem(`goal_card_${currentlySelectedGoalCardIDNumber}`, fixedDataObjectJSON);
       functions.setToastAndReload('目標カードを修正しました！', 'cyan');
-      // M.toast({
-      //   html: 'リロードします...',
-      //   classes: 'cyan'
-      // });
-      // setTimeout(() => {
-      //   location.reload();
-      // }, 1500);
     });
 
     const modalFixDeleteButton = document.getElementById('goal-cards__modal-fix-card__delete-button');
@@ -73,5 +96,3 @@ export class GoalCards {
     });
   }
 }
-
-// example data structure goalCardNum = [goal, content, date, now, all, backgroundColor, barColor]

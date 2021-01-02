@@ -36,9 +36,9 @@ export function setToastAndReload(message, color) {
   localStorage.setItem('toast_to_show_after_reloading', toastArray);
   M.toast({
     html: 'リロードします...',
-    classes: 'cyan'
+    classes: 'orange'
   });
   setTimeout(() => {
     location.reload();
-  }, 2000);
+  }, 1000);
 }

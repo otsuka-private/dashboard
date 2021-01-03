@@ -6,8 +6,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>My dashboard</title>
 
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.css">
@@ -15,9 +13,38 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
   <script src="./assets/scripts/Libraries/vanilla_easypiechart.js"></script>
+  <script>
+    (function(d) {
+      let config = {
+          kitId: 'ajl1ysu',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h = d.documentElement,
+        t = setTimeout(function() {
+          h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+        }, config.scriptTimeout),
+        tk = d.createElement("script"),
+        f = false,
+        s = d.getElementsByTagName("script")[0],
+        a;
+      h.className += " wf-loading";
+      tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+      tk.async = true;
+      tk.onload = tk.onreadystatechange = function() {
+        a = this.readyState;
+        if (f || a && a != "complete" && a != "loaded") return;
+        f = true;
+        clearTimeout(t);
+        try {
+          Typekit.load(config)
+        } catch (e) {}
+      };
+      s.parentNode.insertBefore(tk, s)
+    })(document);
+  </script>
   <script src="./assets/scripts/Charts/chart.js" defer></script>
   <script src="./assets/scripts/Charts/easypiechart.js" defer></script>
   <script src="./index.js" defer type="module"></script>
@@ -295,7 +322,7 @@
   </div>
 
   <!-- delete all button -->
-  
+
   <div class="red lighten-3 display-none" id="delete-all">
     <div class="center-align">
       <a class="waves-effect waves-light btn modal-trigger red accent-4 margin-top-bottom-20px" href="#modal-delete-all">全データ消去</a>

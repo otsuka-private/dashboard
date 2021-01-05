@@ -48,7 +48,6 @@ export class GoalCards {
         modal.querySelector('#goal-cards__modal-fix-card__input-date').value = card.querySelector('#goal-cards__template-card__date').textContent;
         modal.querySelector('#goal-cards__modal-fix-card__input-now').value = card.querySelector('#goal-cards__template-card__progress-now').textContent;
         modal.querySelector('#goal-cards__modal-fix-card__input-all').value = card.querySelector('#goal-cards__template-card__all').textContent;
-        modal.querySelector('#goal-cards__modal-fix-card__input-background-color').value = card.classList.item(1);
         modal.querySelectorAll('input').forEach(element => {
           element.classList.add('blue-grey-text');
           element.addEventListener('click', () => {
@@ -60,19 +59,20 @@ export class GoalCards {
 
     const modalFixOkButton = document.getElementById('goal-cards__modal-fix-card__ok-button');
     modalFixOkButton.addEventListener('click', () => {
+      const currentlySelectedGoalCardIDNumber = localStorage.getItem('currently_selected_goal_card_ID_number');
+      const cardDataObject = JSON.parse(localStorage.getItem(`goal_card_${currentlySelectedGoalCardIDNumber}`));
       const backgroundSelect = document.getElementById('goal-cards__modal-fix-card__input-background-color');
       const backgroundSelectInstance = M.FormSelect.getInstance(backgroundSelect);
-      const backgrounValue = backgroundSelectInstance.getSelectedValues()[0];
-      if (!backgrounValue) {
-        M.toast({
-          html: '背景色が選択されていません',
-          classes: 'orange'
-        });
-        return;
+      let backgrounValue = backgroundSelectInstance.getSelectedValues()[0];
+      if (backgrounValue == 'no-change') {
+        backgrounValue = cardDataObject.backgroundColor;
       }
       const orderSelect = document.getElementById('goal-cards__modal-fix-card__input-order');
       const orderSelectInstance = M.FormSelect.getInstance(orderSelect);
-      const orderValue = orderSelectInstance.getSelectedValues()[0];
+      let orderValue = orderSelectInstance.getSelectedValues()[0];
+      if (orderValue == 'no-change') {
+        orderValue = cardDataObject.order;
+      }
       const fixedDataObject = {
         goalTitle: document.getElementById('goal-cards__modal-fix-card__input-goal').value.trim(),
         goalContent: document.getElementById('goal-cards__modal-fix-card__input-content').value.trim(),
@@ -83,7 +83,6 @@ export class GoalCards {
         order: orderValue,
       }
       const fixedDataObjectJSON = JSON.stringify(fixedDataObject);
-      const currentlySelectedGoalCardIDNumber = localStorage.getItem('currently_selected_goal_card_ID_number');
       localStorage.setItem(`goal_card_${currentlySelectedGoalCardIDNumber}`, fixedDataObjectJSON);
       functions.setToastAndReload('目標カードを修正しました！', 'cyan');
     });

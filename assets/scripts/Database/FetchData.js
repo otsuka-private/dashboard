@@ -3,8 +3,6 @@ export class FetchData {
     this.fetchDayStartEndLocalStorage();
     this.fetchDayRecordLocalStorage();
     this.fetchCategoryTimeLocalStorage();
-    this.fetchTodaiCardContentLocalStorage();
-    this.fetchCategoryGoalLocalStorage();
     this.fetchGoalCardsLocalStorage();
     this.showToast();
   }
@@ -55,46 +53,14 @@ export class FetchData {
     categoryRest.textContent = `${+localStorage.getItem('categoryRestHour')} : ${(`0${+localStorage.getItem('categoryRestMinute')}`).slice(-2)}`;
   }
 
-  fetchTodaiCardContentLocalStorage() {
-    const todaiCardContents = document.querySelectorAll('#todai .card .card a');
-    for (const todaiCardContent of todaiCardContents) {
-      if (localStorage.getItem(`${todaiCardContent.id}`)) {
-        todaiCardContent.textContent = localStorage.getItem(`${todaiCardContent.id}`);
-      }
-    }
-    const todaiCardIdNumber = localStorage.getItem('todaiCardIdNumber');
-    for (let i = 0; i <= todaiCardIdNumber; i++) {
-      if (!localStorage.getItem(`todaiClassCard${i}`)) {
-        continue;
-      }
-      const cardContentArray = localStorage.getItem(`todaiClassCard${i}`).split(',');
-      const template = document.getElementById('todai-class-template');
-      const clone = template.content.cloneNode(true);
-      clone.querySelector('span').textContent = cardContentArray[1];
-      clone.querySelector('p').textContent = cardContentArray[2];
-      clone.querySelector('div').classList.add(`todaiClassCard${i}`);
-      const cardContainerId = cardContentArray[0];
-      const cardContainer = document.getElementById(cardContainerId);
-      cardContainer.append(clone);
-    }
-  }
-
-  fetchCategoryGoalLocalStorage() {
-    const categoryGoals = document.querySelectorAll('.category-goal');
-    for (const categoryGoal of categoryGoals) {
-      if (localStorage.getItem(`${categoryGoal.id}`)) {
-        categoryGoal.textContent = localStorage.getItem(`${categoryGoal.id}`);
-      }
-    }
-  }
-
   fetchGoalCardsLocalStorage() {
     const goalCardsIDNumber = localStorage.getItem('goal_card_ID_number');
     if (!goalCardsIDNumber) {
       localStorage.setItem('goal_card_ID_number', 0);
       return;
     }
-    const container = document.getElementById('goal-cards__container');
+    const container = document.getElementById('goal-cards__container--now-completed');
+    const containerCompleted = document.getElementById('goal-cards__container__collapsible-completed');
     for (let i = 1; i <= 3; i++) {
 
       for (let j = 0; j < goalCardsIDNumber; j++) {
@@ -128,6 +94,9 @@ export class FetchData {
             size: 100,
           });
 
+          if (dataObject.wasCompleted) {
+            containerCompleted.append(clone);
+          }
           container.append(clone);
         }
       }

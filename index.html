@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.css">
   <link rel="stylesheet" href="assets/styles/stylesheet.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
@@ -185,138 +186,34 @@
     </div>
   </div>
 
-  <!-- todai -->
-
-  <!-- TODO: no longer need ?? -->
-
-  <div id="todai" class="red lighten-2 overflowXHidden display-none">
-    <h3 class="center-align">東大</h3>
-    <div class="center-align">
-      <img class="width90 margin-top-bottom-20px" src="./assets/images/online_learning.svg">
-    </div>
-    <div class="row">
-      <div class="col s12">
-        <div class="card">
-          <div class="card-content">
-            <span class="card-title">目標</span>
-            <a class="black-text modal-trigger category-goal" href="#modal-category-goal-set-new" id="category-goal-1">進級に必要な単位をしっかりと取って3年生に無事上がろう。</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col s12">
-        <div class="card red lighten-4">
-          <div class="card-content">
-            <span class="card-title">月曜日</span>
-            <div class="row">
-              <div class="col s12" id="todai-monday-class-cards-container">
-                <template id="todai-class-template">
-                  <div class="card todai-class-card">
-                    <div class="card-content">
-                      <a class="modal-trigger black-text" href="#modal-todai-set-card-content">
-                        <span class="card-title"></span>
-                        <p></p>
-                      </a>
-                    </div>
-                  </div>
-                </template>
-              </div>
-            </div>
-            <a class="modal-trigger btn todai-add-class" href="#modal-todai-add-class-card" id="todai-add-class-1">授業を追加</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col s12">
-        <div class="card red lighten-4">
-          <div class="card-content">
-            <span class="card-title">火曜日</span>
-            <div class="row">
-              <div class="col s12" id="todai-tuesday-class-cards-container">
-              </div>
-            </div>
-            <a class="modal-trigger btn todai-add-class" href="#modal-todai-add-class-card" id="todai-add-class-2">授業を追加</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col s12">
-        <div class="card red lighten-4">
-          <div class="card-content">
-            <span class="card-title">水曜日</span>
-            <div class="row">
-              <div class="col s12" id="todai-wednesday-class-cards-container">
-              </div>
-            </div>
-            <a class="modal-trigger btn todai-add-class" href="#modal-todai-add-class-card" id="todai-add-class-2">授業を追加</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col s12">
-        <div class="card red lighten-4">
-          <div class="card-content">
-            <span class="card-title">木曜日</span>
-            <div class="row">
-              <div class="col s12" id="todai-thursday-class-cards-container">
-              </div>
-            </div>
-            <a class="modal-trigger btn todai-add-class" href="#modal-todai-add-class-card" id="todai-add-class-2">授業を追加</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col s12">
-        <div class="card red lighten-4">
-          <div class="card-content">
-            <span class="card-title">金曜日</span>
-            <div class="row">
-              <div class="col s12" id="todai-friday-class-cards-container">
-              </div>
-            </div>
-            <a class="modal-trigger btn todai-add-class" href="#modal-todai-add-class-card" id="todai-add-class-2">授業を追加</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="row">
     <div class="col s12">
       <h3>Goal Cards</h3>
       <div id="goal-cards__container" class="a-inside-of-this-element-color-black">
-        <template id="goal-cards__template-card">
-          <a class="modal-trigger" href="#goal-cards__modal-fix-card">
-            <div class="card">
-              <div class="card-content flex">
-                <div class="card-content__left">
-                  <span class="card-title">title</span>
-                  <p><span id="goal-cards__template-card__content"></span> (<span id="goal-cards__template-card__date"></span>)</p>
-                  <p class="white-text"><span id="goal-cards__template-card__progress-now"></span> / <span id="goal-cards__template-card__all"></span></p>
-                </div>
-                <div class="card-content__right valign-wrapper">
-                  <div class="chart center-align relative margin-center">
-                    <p class="center-align">progress</p>
+        <div id="goal-cards__container--now-completed">
+          <template id="goal-cards__template-card">
+            <a class="modal-trigger" href="#goal-cards__modal-fix-card">
+              <div class="card">
+                <div class="card-content flex">
+                  <div class="card-content__left">
+                    <span class="card-title">title</span>
+                    <p><span id="goal-cards__template-card__content"></span> (<span id="goal-cards__template-card__date"></span>)</p>
+                    <p class="white-text"><span id="goal-cards__template-card__progress-now"></span> / <span id="goal-cards__template-card__all"></span></p>
+                  </div>
+                  <div class="card-content__right valign-wrapper">
+                    <div class="chart center-align relative margin-center">
+                      <p class="center-align">progress</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </a>
-        </template>
-        <ul class="collapsible">
+            </a>
+          </template>
+        </div>
+        <ul class="collapsible border-0 box-shadow-0">
           <li>
-            <div class="collapsible-header">完了済み</div>
-            <div class="collapsible-body">
-              completed tasks here
+            <div class="collapsible-header collapsible-header--box-shadow">完了済み</div>
+            <div class="collapsible-body border-0 padding-0" id="goal-cards__container__collapsible-completed">
             </div>
           </li>
         </ul>
@@ -464,41 +361,6 @@
     </div>
   </div>
 
-  <!-- todai -->
-
-  <div id="modal-todai-set-card-content" class="modal">
-    <div class="modal-content">
-      <h4>授業カードを変更</h4>
-      <p>授業名を入力してください</p>
-      <input id="modai-input-todai-card-title">
-      <p>この授業の新しい課題を入力してください。</p>
-      <input id="modai-input-todai-card-assignment">
-    </div>
-    <div class="modal-footer">
-      <a class="modal-close waves-effect waves-green btn-flat">取り消し</a>
-      <a class="modal-close waves-effect waves-light btn red accent-4" id="delete-todai-card-btn">カードを消去</a>
-      <a class="modal-close waves-effect waves-light btn" id="set-todai-card-content-btn">決定</a>
-    </div>
-  </div>
-
-  <div id="modal-todai-add-class-card" class="modal">
-    <div class="modal-content">
-      <h4>授業カードを追加</h4>
-      <div class="input-field">
-        <input id="class-title" class="validate" type="text">
-        <label for="class-title">授業名</label>
-      </div>
-      <div class="input-field">
-        <input id="class-assignment" class="validate" type="text">
-        <label for="class-assignment">授業の新しい課題</label>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
-      <a class="modal-close waves-effect waves-light btn" id="modal-btn-decide-todai-add-class-card">決定</a>
-    </div>
-  </div>
-
   <div id="modal-delete-all" class="modal">
     <div class="modal-content">
       <p>注意</p>
@@ -635,9 +497,9 @@
       </div>
     </div>
     <div class="modal-footer">
-      <a class="modal-close waves-effect waves-light btn-flat">取り消し</a>
-      <a class="modal-close waves-effect waves-light btn red accent-4" id="goal-cards__modal-fix-card__delete-button">カードを削除</a>
-      <a class="modal-close waves-effect waves-light btn" id="goal-cards__modal-fix-card__ok-button">決定</a>
+      <a class="modal-close waves-effect waves-light btn blue left-align" id="goal-cards__modal-fix-card__complete-button"><i class="fas fa-check"></i></a>
+      <a class="modal-close waves-effect waves-light btn red accent-4" id="goal-cards__modal-fix-card__delete-button"><i class="fas fa-trash"></i></a>
+      <a class="modal-close waves-effect waves-light btn" id="goal-cards__modal-fix-card__ok-button"><i class="fas fa-pen"></i></a>
     </div>
   </div>
 

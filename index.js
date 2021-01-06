@@ -19,9 +19,6 @@ import {
 import {
   GoalCards
 } from './assets/scripts/Cards/GoalCards.js';
-import {
-  SetTodaiCardContent
-} from './assets/scripts/Cards/SetTodaiCardContent.js';
 
 class App {
   constructor() {
@@ -32,7 +29,6 @@ class App {
     new CardDayRecord();
     new Category();
     new GoalCards();
-    new SetTodaiCardContent();
     this.deleteAllBtn();
   }
 

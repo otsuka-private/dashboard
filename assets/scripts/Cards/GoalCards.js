@@ -105,7 +105,7 @@ export class GoalCards {
       cardDataObject.wasCompleted = true;
       const fixedDataObjectJSON = JSON.stringify(cardDataObject);
       localStorage.setItem(`goal_card_${currentlySelectedGoalCardIDNumber}`, fixedDataObjectJSON);
-      functions.setToastAndReload('目標カードを達成しました！', 'cyan');
+      functions.setToastAndReload('目標カードを達成しました！🎉', 'cyan');
     })
   }
 }

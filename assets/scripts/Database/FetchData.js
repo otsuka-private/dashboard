@@ -95,6 +95,7 @@ export class FetchData {
           });
 
           if (dataObject.wasCompleted) {
+            clone.querySelector('.card').classList.remove('flash');
             containerCompleted.append(clone);
           }
           container.append(clone);

@@ -8,6 +8,10 @@ export class FetchData {
   }
 
   fetchDayStartEndLocalStorage() {
+    const wasWeekUpdated = localStorage.getItem('was_week_updated');
+    if (wasWeekUpdated == null) {
+        localStorage.was_week_updated = false;
+    }
     const startHour = localStorage.getItem('startHour');
     const startMinute = localStorage.getItem('startMinute');
     if (!startHour) {

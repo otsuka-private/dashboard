@@ -15,9 +15,12 @@ export class CardDayStartEnd {
 
   showNewWeekBtn() {
     const day = new Date();
-    if (day.getDay() === 1) {
+    if (day.getDay() === 1 && localStorage.getItem('was_week_updated') == 'false') {
       document.getElementById('modal-set-new-week-btn').style.display = 'inline-block';
     } else {
+      if (day.getDay() !== 1) {
+        localStorage.was_week_updated = false;
+      }
       document.getElementById('modal-set-new-week-btn').style.display = 'none';
     }
   }
@@ -94,6 +97,7 @@ export class CardDayStartEnd {
         localStorage.setItem(`workingTime${i}`, null);
         localStorage.setItem(`wakingTime${i}`, null);
       }
+      localStorage.was_week_updated = true;
     });
   }
 

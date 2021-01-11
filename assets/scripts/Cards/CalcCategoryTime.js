@@ -7,7 +7,6 @@ export class CalcCategoryTime {
 
   calcTime(finalCalc) {
     const recordNumber = localStorage.getItem('recordNumber');
-    // for (let i = 1; i <= recordNumber; i++) {
     let i = +recordNumber - 1;
     if (finalCalc === true) {
       i = recordNumber;

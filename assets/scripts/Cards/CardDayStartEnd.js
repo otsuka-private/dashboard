@@ -39,10 +39,6 @@ export class CardDayStartEnd {
         localStorage.setItem('dayToday', day);
         document.getElementById('wake-time').textContent = `${hour} : ${(`0${minute}`).slice(-2)}`;
         functions.setToastAndReload('開始時間を記録しました。<br>素晴らしい１日に感謝して今日も精一杯生きましょう！', 'cyan');
-        // M.toast({
-        //   html: '開始時間を記録しました。<br>素晴らしい１日に感謝して今日も精一杯生きましょう！',
-        //   classes: 'cyan'
-        // });
       } else if (radioEnd.checked) {
         const nowTime = new Date();
         const minute = nowTime.getMinutes();
@@ -54,13 +50,6 @@ export class CardDayStartEnd {
         new CalcCategoryTime(true);
         this.calcPrintWorkingTime();
         functions.setToastAndReload('終了時間を記録しました 今日もよく頑張りました！🎉', 'cyan');
-        // setTimeout(() => {
-        //   location.reload(true);
-        // }, 2000);
-        // M.toast({
-        //   html: '終了時間を記録しました 今日もよく頑張りました！🎉',
-        //   classes: 'cyan'
-        // });
       }
     });
   }
@@ -117,10 +106,6 @@ export class CardDayStartEnd {
       localStorage.removeItem('workingHour');
       localStorage.removeItem('workingMinute');
       functions.setToastAndReload('開始時間と終了時間をリセットしました', 'cyan');
-      // M.toast({
-      //   html: '開始時間と終了時間をリセットしました',
-      //   classes: 'orange'
-      // });
     });
   }
 }

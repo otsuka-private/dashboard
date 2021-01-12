@@ -6,11 +6,12 @@ import {
 export class CardDayStartEnd {
   constructor() {
     this.showNewWeekBtn();
+    this.enableButton();
     this.startTime = 0,
       this.endTime = 0,
       this.addStartEnd();
     this.setNewWeek();
-    this.deleteDayStartEnd();
+    this.deleteDay();
   }
 
   showNewWeekBtn() {
@@ -25,32 +26,49 @@ export class CardDayStartEnd {
     }
   }
 
+  enableButton() {
+    const hasDayStarted = localStorage.getItem('startHour');
+    const hasDayEnded = localStorage.getItem('endHour');
+    const dayStartButton = document.getElementById('button-day-start');
+    const dayEndButton = document.getElementById('button-day-end');
+    const deleteDayStartEndButton = document.getElementById('button-modal-trigger-delete-day-start-end');
+    if (hasDayStarted == null) {
+      dayEndButton.setAttribute('disabled', 'disabled');
+      deleteDayStartEndButton.setAttribute('disabled', 'disabled');
+    } else if (hasDayStarted != null && hasDayEnded == null) {
+      dayStartButton.setAttribute('disabled', 'disabled');
+      dayStartButton.querySelector('i').classList.remove('animate__slideInUp');
+      deleteDayStartEndButton.setAttribute('disabled', 'disabled');
+    } else if (hasDayEnded != null) {
+      dayEndButton.setAttribute('disabled', 'disabled');
+      dayStartButton.setAttribute('disabled', 'disabled');
+      dayStartButton.querySelector('i').classList.remove('animate__slideInUp');
+    }
+  }
+
   addStartEnd() {
-    const radioStart = document.getElementById('radio-start');
-    const radioEnd = document.getElementById('radio-end');
-    document.getElementById('decide-day-start-end-button').addEventListener('click', () => {
-      if (radioStart.checked) {
-        const nowTime = new Date();
-        const minute = nowTime.getMinutes();
-        const hour = nowTime.getHours();
-        const day = nowTime.getDay();
-        localStorage.setItem('startHour', hour);
-        localStorage.setItem('startMinute', minute);
-        localStorage.setItem('dayToday', day);
-        document.getElementById('wake-time').textContent = `${hour} : ${(`0${minute}`).slice(-2)}`;
-        functions.setToastAndReload('開始時間を記録しました。<br>素晴らしい１日に感謝して今日も精一杯生きましょう！', 'cyan');
-      } else if (radioEnd.checked) {
-        const nowTime = new Date();
-        const minute = nowTime.getMinutes();
-        const hour = nowTime.getHours();
-        localStorage.setItem('endHour', hour);
-        localStorage.setItem('endMinute', minute);
-        document.getElementById('end-time').textContent = `${hour} : ${(`0${minute}`).slice(-2)}`;
-        this.calcPrintWakingTime();
-        new CalcCategoryTime(true);
-        this.calcPrintWorkingTime();
-        functions.setToastAndReload('終了時間を記録しました 今日もよく頑張りました！🎉', 'cyan');
-      }
+    const dayStartButton = document.getElementById('button-day-start');
+    const dayEndButton = document.getElementById('button-day-end');
+    dayStartButton.addEventListener('click', () => {
+      const nowTime = new Date();
+      const minute = nowTime.getMinutes();
+      const hour = nowTime.getHours();
+      const day = nowTime.getDay();
+      localStorage.setItem('startHour', hour);
+      localStorage.setItem('startMinute', minute);
+      localStorage.setItem('dayToday', day);
+      functions.setToastAndReload('開始時間を記録しました。<br>素晴らしい１日に感謝して今日も精一杯生きましょう！', 'cyan');
+    });
+    dayEndButton.addEventListener('click', () => {
+      const nowTime = new Date();
+      const minute = nowTime.getMinutes();
+      const hour = nowTime.getHours();
+      localStorage.setItem('endHour', hour);
+      localStorage.setItem('endMinute', minute);
+      this.calcPrintWakingTime();
+      new CalcCategoryTime(true);
+      this.calcPrintWorkingTime();
+      functions.setToastAndReload('終了時間を記録しました 今日もよく頑張りました！🎉', 'cyan');
     });
   }
 
@@ -64,18 +82,13 @@ export class CardDayStartEnd {
     localStorage.setItem('wakingHour', timeArray[0]);
     localStorage.setItem('wakingMinute', timeArray[1]);
     localStorage.setItem(`wakingTime${localStorage.getItem('dayToday')}`, wakingTime);
-    document.getElementById('waking-time').textContent = `${timeArray[0]}h ${timeArray[1]}m`;
   }
 
   calcPrintWorkingTime() {
-    const workingMinuteAmount = +localStorage.getItem('categoryTodaiMinute') + +localStorage.getItem('categoryJsMinute') + +localStorage.getItem('categoryWebsiteMinute') + +localStorage.getItem('categoryReadingMinute');
-    const workingMinute = workingMinuteAmount % 60;
-    const workingHour = (workingMinuteAmount - workingMinute) / 60 + +localStorage.getItem('categoryTodaiHour') + +localStorage.getItem('categoryJsHour') + +localStorage.getItem('categoryWebsiteHour') + +localStorage.getItem('categoryReadingHour');
-    localStorage.setItem('workingHour', workingHour);
-    localStorage.setItem('workingMinute', workingMinute);
+    const workingMinute = localStorage.getItem('working_minute');
+    const workingHour = localStorage.getItem('working_hour');
     const workingTime = workingHour + (workingMinute / 60);
     localStorage.setItem(`workingTime${localStorage.getItem('dayToday')}`, workingTime);
-    document.getElementById('working-time').textContent = `${workingHour}h ${workingMinute}m`;
   }
 
   setNewWeek() {
@@ -90,22 +103,44 @@ export class CardDayStartEnd {
     });
   }
 
-  deleteDayStartEnd() {
+  deleteDay() {
     const deleteDayStartEndButton = document.getElementById('delete-day-start-end-button');
     deleteDayStartEndButton.addEventListener('click', () => {
-      document.getElementById('wake-time').textContent = '--';
-      document.getElementById('end-time').textContent = '--';
-      document.getElementById('waking-time').textContent = '--';
-      document.getElementById('working-time').textContent = '--';
-      localStorage.removeItem('startHour');
-      localStorage.removeItem('startMinute');
-      localStorage.removeItem('endHour');
-      localStorage.removeItem('endMinute');
-      localStorage.removeItem('wakingHour');
-      localStorage.removeItem('wakingMinute');
-      localStorage.removeItem('workingHour');
-      localStorage.removeItem('workingMinute');
-      functions.setToastAndReload('開始時間と終了時間をリセットしました', 'cyan');
+      this.deleteDayRecord();
+      this.deleteDayStartEnd();
+      functions.setToastAndReload('1日をリセットしました', 'cyan');
     });
+  }
+
+  deleteDayStartEnd() {
+    localStorage.removeItem('startHour');
+    localStorage.removeItem('startMinute');
+    localStorage.removeItem('endHour');
+    localStorage.removeItem('endMinute');
+    localStorage.removeItem('wakingHour');
+    localStorage.removeItem('wakingMinute');
+    localStorage.removeItem('working_hour');
+    localStorage.removeItem('working_minute');
+  }
+
+  deleteDayRecord() {
+    // const cardContentDayRecord = document.getElementById('card-content-day-record');
+    // cardContentDayRecord.innerHTML = `
+    // <span class="card-title">Day Record</span>
+    // <template id="template-record-p">
+    //   <div class="row">
+    //     <p class="col s12"></p>
+    //   </div>
+    // </template>
+    //   `;
+    const recordNumber = localStorage.getItem('recordNumber');
+    for (let i = 1; i <= recordNumber; i++) {
+      localStorage.removeItem(`hour${i}`);
+      localStorage.removeItem(`minute${i}`);
+      localStorage.removeItem(`thing${i}`);
+    }
+    localStorage.removeItem('recordNumber');
+    localStorage.removeItem('working_hour');
+    localStorage.removeItem('working_minute');
   }
 }

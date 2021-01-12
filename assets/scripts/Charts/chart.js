@@ -3,19 +3,19 @@
 ////////// chart style configuration
 
 Chart.defaults.global.elements.point.backgroundColor = 'transparent';
-Chart.defaults.global.elements.line.borderCapStyle = "round";
+Chart.defaults.global.elements.line.borderCapStyle = 'round';
 Chart.defaults.global.animation.duration = 2000;
 Chart.defaults.global.animation.easing = 'easeInOutCubic';
 
 ////////// drawing charts
 
 new Chart(document.getElementById('waking-time-bar'), {
-  "type": "line",
-  "data": {
-    "labels": ['月', '火', '水', '木', '金', '土', '日'],
-    "datasets": [{
-      "label": "今週",
-      "data": [
+  'type': 'line',
+  'data': {
+    'labels': ['月', '火', '水', '木', '金', '土', '日'],
+    'datasets': [{
+      'label': '今週',
+      'data': [
         localStorage.getItem('wakingTime1'),
         localStorage.getItem('wakingTime2'),
         localStorage.getItem('wakingTime3'),
@@ -24,12 +24,12 @@ new Chart(document.getElementById('waking-time-bar'), {
         localStorage.getItem('wakingTime6'),
         localStorage.getItem('wakingTime0'),
       ],
-      "borderColor": "#f50057",
+      'borderColor': '#f50057',
       lineTension: 0.2,
-      "fill": false,
+      'fill': false,
     }, {
-      "label": "先週",
-      "data": [
+      'label': '先週',
+      'data': [
         localStorage.getItem('wakingTime1LastWeek'),
         localStorage.getItem('wakingTime2LastWeek'),
         localStorage.getItem('wakingTime3LastWeek'),
@@ -38,17 +38,17 @@ new Chart(document.getElementById('waking-time-bar'), {
         localStorage.getItem('wakingTime6LastWeek'),
         localStorage.getItem('wakingTime0LastWeek'),
       ],
-      "type": "line",
-      "fill": false,
-      "borderColor": "#ff80ab",
+      'type': 'line',
+      'fill': false,
+      'borderColor': '#ff80ab',
       lineTension: 0.2
     }]
   },
-  "options": {
-    "scales": {
-      "yAxes": [{
-        "ticks": {
-          "beginAtZero": true
+  'options': {
+    'scales': {
+      'yAxes': [{
+        'ticks': {
+          'beginAtZero': true
         }
       }]
     }
@@ -92,10 +92,10 @@ new Chart(document.getElementById('working-time-bar'), {
     ]
   },
   options: {
-    "scales": {
-      "yAxes": [{
-        "ticks": {
-          "beginAtZero": true
+    'scales': {
+      'yAxes': [{
+        'ticks': {
+          'beginAtZero': true
         }
       }]
     }
@@ -139,36 +139,12 @@ new Chart(document.getElementById('working-time-percentage-bar'), {
     ]
   },
   options: {
-    "scales": {
-      "yAxes": [{
-        "ticks": {
-          "beginAtZero": true
+    'scales': {
+      'yAxes': [{
+        'ticks': {
+          'beginAtZero': true
         }
       }]
     }
   }
-});
-
-const todai = +localStorage.getItem('categoryTodaiHour') * 60 + +localStorage.getItem('categoryTodaiMinute');
-const js = +localStorage.getItem('categoryJsHour') * 60 + +localStorage.getItem('categoryJsMinute');
-const website = +localStorage.getItem('categoryWebsiteHour') * 60 + +localStorage.getItem('categoryWebsiteMinute');
-const reading = +localStorage.getItem('categoryReadingHour') * 60 + +localStorage.getItem('categoryReadingMinute');
-const rest = +localStorage.getItem('categoryRestHour') * 60 + +localStorage.getItem('categoryRestMinute');
-const amount = todai + js + website + reading + rest;
-
-new Chart(document.getElementById('category-time-doughnut'), {
-  type: 'doughnut',
-  data: {
-    labels: ['東大', 'プログラミング', 'ポケヨビ', '読書', '休憩'],
-    datasets: [{
-      data: [
-        todai / amount * 100,
-        js / amount * 100,
-        website / amount * 100,
-        reading / amount * 100,
-        rest / amount * 100
-      ],
-      backgroundColor: ['#f44336', '#90a4ae', '#e91e63', '#795548', '#4caf50']
-    }]
-  },
 });

@@ -14,19 +14,19 @@ export function calcTime(startHour, startMinute, endHour, endMinute) {
   } else {
     hour += (endHour + 24 - startHour);
   }
-  console.log();
   return [hour, minute];
 }
 
-export function addTime(hour, minute, categoryName) {
-  const oldMinute = +localStorage.getItem(`category${categoryName}Minute`);
+export function addTime(hour, minute) {
+  const oldMinute = +localStorage.getItem('working_minute');
   let newMinute = oldMinute + minute;
-  const oldHour = +localStorage.getItem(`category${categoryName}Hour`);
+  const oldHour = +localStorage.getItem('working_hour');
   const newHour = oldHour + hour + ((newMinute - newMinute % 60) / 60);
-  localStorage.setItem(`category${categoryName}Hour`, newHour);
+  localStorage.setItem('working_hour', newHour);
   newMinute = newMinute % 60;
-  localStorage.setItem(`category${categoryName}Minute`, newMinute);
-  return [newHour, newMinute];
+  localStorage.setItem('working_minute', newMinute);
+  const workingTime = newHour + (newMinute / 60);
+  localStorage.setItem(`workingTime${localStorage.getItem('dayToday')}`, workingTime);
 }
 
 ////////// リロード後のトーストを決めてリロードする関数 //////////

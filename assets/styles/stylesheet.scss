@@ -50,6 +50,15 @@ p {
   height: auto;
 }
 
+.width-full {
+  width: 100vw;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
 .border-0 {
   border: 0;
 }
@@ -122,6 +131,10 @@ p {
   a {
     color: rgba(0,0,0,0.87);
   }
+}
+
+.footer-background-color {
+  background: #ee6e73;
 }
 
 @keyframes flash-animation {

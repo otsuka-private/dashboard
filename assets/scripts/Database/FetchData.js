@@ -2,7 +2,6 @@ export class FetchData {
   constructor() {
     this.fetchDayStartEndLocalStorage();
     this.fetchDayRecordLocalStorage();
-    this.fetchCategoryTimeLocalStorage();
     this.fetchGoalCardsLocalStorage();
     this.showToast();
   }
@@ -26,8 +25,8 @@ export class FetchData {
       const wakingMinute = localStorage.getItem('wakingMinute');
       document.getElementById('waking-time').textContent = `${wakingHour}h ${wakingMinute}m`;
     }
-    const workingHour = localStorage.getItem('workingHour');
-    const workingMinute = localStorage.getItem('workingMinute');
+    const workingHour = localStorage.getItem('working_hour');
+    const workingMinute = localStorage.getItem('working_minute');
     if (workingMinute != null) {
       document.getElementById('working-time').textContent = `${workingHour}h ${workingMinute}m`;
     }
@@ -39,22 +38,16 @@ export class FetchData {
     for (let i = 1; i <= recordNumber; i++) {
       const template = document.getElementById('template-record-p');
       const clone = template.content.cloneNode(true);
-      clone.querySelector('p').textContent = `${localStorage.getItem(`hour${i}`)} : ${(`0${+localStorage.getItem(`minute${i}`)}`).slice(-2)}　${localStorage.getItem(`thing${i}`)}`;
+      let workOrRest;
+      if (localStorage.getItem(`thing${i}`) == 'true') {
+        workOrRest = '働く';
+      } else {
+        workOrRest = '休む';
+        clone.querySelector('p').classList.add('grey-text', 'text-darken-1');
+      }
+      clone.querySelector('p').textContent = `${localStorage.getItem(`hour${i}`)} : ${(`0${+localStorage.getItem(`minute${i}`)}`).slice(-2)}　${workOrRest}`;
       cardContentDayRecord.append(clone);
     }
-  }
-
-  fetchCategoryTimeLocalStorage() {
-    const categoryTodai = document.getElementById('category-p-todai');
-    const categoryJs = document.getElementById('category-p-js');
-    const categoryWebsite = document.getElementById('category-p-website');
-    const categoryReading = document.getElementById('category-p-reading');
-    const categoryRest = document.getElementById('category-p-rest');
-    categoryTodai.textContent = `${+localStorage.getItem('categoryTodaiHour')} : ${(`0${+localStorage.getItem('categoryTodaiMinute')}`).slice(-2)}`;
-    categoryJs.textContent = `${+localStorage.getItem('categoryJsHour')} : ${(`0${+localStorage.getItem('categoryJsMinute')}`).slice(-2)}`;
-    categoryWebsite.textContent = `${+localStorage.getItem('categoryWebsiteHour')} : ${(`0${+localStorage.getItem('categoryWebsiteMinute')}`).slice(-2)}`;
-    categoryReading.textContent = `${+localStorage.getItem('categoryReadingHour')} : ${(`0${+localStorage.getItem('categoryReadingMinute')}`).slice(-2)}`;
-    categoryRest.textContent = `${+localStorage.getItem('categoryRestHour')} : ${(`0${+localStorage.getItem('categoryRestMinute')}`).slice(-2)}`;
   }
 
   fetchGoalCardsLocalStorage() {

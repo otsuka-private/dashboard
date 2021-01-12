@@ -2,90 +2,65 @@ import * as functions from '../Functions/functions.js';
 import {
   CalcCategoryTime
 } from './CalcCategoryTime.js';
-import {
-  FetchData
-} from '../Database/FetchData.js';
+// import {
+//   FetchData
+// } from '../Database/FetchData.js';
 
 export class CardDayRecord {
   constructor() {
-    this.recordNumber;
+    this.enableButton();
     this.addDayRecord();
-    this.deleteDayRecord();
+  }
+
+  enableButton() {
+    const recordNumber = localStorage.getItem('recordNumber');
+    const workStartButton = document.getElementById('button-work-start');
+    const restStartButton = document.getElementById('button-rest-start');
+    const hasDayStarted = localStorage.getItem('startHour');
+    const hasDayEnded = localStorage.getItem('endHour');
+    if (hasDayStarted == null || hasDayEnded != null) {
+      restStartButton.setAttribute('disabled', 'disabled');
+      workStartButton.setAttribute('disabled', 'disabled');
+    } else if (+recordNumber % 2 == 0) {
+      restStartButton.setAttribute('disabled', 'disabled');
+    } else if (+recordNumber % 2 == 1) {
+      workStartButton.setAttribute('disabled', 'disabled');
+    }
   }
 
   addDayRecord() {
-    const cardContentDayRecord = document.getElementById('card-content-day-record');
-    const modalDayRecordBtn = document.getElementById('decide-day-record');
-    modalDayRecordBtn.addEventListener('click', () => {
+    const workStartButton = document.getElementById('button-work-start');
+    const restStartButton = document.getElementById('button-rest-start');
 
+    workStartButton.addEventListener('click', () => {
       const nowTime = new Date();
       const hour = nowTime.getHours();
       const minute = nowTime.getMinutes();
 
-      const thingArray = document.getElementsByName('day-record-thing');
-      for (const thing of thingArray) {
-        if (thing.checked) {
-          const template = document.getElementById('template-record-p');
-          const clone = template.content.cloneNode(true);
-          clone.querySelector('p').textContent = `${hour} : ${(`0${minute}`).slice(-2)}　${thing.value}`;
-          this.recordNumber = localStorage.getItem('recordNumber');
-          this.recordNumber++;
-          localStorage.setItem(`hour${this.recordNumber}`, hour);
-          localStorage.setItem(`minute${this.recordNumber}`, minute);
-          localStorage.setItem(`thing${this.recordNumber}`, thing.value);
-          localStorage.setItem('recordNumber', this.recordNumber);
-          cardContentDayRecord.append(clone);
-        }
-      }
-      new CalcCategoryTime(false);
-      this.calcPrintWorkingTime();
+      let recordNumber = +localStorage.getItem('recordNumber');
+      recordNumber++;
+      localStorage.setItem(`hour${recordNumber}`, hour);
+      localStorage.setItem(`minute${recordNumber}`, minute);
+      localStorage.setItem(`thing${recordNumber}`, true);
+      localStorage.setItem('recordNumber', recordNumber);
+
       functions.setToastAndReload('新しい行動を記録しました', 'cyan');
     });
-  }
 
-  calcPrintWorkingTime() {
-    const workingMinuteAmount = +localStorage.getItem('categoryTodaiMinute') + +localStorage.getItem('categoryJsMinute') + +localStorage.getItem('categoryWebsiteMinute') + +localStorage.getItem('categoryReadingMinute');
-    const workingMinute = workingMinuteAmount % 60;
-    const workingHour = (workingMinuteAmount - workingMinute) / 60 + +localStorage.getItem('categoryTodaiHour') + +localStorage.getItem('categoryJsHour') + +localStorage.getItem('categoryWebsiteHour') + +localStorage.getItem('categoryReadingHour');
-    localStorage.setItem('workingHour', workingHour);
-    localStorage.setItem('workingMinute', workingMinute);
-    const workingTime = workingHour + (workingMinute / 60);
-    localStorage.setItem(`workingTime${localStorage.getItem('dayToday')}`, workingTime);
-    document.getElementById('working-time').textContent = `${workingHour}h ${workingMinute}m`;
-  }
+    restStartButton.addEventListener('click', () => {
+      const nowTime = new Date();
+      const hour = nowTime.getHours();
+      const minute = nowTime.getMinutes();
 
-  deleteDayRecord() {
-    const deleteDayRecordButton = document.getElementById('delete-day-record-button');
-    deleteDayRecordButton.addEventListener('click', () => {
-      const cardContentDayRecord = document.getElementById('card-content-day-record');
-      cardContentDayRecord.innerHTML = `
-      <span class="card-title">Day Record</span>
-      <template id="template-record-p">
-        <div class="row">
-          <p class="col s12"></p>
-        </div>
-      </template>
-        `;
-      const recordNumber = localStorage.getItem('recordNumber');
-      for (let i = 1; i <= recordNumber; i++) {
-        localStorage.removeItem(`hour${i}`);
-        localStorage.removeItem(`minute${i}`);
-        localStorage.removeItem(`thing${i}`);
-      }
-      localStorage.removeItem('recordNumber');
-      localStorage.removeItem('categoryTodaiHour');
-      localStorage.removeItem('categoryTodaiMinute');
-      localStorage.removeItem('categoryJsHour');
-      localStorage.removeItem('categoryJsMinute');
-      localStorage.removeItem('categoryWebsiteHour');
-      localStorage.removeItem('categoryWebsiteMinute');
-      localStorage.removeItem('categoryReadingHour');
-      localStorage.removeItem('categoryReadingMinute');
-      localStorage.removeItem('categoryRestHour');
-      localStorage.removeItem('categoryRestMinute');
-      new FetchData().fetchCategoryTimeLocalStorage();
-      this.recordNumber = 0;
-      functions.setToastAndReload('1日をリセットしました', 'cyan');
-    })
+      let recordNumber = +localStorage.getItem('recordNumber');
+      recordNumber++;
+      localStorage.setItem(`hour${recordNumber}`, hour);
+      localStorage.setItem(`minute${recordNumber}`, minute);
+      localStorage.setItem(`thing${recordNumber}`, false);
+      localStorage.setItem('recordNumber', recordNumber);
+
+      new CalcCategoryTime(false);
+      functions.setToastAndReload('新しい行動を記録しました', 'cyan');
+    });
   }
 }

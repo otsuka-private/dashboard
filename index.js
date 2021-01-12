@@ -27,15 +27,8 @@ class App {
     new FetchData();
     new CardDayStartEnd();
     new CardDayRecord();
-    new Category();
+    // new Category();
     new GoalCards();
-    this.deleteAllBtn();
-  }
-
-  deleteAllBtn() {
-    document.getElementById('modal-day-start-end-delete-yes').addEventListener('click', () => {
-      localStorage.clear();
-    });
   }
 }
 

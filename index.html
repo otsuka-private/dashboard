@@ -52,17 +52,6 @@
 </head>
 
 <body>
-  <div id="top" class="hw100 overflowHidden">
-    <h1 class="center-align animate__animated animate__zoomIn">My Dashboard</h1>
-    <div class="center-align flow-text margin-bottom-100px">
-      <p class="col animate__animated animate__fadeInUp animate__delay-1s">記録</p>
-      <p class="col animate__animated animate__fadeInUp animate__delay-2s">分析</p>
-      <p class="col animate__animated animate__fadeInUp animate__delay-3s">成長</p>
-    </div>
-    <div class="center-align">
-      <img class="width90 margin-top-bottom-20px" src="./assets/images/chart_man.svg">
-    </div>
-  </div>
 
   <div id="analytics" class="grey lighten-1 overflowHidden">
     <h3 class="center-align">統計と分析</h3>
@@ -88,8 +77,9 @@
               <p class="col s6">働いた時間</p>
               <p class="col s6" id="working-time">--</p>
             </div>
-            <a class="waves-effect waves-light btn-large modal-trigger" href="#modal-day-start-end">記録</a>
-            <a class="waves-effect waves-light btn-large modal-trigger amber accent-4" href="#modal-day-start-end-delete">データを消去</a>
+            <a class="waves-effect waves-light btn-large" id="button-day-start"><i class="fas fa-coffee animate__animated animate__slideInUp animate__infinite animate__slower"></i></a>
+            <a class="waves-effect waves-light btn-large" id="button-day-end"><i class="fas fa-bed"></i></a>
+            <a class="waves-effect waves-light btn-large modal-trigger deep-orange accent-3" href="#modal-day-start-end-delete" id="button-modal-trigger-delete-day-start-end"><i class="fas fa-trash"></i></a>
           </div>
         </div>
       </div>
@@ -111,8 +101,8 @@
                     </template>
                   </div>
                 </div>
-                <a class="waves-effect waves-light btn-large modal-trigger" href="#modal-day-record">記録</a>
-                <a class="waves-effect waves-light btn-large modal-trigger amber accent-4" href="#modal-day-record-delete">データを消去</a>
+                <a class="waves-effect waves-light btn-large" id="button-work-start">働く</a>
+                <a class="waves-effect waves-light btn-large amber" id="button-rest-start">休む</a>
               </div>
             </div>
           </div>
@@ -154,36 +144,6 @@
         </div>
       </div>
     </div>
-    <div class="row display-none">
-      <div class="col s12">
-        <div class="card">
-          <div class="card-content" id="card-content-category-time">
-            <span class="card-title">各カテゴリーの時間</span>
-            <div class="row">
-              <p class="col s6">東大</p>
-              <p class="col s6" id="category-p-todai"></p>
-            </div>
-            <div class="row">
-              <p class="col s6">プログラミング</p>
-              <p class="col s6" id="category-p-js"></p>
-            </div>
-            <div class="row">
-              <p class="col s6">ポケヨビ</p>
-              <p class="col s6" id="category-p-website"></p>
-            </div>
-            <div class="row">
-              <p class="col s6">読書</p>
-              <p class="col s6" id="category-p-reading"></p>
-            </div>
-            <div class="row">
-              <p class="col s6">休憩</p>
-              <p class="col s6" id="category-p-rest"></p>
-            </div>
-            <canvas id="category-time-doughnut" width="90%" height="90%"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
   <div class="row">
@@ -217,24 +177,19 @@
             </div>
           </li>
         </ul>
-
       </div>
       <a class="waves-effect waves-light btn-large modal-trigger" href="#goal-cards__modal-add-new-card">新しい目標カードを追加</a>
     </div>
   </div>
 
-  <!-- delete all button -->
-
-  <div class="red lighten-3 display-none" id="delete-all">
-    <div class="center-align">
-      <a class="waves-effect waves-light btn modal-trigger red accent-4 margin-top-bottom-20px" href="#modal-delete-all">全データ消去</a>
-    </div>
+  <div class="width-full padding-0 footer-background-color">
+    <img src="./assets/images/woman_portrait.webp">
   </div>
 
   <footer class="page-footer">
     <div class="container">
       <h5 class="white-text">About</h5>
-      <p>My original dashboard.</p>
+      <p>My original dashboard</p>
     </div>
     <div class="footer-copyright">
       <div class="container white-text">
@@ -244,21 +199,15 @@
   </footer>
 
   <!-- Modals -->
-
-  <!-- general -->
-
-  <div id="modal-category-goal-set-new" class="modal">
-    <div class="modal-content">
-      <h4>このカテゴリーの新しい目標を入力</h4>
-      <input>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">取り消し</a>
-      <a href="#!" class="modal-close waves-effect waves-green btn" id="decide-category-goal-btn">入力を完了</a>
-    </div>
-  </div>
-
-  <!-- day start end card -->
+  <!-- Modals -->
+  <!-- Modals -->
+  <!-- Modals -->
+  <!-- Modals -->
+  <!-- Modals -->
+  <!-- Modals -->
+  <!-- Modals -->
+  <!-- Modals -->
+  <!-- Modals -->
 
   <div id="modal-set-new-week" class="modal">
     <div class="modal-content">
@@ -269,35 +218,10 @@
       <a href="#!" class="modal-close waves-effect waves-green btn" id="decide-set-new-week-button">新しい週に更新する</a>
     </div>
   </div>
-  <div id="modal-day-start-end" class="modal">
-    <div class="modal-content">
-      <h4>内容</h4>
-      <p>
-        <label>
-          <input name="day-record-thing" type="radio" value="起床" id="radio-start" />
-          <span>起床</span>
-        </label>
-      </p>
-      <p>
-        <label>
-          <input name="day-record-thing" type="radio" value="終了" id="radio-end" />
-          <span>終了</span>
-        </label>
-      </p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">取り消し</a>
-      <a href="#!" class="modal-close waves-effect waves-green btn" id="decide-day-start-end-button">入力を完了</a>
-    </div>
-  </div>
+
   <div id="modal-day-start-end-delete" class="modal">
     <div class="modal-content">
-      <p>消去されるものは</p>
-      <br>
-      <p>・このカードの時間の表記</p>
-      <p>・このカードに関するローカルストレージのデータ</p>
-      <br>
-      <p>です。本当に消去しますか？</p>
+      <p>本当に消去しますか？</p>
     </div>
     <div class="modal-footer">
       <a class="modal-close waves-effect waves-light btn-flat">消去しない</a>
@@ -306,82 +230,15 @@
   </div>
 
   <!-- day record -->
-
-  <div id="modal-day-record" class="modal">
-    <div class="modal-content">
-      <h4>内容</h4>
-      <p>
-        <label>
-          <input name="day-record-thing" type="radio" value="東大" />
-          <span>東大</span>
-        </label>
-      </p>
-      <p>
-        <label>
-          <input name="day-record-thing" type="radio" value="プログラミング" />
-          <span>プログラミング</span>
-        </label>
-      </p>
-      <p>
-        <label>
-          <input name="day-record-thing" type="radio" value="ポケヨビ" />
-          <span>ポケヨビ</span>
-        </label>
-      </p>
-      <p>
-        <label>
-          <input name="day-record-thing" type="radio" value="読書" />
-          <span>読書</span>
-        </label>
-      </p>
-      <p>
-        <label>
-          <input name="day-record-thing" type="radio" value="休憩" />
-          <span>休憩</span>
-        </label>
-      </p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">取り消し</a>
-      <a href="#!" class="modal-close waves-effect waves-green btn" id="decide-day-record">入力を完了</a>
-    </div>
-  </div>
   <div id="modal-day-record-delete" class="modal">
     <div class="modal-content">
-      <p>消去されるものは</p>
-      <br>
-      <p>・このカードの時間の表記</p>
-      <p>・このカードに関するローカルストレージのデータ</p>
-      <br>
-      <p>です。本当に消去しますか？</p>
+      <p>本当に消去しますか？</p>
     </div>
     <div class="modal-footer">
       <a class="modal-close waves-effect waves-light btn-flat">消去しない</a>
       <a class="modal-close waves-effect waves-light btn red accent-4" id="delete-day-record-button">消去</a>
     </div>
-  </div>
-
-  <div id="modal-delete-all" class="modal">
-    <div class="modal-content">
-      <p>注意</p>
-      <p class="red-text">ローカルストレージの全てのデータが消去されます。</p>
-      <p>本当に消去しますか？</p>
-    </div>
-    <div class="modal-footer">
-      <a class="modal-close waves-effect waves-light btn">消去しない</a>
-      <a class="modal-close waves-effect waves-light btn modal-trigger red accent-4" href="#modal-delete-all-confirm">データを消去</a>
-    </div>
-  </div>
-  <div id="modal-delete-all-confirm" class="modal">
-    <div class="modal-content">
-      <p>Macを経由することでこのiPhoneの不要なローカルストレージのデータを個別に削除することもできます。</p>
-      <p class="red-text">本当に全てのデータを消去しますか？</p>
-    </div>
-    <div class="modal-footer">
-      <a class="modal-close waves-effect waves-light btn">取り消し</a>
-      <a class="modal-close waves-effect waves-light btn red accent-4" id="modal-day-start-end-delete-yes">確認</a>
-    </div>
-  </div>
+</div>
 
   <!-- goals cards modal -->
 

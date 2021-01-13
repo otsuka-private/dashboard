@@ -11,9 +11,6 @@ import {
   CardDayStartEnd
 } from './assets/scripts/Cards/CardDayStartEnd.js';
 import {
-  Category
-} from './assets/scripts/Categories/Category.js';
-import {
   CardDayRecord
 } from './assets/scripts/Cards/CardDayRecord.js';
 import {
@@ -27,7 +24,6 @@ class App {
     new FetchData();
     new CardDayStartEnd();
     new CardDayRecord();
-    // new Category();
     new GoalCards();
   }
 }

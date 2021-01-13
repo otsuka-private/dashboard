@@ -124,15 +124,6 @@ export class CardDayStartEnd {
   }
 
   deleteDayRecord() {
-    // const cardContentDayRecord = document.getElementById('card-content-day-record');
-    // cardContentDayRecord.innerHTML = `
-    // <span class="card-title">Day Record</span>
-    // <template id="template-record-p">
-    //   <div class="row">
-    //     <p class="col s12"></p>
-    //   </div>
-    // </template>
-    //   `;
     const recordNumber = localStorage.getItem('recordNumber');
     for (let i = 1; i <= recordNumber; i++) {
       localStorage.removeItem(`hour${i}`);

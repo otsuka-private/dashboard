@@ -2,9 +2,6 @@ import * as functions from '../Functions/functions.js';
 import {
   CalcCategoryTime
 } from './CalcCategoryTime.js';
-// import {
-//   FetchData
-// } from '../Database/FetchData.js';
 
 export class CardDayRecord {
   constructor() {

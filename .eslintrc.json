@@ -1,24 +1,24 @@
 {
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
-  "extends": "eslint:recommended",
-  "parserOptions": {
-    "ecmaVersion": 12,
-    "sourceType": "module"
-  },
-  "rules": {
-    "no-const-assign": "warn",
-    "prefer-const": "warn",
-    "no-var": "error",
-    "no-new-object": "error",
-    "object-shorthand": "warn",
-    "no-array-constructor": "error",
-    "quotes": ["warn", "single"],
-    "prefer-template": "warn",
-    "template-curly-spacing": "warn",
-    "no-eval": "error",
-    "no-useless-escape": "error"
-  }
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "rules": {
+      "no-const-assign": "warn",
+      "prefer-const": "warn",
+      "no-var": "error",
+      "no-new-object": "error",
+      "object-shorthand": "warn",
+      "no-array-constructor": "error",
+      "quotes": ["warn", "single"],
+      "prefer-template": "warn",
+      "template-curly-spacing": "warn",
+      "no-eval": "error",
+      "no-useless-escape": "error"
+    }
 }

@@ -1,7 +1,4 @@
 import * as functions from '../Functions/functions.js';
-import {
-  CalcCategoryTime
-} from './CalcCategoryTime.js';
 
 export class CardDayStartEnd {
   constructor() {
@@ -66,7 +63,7 @@ export class CardDayStartEnd {
       localStorage.setItem('endHour', hour);
       localStorage.setItem('endMinute', minute);
       this.calcPrintWakingTime();
-      new CalcCategoryTime(true);
+      functions.calcAndAddTime(true);
       this.calcPrintWorkingTime();
       functions.setToastAndReload('終了時間を記録しました 今日もよく頑張りました！🎉', 'cyan');
     });
@@ -87,7 +84,8 @@ export class CardDayStartEnd {
   calcPrintWorkingTime() {
     const workingMinute = localStorage.getItem('working_minute');
     const workingHour = localStorage.getItem('working_hour');
-    const workingTime = workingHour + (workingMinute / 60);
+    const workingTime = +workingHour + (workingMinute / 60);
+    console.log(workingMinute, workingHour, workingTime);
     localStorage.setItem(`workingTime${localStorage.getItem('dayToday')}`, workingTime);
   }
 

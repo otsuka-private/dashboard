@@ -1,7 +1,4 @@
 import * as functions from '../Functions/functions.js';
-import {
-  CalcCategoryTime
-} from './CalcCategoryTime.js';
 
 export class CardDayRecord {
   constructor() {
@@ -56,7 +53,7 @@ export class CardDayRecord {
       localStorage.setItem(`thing${recordNumber}`, false);
       localStorage.setItem('recordNumber', recordNumber);
 
-      new CalcCategoryTime(false);
+      functions.calcAndAddTime(false);
       functions.setToastAndReload('新しい行動を記録しました', 'cyan');
     });
   }

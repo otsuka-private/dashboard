@@ -1,5 +1,30 @@
 ////////// 時間を計算する関数 //////////
 
+export function calcAndAddTime(finalCalc) {
+  const recordNumber = localStorage.getItem('recordNumber');
+  let i = +recordNumber - 1;
+  if (finalCalc === true) {
+    i = recordNumber;
+    if (localStorage.getItem(`thing${i}`) == 'true') {
+    const startHour = localStorage.getItem(`hour${i}`);
+    const startMinute = localStorage.getItem(`minute${i}`);
+    const endHour = localStorage.getItem('endHour');
+    const endMinute = localStorage.getItem('endMinute');
+    const timeArray = calcTime(+startHour, +startMinute, +endHour, +endMinute);
+    addTime(timeArray[0], timeArray[1]);
+    }
+  } else {
+    const startHour = localStorage.getItem(`hour${i}`);
+    const startMinute = localStorage.getItem(`minute${i}`);
+    let iCopy = i;
+    const iPlus1 = ++iCopy;
+    const endHour = localStorage.getItem(`hour${iPlus1}`);
+    const endMinute = localStorage.getItem(`minute${iPlus1}`);
+    const timeArray = calcTime(+startHour, +startMinute, +endHour, +endMinute);
+    addTime(timeArray[0], timeArray[1]);
+  }
+}
+
 export function calcTime(startHour, startMinute, endHour, endMinute) {
   let minute = 0;
   let hour = 0;

@@ -99,6 +99,7 @@ export class CardDayStartEnd {
       }
       localStorage.was_week_updated = true;
     });
+    functions.setToastAndReload('新しい週に更新しました', 'cyan');
   }
 
   deleteDay() {

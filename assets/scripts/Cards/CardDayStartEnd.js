@@ -4,9 +4,7 @@ export class CardDayStartEnd {
   constructor() {
     this.showNewWeekBtn();
     this.enableButton();
-    this.startTime = 0,
-      this.endTime = 0,
-      this.addStartEnd();
+    this.addStartEnd();
     this.setNewWeek();
     this.deleteDay();
   }

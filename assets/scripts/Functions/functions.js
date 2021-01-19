@@ -64,6 +64,6 @@ export function setToastAndReload(message, color) {
     classes: 'orange'
   });
   setTimeout(() => {
-    location.reload();
+    location.reload(false);
   }, 1000);
 }

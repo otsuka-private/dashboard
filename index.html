@@ -28,7 +28,7 @@
 
 <body>
 
-  <div id="analytics" class="teal lighten-3 overflowHidden">
+  <div id="analytics" class="red lighten-3 overflowHidden">
     <h3 class="center-align">統計と分析</h3>
     <div class="row">
       <a class="waves-effect waves-light btn-large modal-trigger col s6 offset-s3" href="#modal-set-new-week" id="modal-set-new-week-btn">新しい週に更新</a>
@@ -121,6 +121,7 @@
     </div>
   </div>
 
+<div id="goal-cards-container" class="grey lighten-3 overflowHidden">
   <div class="row">
     <div class="col s12">
       <h3>Goal Cards</h3>
@@ -156,10 +157,14 @@
       <a class="waves-effect waves-light btn-large modal-trigger" href="#goal-cards__modal-add-new-card">新しい目標カードを追加</a>
     </div>
   </div>
+</div>
 
-  <div class="width-full padding-0 footer-background-color">
-    <img src="./assets/images/woman_portrait.webp">
-  </div>
+  <div class="progress-wrap">
+		<svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+			<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+      <i class="fas fa-arrow-up" id="progress-wrap-arrow"></i>
+		</svg>
+	</div>
 
   <footer class="page-footer">
     <div class="container">

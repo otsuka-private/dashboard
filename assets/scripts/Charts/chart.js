@@ -9,10 +9,12 @@ Chart.defaults.global.animation.easing = 'easeInOutCubic';
 
 ////////// drawing charts
 
+const weekLabel = ['月', '火', '水', '木', '金', '土', '日'];
+
 new Chart(document.getElementById('waking-time-bar'), {
   'type': 'line',
   'data': {
-    'labels': ['月', '火', '水', '木', '金', '土', '日'],
+    'labels': weekLabel,
     'datasets': [{
       'label': '今週',
       'data': [
@@ -58,7 +60,7 @@ new Chart(document.getElementById('waking-time-bar'), {
 new Chart(document.getElementById('working-time-bar'), {
   type: 'line',
   data: {
-    labels: ['月', '火', '水', '木', '金', '土', '日'],
+    labels: weekLabel,
     datasets: [{
         label: '今週',
         data: [
@@ -105,7 +107,7 @@ new Chart(document.getElementById('working-time-bar'), {
 new Chart(document.getElementById('working-time-percentage-bar'), {
   type: 'line',
   data: {
-    labels: ['月', '火', '水', '木', '金', '土', '日'],
+    labels: weekLabel,
     datasets: [{
         label: '今週',
         data: [

@@ -1,4 +1,4 @@
-export function MaterializeSelectFixed() {
+export function materializeCSSSelectFixed() {
   (function($) {
     'use strict';
 

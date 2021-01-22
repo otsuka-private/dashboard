@@ -13,7 +13,7 @@ if (parseInt(workingPercontageToday)) {
 }
 
 new EasyPieChart(document.getElementById('chart-working-percentage'), {
-  barColor: '#00bfa5',
+  barColor: '#ff6d00',
   scaleColor: false,
   lineWidth: 15,
   size: 200

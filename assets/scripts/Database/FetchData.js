@@ -48,6 +48,27 @@ export class FetchData {
       clone.querySelector('p').textContent = `${localStorage.getItem(`hour${i}`)} : ${(`0${+localStorage.getItem(`minute${i}`)}`).slice(-2)}　${workOrRest}`;
       cardContentDayRecord.append(clone);
     }
+
+    let lastWeekWorkingTimeSum = 0;
+    for (let i = 0; i < 7; i++) {
+      console.log(i);
+      lastWeekWorkingTimeSum = lastWeekWorkingTimeSum + parseInt(+localStorage.getItem(`workingTime${i}LastWeek`) * 100);
+    }
+    const lastWeekWorkingTimeMinute = parseInt((lastWeekWorkingTimeSum % 100) * 60 / 100);
+    const lastWeekWorkingTimeHour = parseInt(lastWeekWorkingTimeSum / 100);
+    const spanLastWeekWorkingTimeHour = document.getElementById('card-last-week-working-time-sum__span-hour');
+    const spanLastWeekWorkingTimeMinute = document.getElementById('card-last-week-working-time-sum__span-minute');
+    spanLastWeekWorkingTimeHour.textContent = lastWeekWorkingTimeHour;
+    spanLastWeekWorkingTimeMinute.textContent = lastWeekWorkingTimeMinute;
+
+    const cardLastWeekWorkingTimeSum = document.getElementById('card-last-week-working-time-sum');
+    if (lastWeekWorkingTimeHour > 80) {
+      cardLastWeekWorkingTimeSum.classList.add('blue', 'lighten-2');
+    }else if (lastWeekWorkingTimeHour > 40) {
+      cardLastWeekWorkingTimeSum.classList.add('amber', 'lighten-2');
+    } else {
+      cardLastWeekWorkingTimeSum.classList.add('pink', 'lighten-2');
+    }
   }
 
   fetchGoalCardsLocalStorage() {

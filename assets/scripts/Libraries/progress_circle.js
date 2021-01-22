@@ -15,9 +15,7 @@ export function progressCircle() {
         const height = $(document).height() - $(window).height();
         const progress = pathLength - (scroll * pathLength / height);
         progressPath.style.strokeDashoffset = progress;
-        console.log(progress);
       }
-
       // updateProgress;
       $(window).scroll(updateProgress);
 
@@ -41,7 +39,6 @@ export function progressCircle() {
         return false;
       });
     });
-
 
   })(jQuery);
 }

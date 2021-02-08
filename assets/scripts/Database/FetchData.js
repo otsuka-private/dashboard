@@ -51,7 +51,6 @@ export class FetchData {
 
     let lastWeekWorkingTimeSum = 0;
     for (let i = 0; i < 7; i++) {
-      console.log(i);
       lastWeekWorkingTimeSum = lastWeekWorkingTimeSum + parseInt(+localStorage.getItem(`workingTime${i}LastWeek`) * 100);
     }
     const lastWeekWorkingTimeMinute = parseInt((lastWeekWorkingTimeSum % 100) * 60 / 100);

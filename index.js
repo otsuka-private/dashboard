@@ -19,6 +19,9 @@ import {
 import {
   progressCircle
 } from './assets/scripts/Libraries/progress_circle.js';
+import {
+  disableButtonsWhenClicked
+} from './assets/scripts/Functions/functions.js';
 
 class App {
   constructor() {
@@ -29,6 +32,7 @@ class App {
     new CardDayRecord();
     new GoalCards();
     progressCircle();
+    disableButtonsWhenClicked();
   }
 }
 

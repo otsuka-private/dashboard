@@ -67,3 +67,14 @@ export function setToastAndReload(message, color) {
     location.reload(false);
   }, 1000);
 }
+
+////////// 多重クリック防止 //////////
+
+export function disableButtonsWhenClicked() {
+  const specificButtons = document.getElementsByClassName('disable-when-clicked');
+  for (const element of specificButtons) {
+    element.addEventListener('click', () => {
+      element.setAttribute('disabled', 'disabled');
+    });
+  }
+}

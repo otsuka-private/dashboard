@@ -31,7 +31,7 @@
   <div id="analytics" class="red lighten-3 overflowHidden">
     <h4 class="center-align">統計と分析</h4>
     <div class="row">
-      <a class="waves-effect waves-light btn-large modal-trigger col s6 offset-s3" href="#modal-set-new-week" id="modal-set-new-week-btn">新しい週に更新</a>
+      <a class="waves-effect waves-light btn-large modal-trigger col s6 offset-s3 disable-when-clicked" href="#modal-set-new-week" id="modal-set-new-week-btn">新しい週に更新</a>
     </div>
     <div class="row">
       <div class="col s12">
@@ -52,8 +52,8 @@
               <p class="col s6">働いた時間</p>
               <p class="col s6" id="working-time">--</p>
             </div>
-            <a class="waves-effect waves-light btn-large" id="button-day-start"><i class="fas fa-coffee animate__animated animate__slideInUp animate__infinite animate__slower"></i></a>
-            <a class="waves-effect waves-light btn-large" id="button-day-end"><i class="fas fa-bed"></i></a>
+            <a class="waves-effect waves-light btn-large disable-when-clicked" id="button-day-start"><i class="fas fa-coffee animate__animated animate__slideInUp animate__infinite animate__slower"></i></a>
+            <a class="waves-effect waves-light btn-large disable-when-clicked" id="button-day-end"><i class="fas fa-bed"></i></a>
             <a class="waves-effect waves-light btn-large modal-trigger deep-orange accent-3" href="#modal-day-start-end-delete" id="button-modal-trigger-delete-day-start-end"><i class="fas fa-trash"></i></a>
           </div>
         </div>
@@ -64,8 +64,8 @@
         <div class="card">
           <div class="card-content">
             <span class="card-title">今日の過ごし方</span>
-            <a class="waves-effect waves-light btn-large" id="button-work-start">働く</a>
-            <a class="waves-effect waves-light btn-large amber" id="button-rest-start">休む</a>
+            <a class="waves-effect waves-light btn-large disable-when-clicked" id="button-work-start">働く</a>
+            <a class="waves-effect waves-light btn-large amber disable-when-clicked" id="button-rest-start">休む</a>
             <div class="row">
               <div class="col s12">
                 <div class="card z-depth-0">

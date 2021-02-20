@@ -43,17 +43,8 @@ new App();
 const tabsLis = $('.tabs li');
 const testingCards = document.querySelectorAll('#test .testing-card');
 let i = 0;
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < testingCards.length; i++) {
   testingCards[i].addEventListener('click', () => {
     tabsLis[i].childNodes[0].click();
   });
 }
-// testingCards[0].addEventListener('click', () => {
-//   tabsLis[0].childNodes[0].click();
-// });
-// testingCards[1].addEventListener('click', () => {
-//   tabsLis[1].childNodes[0].click();
-// });
-// testingCards[2].addEventListener('click', () => {
-//   tabsLis[2].childNodes[0].click();
-// });

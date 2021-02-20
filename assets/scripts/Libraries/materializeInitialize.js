@@ -13,5 +13,6 @@ export function materializeInitialize() {
     });
     $('select').formSelect();
     $('.collapsible').collapsible();
+    $('.tabs').tabs();
   });
 }

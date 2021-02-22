@@ -39,12 +39,3 @@ class App {
 new App();
 
 // test below
-
-const tabsLis = $('.tabs li');
-const testingCards = document.querySelectorAll('#test .testing-card');
-let i = 0;
-for (let i = 0; i < testingCards.length; i++) {
-  testingCards[i].addEventListener('click', () => {
-    tabsLis[i].childNodes[0].click();
-  });
-}

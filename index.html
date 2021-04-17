@@ -14,7 +14,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+    integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/styles/stylesheet.min.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -31,7 +32,8 @@
   <div id="analytics" class="red lighten-3 overflowHidden">
     <h4 class="center-align">統計と分析</h4>
     <div class="row">
-      <a class="waves-effect waves-light btn-large modal-trigger col s6 offset-s3 disable-when-clicked" href="#modal-set-new-week" id="modal-set-new-week-btn">新しい週に更新</a>
+      <a class="waves-effect waves-light btn-large red lighten-1 modal-trigger col s6 offset-s3 disable-when-clicked"
+        href="#modal-set-new-week" id="modal-set-new-week-btn">新しい週に更新</a>
     </div>
     <div class="row">
       <div class="col s12">
@@ -52,9 +54,13 @@
               <p class="col s6">働いた時間</p>
               <p class="col s6" id="working-time">--</p>
             </div>
-            <a class="waves-effect waves-light btn-large disable-when-clicked" id="button-day-start"><i class="fas fa-coffee animate__animated animate__slideInUp animate__infinite animate__slower"></i></a>
-            <a class="waves-effect waves-light btn-large disable-when-clicked" id="button-day-end"><i class="fas fa-bed"></i></a>
-            <a class="waves-effect waves-light btn-large modal-trigger deep-orange accent-3" href="#modal-day-start-end-delete" id="button-modal-trigger-delete-day-start-end"><i class="fas fa-trash"></i></a>
+            <a class="waves-effect waves-light btn-large orange disable-when-clicked" id="button-day-start"><i
+                class="fas fa-coffee animate__animated animate__slideInUp animate__infinite animate__slower"></i></a>
+            <a class="waves-effect waves-light btn-large orange disable-when-clicked" id="button-day-end"><i
+                class="fas fa-bed"></i></a>
+            <a class="waves-effect waves-light btn-large modal-trigger deep-orange accent-3"
+              href="#modal-day-start-end-delete" id="button-modal-trigger-delete-day-start-end"><i
+                class="fas fa-trash"></i></a>
           </div>
         </div>
       </div>
@@ -64,8 +70,10 @@
         <div class="card">
           <div class="card-content">
             <span class="card-title">今日の過ごし方</span>
-            <a class="waves-effect waves-light btn-large disable-when-clicked" id="button-work-start">働く</a>
-            <a class="waves-effect waves-light btn-large amber disable-when-clicked" id="button-rest-start">休む</a>
+            <a class="waves-effect waves-light btn-large teal accent-4 disable-when-clicked"
+              id="button-work-start">働く</a>
+            <a class="waves-effect waves-light btn-large teal accent-4 disable-when-clicked"
+              id="button-rest-start">休む</a>
             <div class="row">
               <div class="col s12">
                 <div class="card z-depth-0">
@@ -104,7 +112,8 @@
             <canvas id="working-time-bar" width="90%" height="90%"></canvas>
             <div class="card" id="card-last-week-working-time-sum">
               <div class="card-content">
-                <p>先週働いた時間 <span id="card-last-week-working-time-sum__span-hour">80</span>h : <span id="card-last-week-working-time-sum__span-minute">33</span>m</p>
+                <p>先週働いた時間 <span id="card-last-week-working-time-sum__span-hour">80</span>h : <span
+                    id="card-last-week-working-time-sum__span-minute">33</span>m</p>
               </div>
             </div>
           </div>
@@ -140,8 +149,10 @@
                   <div class="card-content flex">
                     <div class="card-content__left">
                       <span class="card-title">title</span>
-                      <p><span id="goal-cards__template-card__content"></span> (<span id="goal-cards__template-card__date"></span>)</p>
-                      <p class="white-text"><span id="goal-cards__template-card__progress-now"></span> / <span id="goal-cards__template-card__all"></span></p>
+                      <p><span id="goal-cards__template-card__content"></span> (<span
+                          id="goal-cards__template-card__date"></span>)</p>
+                      <p class="white-text"><span id="goal-cards__template-card__progress-now"></span> / <span
+                          id="goal-cards__template-card__all"></span></p>
                     </div>
                     <div class="card-content__right valign-wrapper">
                       <div class="chart center-align relative margin-center">
@@ -153,7 +164,8 @@
               </a>
             </template>
           </div>
-          <a class="waves-effect waves-light btn-large modal-trigger white-text" href="#goal-cards__modal-add-new-card">新しい目標カードを追加</a>
+          <a class="waves-effect waves-light btn-large modal-trigger white-text"
+            href="#goal-cards__modal-add-new-card">新しい目標カードを追加</a>
           <ul class="collapsible border-0 box-shadow-0">
             <li>
               <div class="collapsible-header collapsible-header--box-shadow">完了済み</div>
@@ -347,9 +359,12 @@
       </div>
     </div>
     <div class="modal-footer">
-      <a class="modal-close waves-effect waves-light btn blue font-20px" id="goal-cards__modal-fix-card__complete-button">🎉</a>
-      <a class="modal-close waves-effect waves-light btn red accent-4" id="goal-cards__modal-fix-card__delete-button"><i class="fas fa-trash"></i></a>
-      <a class="modal-close waves-effect waves-light btn" id="goal-cards__modal-fix-card__ok-button"><i class="fas fa-check"></i></a>
+      <a class="modal-close waves-effect waves-light btn blue font-20px"
+        id="goal-cards__modal-fix-card__complete-button">🎉</a>
+      <a class="modal-close waves-effect waves-light btn red accent-4" id="goal-cards__modal-fix-card__delete-button"><i
+          class="fas fa-trash"></i></a>
+      <a class="modal-close waves-effect waves-light btn" id="goal-cards__modal-fix-card__ok-button"><i
+          class="fas fa-check"></i></a>
     </div>
   </div>
 

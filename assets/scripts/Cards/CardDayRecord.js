@@ -38,7 +38,7 @@ export class CardDayRecord {
       localStorage.setItem(`thing${recordNumber}`, true);
       localStorage.setItem('recordNumber', recordNumber);
 
-      functions.setToastAndReload('新しい行動を記録しました', 'cyan');
+      functions.setToastAndReload('新しい行動を記録しました', 'teal accent-4');
     });
 
     restStartButton.addEventListener('click', () => {
@@ -54,7 +54,7 @@ export class CardDayRecord {
       localStorage.setItem('recordNumber', recordNumber);
 
       functions.calcAndAddTime(false);
-      functions.setToastAndReload('新しい行動を記録しました', 'cyan');
+      functions.setToastAndReload('新しい行動を記録しました', 'teal accent-4');
     });
   }
 }

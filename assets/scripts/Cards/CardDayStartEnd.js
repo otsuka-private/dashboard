@@ -11,7 +11,8 @@ export class CardDayStartEnd {
 
   showNewWeekBtn() {
     const day = new Date();
-    if (day.getDay() === 1 && localStorage.getItem('was_week_updated') == 'false') {
+    const startDayButton = document.getElementById('button-day-start');
+    if (day.getDay() === 1 && localStorage.getItem('was_week_updated') == 'false' && !startDayButton.hasAttribute('disabled')) {
       document.getElementById('modal-set-new-week-btn').style.display = 'inline-block';
     } else {
       if (day.getDay() !== 1) {
@@ -24,10 +25,16 @@ export class CardDayStartEnd {
   enableButton() {
     const hasDayStarted = localStorage.getItem('startHour');
     const hasDayEnded = localStorage.getItem('endHour');
+    const setNewWeekButton = document.getElementById('modal-set-new-week-btn');
     const dayStartButton = document.getElementById('button-day-start');
     const dayEndButton = document.getElementById('button-day-end');
     const deleteDayStartEndButton = document.getElementById('button-modal-trigger-delete-day-start-end');
-    if (hasDayStarted == null) {
+    if (setNewWeekButton.style.display == 'inline-block') {
+      dayEndButton.setAttribute('disabled', 'disabled');
+      dayStartButton.setAttribute('disabled', 'disabled');
+      deleteDayStartEndButton.setAttribute('disabled', 'disabled');
+      dayStartButton.querySelector('i').classList.remove('animate__slideInUp');
+    } else if (hasDayStarted == null) {
       dayEndButton.setAttribute('disabled', 'disabled');
       deleteDayStartEndButton.setAttribute('disabled', 'disabled');
     } else if (hasDayStarted != null && hasDayEnded == null) {
@@ -52,7 +59,7 @@ export class CardDayStartEnd {
       localStorage.setItem('startHour', hour);
       localStorage.setItem('startMinute', minute);
       localStorage.setItem('dayToday', day);
-      functions.setToastAndReload('開始時間を記録しました。<br>素晴らしい１日に感謝して今日も精一杯生きましょう！', 'cyan');
+      functions.setToastAndReload('開始時間を記録しました。<br>素晴らしい１日に感謝して今日も精一杯生きましょう！', 'teal accent-4');
     });
     dayEndButton.addEventListener('click', () => {
       const nowTime = new Date();
@@ -63,7 +70,7 @@ export class CardDayStartEnd {
       this.calcPrintWakingTime();
       functions.calcAndAddTime(true);
       this.calcPrintWorkingTime();
-      functions.setToastAndReload('終了時間を記録しました 今日もよく頑張りました！🎉', 'cyan');
+      functions.setToastAndReload('終了時間を記録しました 今日もよく頑張りました！🎉', 'teal accent-4');
     });
   }
 
@@ -96,7 +103,7 @@ export class CardDayStartEnd {
         localStorage.setItem(`wakingTime${i}`, null);
       }
       localStorage.was_week_updated = true;
-      functions.setToastAndReload('新しい週に更新しました', 'cyan');
+      functions.setToastAndReload('新しい週に更新しました', 'teal accent-4');
     });
   }
 
@@ -105,7 +112,7 @@ export class CardDayStartEnd {
     deleteDayStartEndButton.addEventListener('click', () => {
       this.deleteDayRecord();
       this.deleteDayStartEnd();
-      functions.setToastAndReload('1日をリセットしました', 'cyan');
+      functions.setToastAndReload('1日をリセットしました', 'teal accent-4');
     });
   }
 

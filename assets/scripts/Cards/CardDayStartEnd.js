@@ -10,6 +10,7 @@ export class CardDayStartEnd {
   }
 
   showNewWeekBtn() {
+    alert('js updated');
     const day = new Date();
     const startDayButton = document.getElementById('button-day-start');
     const hasDayEnded = localStorage.getItem('endHour');

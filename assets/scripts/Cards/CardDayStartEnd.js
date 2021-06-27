@@ -12,7 +12,8 @@ export class CardDayStartEnd {
   showNewWeekBtn() {
     const day = new Date();
     const startDayButton = document.getElementById('button-day-start');
-    if (day.getDay() === 1 && localStorage.getItem('was_week_updated') == 'false' && !startDayButton.hasAttribute('disabled')) {
+    const hasDayEnded = localStorage.getItem('endHour');
+    if (day.getDay() === 1 && localStorage.getItem('was_week_updated') == 'false' && !startDayButton.hasAttribute('disabled') && hasDayEnded) {
       document.getElementById('modal-set-new-week-btn').style.display = 'inline-block';
     } else {
       if (day.getDay() !== 1) {
